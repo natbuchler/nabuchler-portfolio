@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { FigmaService } from './figma-service';
-import { FigmaFile, FigmaNode } from './figma-config';
+import { FigmaService } from '../lib/figma-service';
+import { FigmaFile, FigmaNode } from '../lib/figma-config';
 
 export interface UseFigmaOptions {
   fileKey?: string;

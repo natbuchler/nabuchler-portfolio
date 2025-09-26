@@ -213,3 +213,21 @@ button:hover, .button:hover {
     transform: translateX(-16.666%);
   }
 }
+
+/* Force orange color for social icons */
+.force-orange-color {
+  color: #c95127 !important;
+}
+
+.force-orange-color svg {
+  color: #c95127 !important;
+  fill: #c95127 !important;
+}
+
+.force-orange-color svg path {
+  fill: #c95127 !important;
+}
+
+.force-orange-color svg * {
+  fill: #c95127 !important;
+}

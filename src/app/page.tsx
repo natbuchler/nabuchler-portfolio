@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import ClientOnly from '@/components/ClientOnly';
+import Timeline, { TimelineItem } from '@/components/Timeline';
+import FigmaComponent from '@/components/figma-component';
 
 // Asset constants
 const imgPexelsEllyFairytale = "/pexels-elly-fairytale-3823207-1.jpg";
@@ -16,9 +18,17 @@ const imgPonto = "/ponto.svg";
 const imgCy = "/cy.svg";
 const imgQuote = "/quote.svg";
 const imgLineTimeline = "/Line-timeline.svg";
+const imgLinkedin = "/Linkedin.svg";
+const imgMedium = "/Medium.svg";
+const imgEmail = "/Email.svg";
+const imgCV = "/CV.svg";
+const imgPuzzle = "/puzzle.svg";
+const imgLamp = "/lamp.svg";
+const imgMedal = "/medal.svg";
+const imgStrategy = "/strategy.svg";
 
 interface IconProps {
-  tipo?: "cy" | "ponto" | "rosto" | "Medium" | "Email" | "CV" | "Linkedin";
+  tipo?: "cy" | "ponto" | "rosto" | "Medium" | "Email" | "CV" | "Linkedin" | "puzzle" | "lamp" | "medal" | "strategy";
   size?: "32" | "64" | "48" | "124";
   className?: string;
 }
@@ -35,6 +45,14 @@ function Icon({ tipo = "rosto", size = "48", className = "" }: IconProps) {
     rosto: imgRosto,
     ponto: imgPonto,
     cy: imgCy,
+    Linkedin: imgLinkedin,
+    Medium: imgMedium,
+    Email: imgEmail,
+    CV: imgCV,
+    puzzle: imgPuzzle,
+    lamp: imgLamp,
+    medal: imgMedal,
+    strategy: imgStrategy,
   };
   
   if (tipo in iconSources) {
@@ -50,7 +68,48 @@ function Icon({ tipo = "rosto", size = "48", className = "" }: IconProps) {
     );
   }
 
-  // Social icons placeholder
+  // Social icons com SVG inline
+  if (tipo === "Linkedin") {
+    return (
+      <div className={`relative ${sizeClasses[size]} ${className}`}>
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M44.142 0H3.858C1.728 0 0 1.728 0 3.858V44.142C0 46.272 1.728 48 3.858 48H44.142C46.272 48 48 46.272 48 44.142V3.858C48 1.728 46.272 0 44.142 0ZM44.142 44.16C17.274 44.154 3.84 44.148 3.84 44.142C3.846 17.274 3.852 3.84 3.858 3.84C30.726 3.846 44.16 3.852 44.16 3.858C44.154 30.726 44.148 44.16 44.142 44.16ZM7.116 17.994H14.238V40.902H7.116V17.994ZM10.68 14.862C12.954 14.862 14.808 13.014 14.808 10.734C14.808 10.1919 14.7012 9.65511 14.4938 9.15428C14.2863 8.65345 13.9823 8.19838 13.5989 7.81506C13.2156 7.43174 12.7605 7.12768 12.2597 6.92022C11.7589 6.71277 11.2221 6.606 10.68 6.606C10.1379 6.606 9.60112 6.71277 9.10028 6.92022C8.59945 7.12768 8.14438 7.43174 7.76106 7.81506C7.37774 8.19838 7.07368 8.65345 6.86623 9.15428C6.65877 9.65511 6.552 10.1919 6.552 10.734C6.546 13.014 8.394 14.862 10.68 14.862ZM25.818 29.568C25.818 26.58 26.388 23.688 30.09 23.688C33.738 23.688 33.792 27.102 33.792 29.76V40.902H40.908V28.338C40.908 22.17 39.576 17.424 32.37 17.424C28.908 17.424 26.586 19.326 25.632 21.126H25.536V17.994H18.702V40.902H25.818V29.568Z" fill="#c95127"/>
+        </svg>
+      </div>
+    );
+  }
+
+  if (tipo === "Medium") {
+    return (
+      <div className={`relative ${sizeClasses[size]} ${className}`}>
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.42133 2.66667H39.5787C42.7573 2.66667 45.3333 5.24267 45.3333 8.42133V17.6347C43.7116 18.0579 42.2714 18.9966 41.2293 20.3093C39.9707 21.872 39.208 23.9813 39.0213 26.352C38.9822 26.8249 38.9671 27.2978 38.976 27.7707C39.0853 32.472 41.3227 36.3467 45.3333 37.2373V39.5787C45.3319 41.1045 44.7252 42.5674 43.6463 43.6463C42.5674 44.7252 41.1045 45.3319 39.5787 45.3333H8.42133C6.89553 45.3319 5.43263 44.7252 4.35373 43.6463C3.27483 42.5674 2.66808 41.1045 2.66667 39.5787V8.42133C2.66667 5.24267 5.24267 2.66667 8.42133 2.66667ZM48 8.42133C47.9986 6.18829 47.1109 4.04711 45.5319 2.46811C43.9529 0.889112 41.8117 0.00141287 39.5787 0H8.42133C6.18829 0.00141287 4.04711 0.889112 2.46811 2.46811C0.889112 4.04711 0.00141287 6.18829 0 8.42133V39.5787C0.00141287 41.8117 0.889112 43.9529 2.46811 45.5319C4.04711 47.1109 6.18829 47.9986 8.42133 48H39.5787C41.8117 47.9986 43.9529 47.1109 45.5319 45.5319C47.1109 43.9529 47.9986 41.8117 48 39.5787V8.42133ZM45.3333 19.4613V24.7493H43.6907C43.7947 22.4373 44.3653 20.536 45.3333 19.4613ZM45.3333 25.7653V31.2667C44.1573 29.8987 43.4693 27.9333 43.592 25.7653H45.3333ZM39.192 11.4667L39.232 11.4587V11.1653H31.4987L24.3253 28.0347L17.1467 11.1653H8.816V11.4587L8.85333 11.4667C10.264 11.7867 10.9813 12.2613 10.9813 13.9733V34.0267C10.9813 35.7387 10.2613 36.2133 8.848 36.5333L8.81333 36.5387V36.832H14.4667V36.5387L14.4267 36.5333C13.016 36.2133 12.2987 35.7387 12.2987 34.0267V15.136L21.52 36.8347H22.0427L31.5333 14.5307V34.52C31.4107 35.8747 30.7013 36.2933 29.424 36.5813L29.3867 36.5893V36.88H39.232V36.5867L39.192 36.5813C37.912 36.2933 37.1867 35.8747 37.0667 34.52L37.0587 13.9733H37.0667C37.0667 12.2613 37.784 11.7867 39.192 11.4667Z" fill="#c95127"/>
+        </svg>
+      </div>
+    );
+  }
+
+  if (tipo === "Email") {
+    return (
+      <div className={`relative ${sizeClasses[size]} ${className}`}>
+        <svg width="48" height="48" viewBox="0 0 105.37 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.33,17.63C14.12,10.52,22.16,1.44,26.59.34c2.5-.62,9.77-.2,12.79-.17,17.82.16,36.63.89,54.35,2.12,4.45.31,5.58-.06,5.81,4.66.59,12.2-.03,25.08.26,37.41.49,20.68,1.63,41.35,3.31,61.95l2.27,21.8-.03.32c-.78,1.03-.64,1.62-2.07,1.95-4.48,1.05-10.98.09-15.67.97-13.14,2.44-45.43.53-74.5,2.64-3.78.27-4.86-4.45-5.15-5.49-.48-1.68-9.27-50.79-7.78-62.04,2.08-15.74,9.76-45.26,11.17-48.83ZM94.31,7.56l-61.42-2.22c3.44,4,7.66,7.47,12.26,10.08,1.79,1.02,5.62,2.09,6.34,3.91,1.1,2.78-2.56,3.42-4.24,4.41-16.84,9.89-31.91,27.91-41.52,44.72,1.34,20.28,5.55,40.22,6.9,60.5l87.18-3.34c-4.06-39.2-5.36-78.63-5.5-118.07ZM43.39,19.94c-6.5-3.25-12.03-8.26-16.55-13.9-5.49,4.3-8.76,11.07-11.23,17.48-3.88,10.11-6.12,20.99-7.99,31.64l7.44-9.38c8.36-9.73,17.62-18.74,28.32-25.84Z" fill="#c95127"/>
+        </svg>
+      </div>
+    );
+  }
+
+  if (tipo === "CV") {
+    return (
+      <div className={`relative ${sizeClasses[size]} ${className}`}>
+        <svg width="48" height="48" viewBox="0 0 105.37 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.33,17.63C14.12,10.52,22.16,1.44,26.59.34c2.5-.62,9.77-.2,12.79-.17,17.82.16,36.63.89,54.35,2.12,4.45.31,5.58-.06,5.81,4.66.59,12.2-.03,25.08.26,37.41.49,20.68,1.63,41.35,3.31,61.95l2.27,21.8-.03.32c-.78,1.03-.64,1.62-2.07,1.95-4.48,1.05-10.98.09-15.67.97-13.14,2.44-45.43.53-74.5,2.64-3.78.27-4.86-4.45-5.15-5.49-.48-1.68-9.27-50.79-7.78-62.04,2.08-15.74,9.76-45.26,11.17-48.83ZM94.31,7.56l-61.42-2.22c3.44,4,7.66,7.47,12.26,10.08,1.79,1.02,5.62,2.09,6.34,3.91,1.1,2.78-2.56,3.42-4.24,4.41-16.84,9.89-31.91,27.91-41.52,44.72,1.34,20.28,5.55,40.22,6.9,60.5l87.18-3.34c-4.06-39.2-5.36-78.63-5.5-118.07ZM43.39,19.94c-6.5-3.25-12.03-8.26-16.55-13.9-5.49,4.3-8.76,11.07-11.23,17.48-3.88,10.11-6.12,20.99-7.99,31.64l7.44-9.38c8.36-9.73,17.62-18.74,28.32-25.84Z" fill="#c95127"/>
+        </svg>
+      </div>
+    );
+  }
+
+  // Fallback para outros ícones
   return (
     <div className={`relative ${sizeClasses[size]} ${className} bg-[#ad8a6c] rounded-lg flex items-center justify-center`}>
       <span className="text-[#421d13] font-medium text-sm">{tipo}</span>
@@ -121,9 +180,9 @@ function CardCase({ side = "Right", title, description, image }: {
   );
 }
 
-function CardInsight({ title, description }: { title: string; description: string }) {
+function CardInsight({ title, description, icon = "cy" }: { title: string; description: string; icon?: string }) {
   return (
-    <motion.div 
+    <motion.div
       className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl p-6 flex-1 min-w-[250px]"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -131,7 +190,7 @@ function CardInsight({ title, description }: { title: string; description: strin
       viewport={{ once: true }}
     >
       <div className="space-y-4">
-        <Icon tipo="cy" size="48" />
+        <Icon tipo={icon as any} size="48" />
         <h3 className="font-playfair font-semibold text-xl md:text-2xl text-[#421d13] leading-tight">
           {title}
         </h3>
@@ -148,40 +207,16 @@ function CardExperience({
   company,
   period,
   description,
-  achievements,
-  iconType = "ponto",
-  iconIndex = 0
+  achievements
 }: {
   role: string;
   company: string;
   period: string;
   description: string;
   achievements: string[];
-  iconType?: "cy" | "ponto";
-  iconIndex?: number;
 }) {
-  // Alternar cores: marrom para índices pares, laranja para ímpares
-  const iconColor = iconIndex % 2 === 0 ? "#421d13" : "#c95127";
   return (
-    <motion.div 
-      className="flex gap-6 md:gap-14 items-start w-full max-w-6xl"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      <div className="shrink-0 mt-2 relative z-10 w-12 h-12" style={{ color: iconColor }}>
-        {iconType === "cy" ? (
-          <svg width="48" height="48" viewBox="0 0 107.54 124" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M25.86,76.9c-4.6,0-9.21.13-13.81-.05-2.43-.1-4.92-.45-7.22-1.2-5.23-1.7-6.47-6.6-2.44-10.31,2.96-2.73,6.39-5.02,9.81-7.18,4.87-3.07,9.98-5.74,14.87-8.78,3.49-2.17,3.53-3.74.39-6.54-4.94-4.4-10.02-8.64-14.93-13.08-2.59-2.34-5-4.89-7.4-7.44-2.52-2.67-3.69-7.59-2.41-9.6,1.37-2.17,6.89-3.84,10.13-3.08,6.42,1.51,11.51,5.14,15.76,10.02,2.98,3.42,5.77,7.01,8.72,10.44.51.59,1.44.81,2.18,1.21.32-.78.94-1.57.91-2.33-.17-3.96-.52-7.92-.77-11.88-.15-2.45-.38-4.91-.32-7.36.05-2.4-.18-5.16,2.87-6.14,4.04-1.3,6.84-1.41,9.23,1.67,4.05,5.23,8.22,10.36,12.34,15.54.64.8,1.29,1.59,2.2,2.71.94-1.15,1.75-2.13,2.55-3.12,2.84-3.54,5.9-6.93,8.46-10.66,3.75-5.44,9.32-7.71,15.21-9.74,3.41,11.2-3.09,20.08-6.71,29.65,7.39,1.4,15.17-1.72,22.04,2.92-.91,2.71-2.31,4.63-4.71,5.94-8.78,4.81-17.5,9.73-26.24,14.61-.89.5-1.73,1.08-2.99,1.88,3.22,2.01,6.18,3.77,9.05,5.66,4.33,2.86,8.83,5.54,12.82,8.83,2.7,2.24,4.82,5.27,6.87,8.18,1.7,2.41.57,4.67-2.41,4.77-1.64.06-3.43-.75-4.96-1.53-7.91-4.01-15.75-8.14-23.62-12.22-.14-.07-.36.01-.73.03-.8,8.13-1.57,16.29-2.43,24.43-.91,8.64-1.87,17.27-2.88,25.9-.08.66-.53,1.51-1.07,1.84-1.83,1.1-3.78,2-5.89,3.07-3.43-12.43-6.76-24.5-10.23-37.12-1.95,3.12-3.67,5.89-5.4,8.65-1.15,1.84-2.44,3.62-3.42,5.54-2.88,5.65-7.71,6.82-14.28,5.64-1.01-.18-2-.59-2.94-1.01-6.18-2.78-7.63-7.45-4.31-13.37,2.49-4.44,4.85-8.95,7.24-13.44.39-.74.66-1.54.85-2Z" fill="currentColor"/>
-          </svg>
-        ) : (
-          <svg width="48" height="48" viewBox="0 0 124.15 124" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.26,77.53l14.14-13.26L0,56.95l14.64-10.61-9.84-9.22,17.66-4.05c.97-4.42-4.98-6.76-3.77-11.1,2.36.64,6.98,2.62,9.27,1.57,3.08-1.41,2.91-10.52,4.1-13.58.32-.83.71-1.31,1.4-1.87l13.88,10.34c3.32-5.22,1.93-12.4,5.81-17.42,2.22,2.77,6.51,6.99,10.34,6.82s7.27-4.58,8.85-7.84l4.67,18.69c4.74-1.49,7.83-5.55,11.64-8.43.48-.36,3.4-2.55,3.76-2.17l2.28,17.68,13.63-5.56-6.06,16.16c1.89-.05,4.08.5,5.92.52,2.36.02,9.44-1.3,10.38,1.74,1.1,3.56-3.58,7.56-2.86,10.69.64,2.77,7.89,4.24,8.45,7.64-2.72,3.58-8.14,2.87-10.99,6.34l9.5,13.1c-1.02,1.54-2.83,2.06-4.6,2.15-2.28.12-5.89-1.07-7.08,1.76-1.87,4.44,3.21,11.31,4.17,15.66l-14.39-3.03c-.3,1.59-.61,2.75-.5,4.42.3,4.51,4.66,14.25-3.68,13.78-3.66-.21-9.32-3.62-12.83-1.49-2.39,1.45-.43,5.33-.67,7.67-.06.58-.62,2.21-1.17,2.38-.92.28-12.37-10.92-12.97-10.34l-6.57,14.65-5.43-18.69-12.48,14.54c-.91,1-1.82-.7-2.63-1.21-.6-2.5-.29-10.01-3.59-10.53-3.92-.62-10.77,3.46-13.43,2.32-.76-.33-1.2-1.45-1.3-2.23-.14-1.08-.23-2.86-.29-4.01-.2-4.4,1.6-10.21-4.89-9.45-2.49.29-4.08,2.27-6.17-.69-.1-.55,1.56-2.68,1.99-3.24,3.31-4.27,7.7-8.24,10.98-12.51.2-.25.49-.32.38-.76H1.26Z" fill="currentColor"/>
-          </svg>
-        )}
-      </div>
-      <div className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl p-6 md:p-8 flex-1">
+    <div className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl p-6 md:p-8 flex-1">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
             <div className="flex-1">
@@ -196,11 +231,11 @@ function CardExperience({
               {period}
             </p>
           </div>
-          
+
           <p className="font-roboto-flex text-lg md:text-xl text-[#6b6763] leading-relaxed">
             {description}
           </p>
-          
+
           <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763]">
             <p className="mb-2">Key Achievements</p>
             <ul className="list-disc space-y-1 ml-6">
@@ -212,14 +247,14 @@ function CardExperience({
             </ul>
           </div>
         </div>
-      </div>
-    </motion.div>
+    </div>
   );
 }
 
 export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState<string>('');
+  const [showFigmaPanel, setShowFigmaPanel] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -471,18 +506,22 @@ export default function Portfolio() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <CardInsight
+                icon="medal"
                 title="Cross-functional influence"
                 description="Building bridges between design, engineering, product and business teams to create aligned, high-impact solutions."
               />
               <CardInsight
+                icon="strategy"
                 title="Balanced strategy"
                 description="Combining user-centered design thinking with business objectives to deliver solutions that are both meaningful and measurable"
               />
               <CardInsight
+                icon="lamp"
                 title="Inclusive leadership"
                 description="Fostering diverse, inclusive environments where every voice is heard and every perspective adds value to the creative process."
               />
               <CardInsight
+                icon="puzzle"
                 title="Problem framing"
                 description="Approaching complex challenges with systematic thinking, clear problem definition, and data-driven decision making."
               />
@@ -586,87 +625,63 @@ export default function Portfolio() {
               subtitle="A journey of building design organizations, scaling impact, and leading teams across global markets."
             />
             
-            <div className="space-y-12 flex flex-col items-start relative max-w-6xl mx-auto">
-              {/* Linha timeline vertical de fundo cobrindo toda a altura */}
-              <div className="absolute left-[22px] top-0 w-1 h-full -z-10">
-                <Image
-                  src={imgLineTimeline}
-                  alt="Timeline"
-                  width={4}
-                  height={1354}
-                  className="h-full w-full object-cover"
+            <Timeline lineImage={imgLineTimeline}>
+              <TimelineItem icon="ponto" iconColor="#421d13" index={0}>
+                <CardExperience
+                  role="Service Design Consultant"
+                  company="Stealth AI Startup"
+                  period="June 2015 - Present"
+                  description="Defined UX vision and product narrative for AI solutions in a regulated sector, balancing innovation, governance, and user clarity."
+                  achievements={[
+                    "Built scalable service design systems",
+                    "Facilitated stakeholder alignment",
+                    "Ensured product consistency and replicability"
+                  ]}
                 />
-              </div>
-              <CardExperience
-                role="Service Design Consultant"
-                company="Stealth AI Startup"
-                period="June 2015 - Present"
-                description="Defined UX vision and product narrative for AI solutions in a regulated sector, balancing innovation, governance, and user clarity."
-                achievements={[
-                  "Built scalable service design systems",
-                  "Facilitated stakeholder alignment",
-                  "Ensured product consistency and replicability"
-                ]}
-                iconType="ponto"
-                iconIndex={0}
-              />
-              
-              <CardExperience
-                role="Global Product Design Manager"
-                company="AB InBev"
-                period="May 2022 - Sep 2025"
-                description="Own the strategic UX for BEES, a global B2B commerce platform operating in 30+ countries."
-                achievements={[
-                  "Lead core product journey teams",
-                  "Manage distributed design team",
-                  "Co-created global design career framework"
-                ]}
-                iconType="cy"
-                iconIndex={1}
-              />
-              
-              <CardExperience
-                role="Design Coordinator"
-                company="Vindi"
-                period="Aug 2020 – June 2021"
-                description="Managed DesignOps, Product Designers, and UX Research for fintech platform."
-                achievements={[
-                  "Created design career path",
-                  "Expanded team delivery capacity",
-                  "Promoted metric-driven design"
-                ]}
-                iconType="ponto"
-                iconIndex={2}
-              />
-              
-              <CardExperience
-                role="Payment Strategy & UX Lead"
-                company="Zup Innovation"
-                period="Mar 2019 – Jul 2020"
-                description="Led UX strategy for telecom and finance products, directing redesigns and unified visions."
-                achievements={[
-                  "Redesigned Safra Bank app",
-                  "Defined Claro & Nextel payment solution",
-                  "Conducted discovery and research workshops"
-                ]}
-                iconType="cy"
-                iconIndex={3}
-              />
-              
-              <CardExperience
-                role="UX Lead"
-                company="NTT Data"
-                period="Oct 2018 – Mar 2019"
-                description="Led UX/UI teams on financial services products, delivering comprehensive design solutions."
-                achievements={[
-                  "Delivered personas and wireframes",
-                  "Created prototypes and flows",
-                  "Facilitated stakeholder workshops"
-                ]}
-                iconType="ponto"
-                iconIndex={4}
-              />
-            </div>
+              </TimelineItem>
+
+              <TimelineItem icon="cy" iconColor="#c95127" index={1}>
+                <CardExperience
+                  role="Global Product Design Manager"
+                  company="AB InBev"
+                  period="May 2022 - Sep 2025"
+                  description="Own the strategic UX for BEES, a global B2B commerce platform operating in 30+ countries."
+                  achievements={[
+                    "Lead core product journey teams",
+                    "Manage distributed design team",
+                    "Co-created global design career framework"
+                  ]}
+                />
+              </TimelineItem>
+
+              <TimelineItem icon="ponto" iconColor="#421d13" index={2}>
+                <CardExperience
+                  role="Design Coordinator"
+                  company="Vindi"
+                  period="Aug 2020 – June 2021"
+                  description="Managed DesignOps, Product Designers, and UX Research for fintech platform."
+                  achievements={[
+                    "Created design career path",
+                    "Expanded team delivery capacity",
+                    "Promoted metric-driven design"
+                  ]}
+                />
+              </TimelineItem>
+
+              <TimelineItem icon="cy" iconColor="#c95127" index={3}>
+                <CardExperience
+                  role="Payment Strategy & UX Lead"
+                  company="Zup Innovation"
+                  period="Mar 2019 – Jul 2020"
+                  description="Led UX strategy for telecom and finance products, directing redesigns and unified visions."
+                  achievements={[
+                    "Redesigned Safra Bank app",
+                    "Defined Claro & Nextel payment solution",
+                    "Conducted discovery and research workshops"
+                  ]}
+                />
+              </TimelineItem>
+            </Timeline>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-[#421d13] text-[#e3dcd6] px-6 py-3 rounded-lg font-roboto font-medium hover:bg-[#421d13]/90 hover:transform hover:-translate-y-0.5 transition-all duration-300 shadow-md">
@@ -686,7 +701,7 @@ export default function Portfolio() {
           <div className="space-y-12 max-w-4xl mx-auto text-center">
             <TitleSubTitle title="Get in touch" />
             
-            <motion.div 
+            <motion.div
               className="flex justify-center gap-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -694,26 +709,60 @@ export default function Portfolio() {
               viewport={{ once: true }}
             >
               {['Linkedin', 'Medium', 'Email', 'CV'].map((platform) => (
-                <Icon 
-                  key={platform} 
-                  tipo={platform as any} 
-                  size="48" 
-                  className="cursor-pointer hover:scale-110 transition-transform" 
-                />
+                <div
+                  key={platform}
+                  className="cursor-pointer hover:scale-110 transition-transform"
+                  style={{
+                    color: '#c95127',
+                    fill: '#c95127',
+                    filter: 'none'
+                  }}
+                >
+                  <Icon
+                    tipo={platform as any}
+                    size="48"
+                    className="force-orange-color"
+                  />
+                </div>
               ))}
             </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Figma Panel */}
+      {showFigmaPanel && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4 border-b flex justify-between items-center">
+              <h3 className="text-xl font-semibold">Figma Integration</h3>
+              <button
+                onClick={() => setShowFigmaPanel(false)}
+                className="text-gray-500 hover:text-gray-700 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            <div className="p-4">
+              <FigmaComponent />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <footer className="py-12 border-t border-[#ad8a6c]/20">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center space-y-6">
-            <div className="w-full h-px bg-[#ad8a6c]/20" />
             <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] space-y-4">
               <p>Built on Cursor, with Next.js, Tailwind CSS & Framer Motion</p>
               <p>© 2025 Natasha Buchler. All rights reserved.</p>
+              <button
+                onClick={() => setShowFigmaPanel(true)}
+                className="text-xs text-[#ad8a6c] hover:text-[#421d13] transition-colors"
+              >
+                Figma Integration
+              </button>
             </div>
           </div>
         </div>

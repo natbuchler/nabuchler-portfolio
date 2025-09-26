@@ -1,0 +1,85 @@
+'use client';
+
+import React from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+interface TimelineItemProps {
+  icon: "cy" | "ponto";
+  iconColor: string;
+  children: React.ReactNode;
+  index: number;
+}
+
+interface TimelineProps {
+  children: React.ReactNode;
+  lineImage: string;
+}
+
+// Componente individual do item da timeline
+function TimelineItem({ icon, iconColor, children, index }: TimelineItemProps) {
+  const imgCy = "/cy.svg";
+  const imgPonto = "/ponto.svg";
+
+  return (
+    <motion.div
+      className="flex gap-6 md:gap-14 items-start w-full max-w-6xl relative"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      {/* Ícone com cor personalizada */}
+      <div className="shrink-0 mt-2 relative z-20 w-12 h-12" style={{ color: iconColor }}>
+        {icon === "cy" ? (
+          <svg width="48" height="48" viewBox="0 0 107.54 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M25.86,76.9c-4.6,0-9.21.13-13.81-.05-2.43-.1-4.92-.45-7.22-1.2-5.23-1.7-6.47-6.6-2.44-10.31,2.96-2.73,6.39-5.02,9.81-7.18,4.87-3.07,9.98-5.74,14.87-8.78,3.49-2.17,3.53-3.74.39-6.54-4.94-4.4-10.02-8.64-14.93-13.08-2.59-2.34-5-4.89-7.4-7.44-2.52-2.67-3.69-7.59-2.41-9.6,1.37-2.17,6.89-3.84,10.13-3.08,6.42,1.51,11.51,5.14,15.76,10.02,2.98,3.42,5.77,7.01,8.72,10.44.51.59,1.44.81,2.18,1.21.32-.78.94-1.57.91-2.33-.17-3.96-.52-7.92-.77-11.88-.15-2.45-.38-4.91-.32-7.36.05-2.4-.18-5.16,2.87-6.14,4.04-1.3,6.84-1.41,9.23,1.67,4.05,5.23,8.22,10.36,12.34,15.54.64.8,1.29,1.59,2.2,2.71.94-1.15,1.75-2.13,2.55-3.12,2.84-3.54,5.9-6.93,8.46-10.66,3.75-5.44,9.32-7.71,15.21-9.74,3.41,11.2-3.09,20.08-6.71,29.65,7.39,1.4,15.17-1.72,22.04,2.92-.91,2.71-2.31,4.63-4.71,5.94-8.78,4.81-17.5,9.73-26.24,14.61-.89.5-1.73,1.08-2.99,1.88,3.22,2.01,6.18,3.77,9.05,5.66,4.33,2.86,8.83,5.54,12.82,8.83,2.7,2.24,4.82,5.27,6.87,8.18,1.7,2.41.57,4.67-2.41,4.77-1.64.06-3.43-.75-4.96-1.53-7.91-4.01-15.75-8.14-23.62-12.22-.14-.07-.36.01-.73.03-.8,8.13-1.57,16.29-2.43,24.43-.91,8.64-1.87,17.27-2.88,25.9-.08.66-.53,1.51-1.07,1.84-1.83,1.1-3.78,2-5.89,3.07-3.43-12.43-6.76-24.5-10.23-37.12-1.95,3.12-3.67,5.89-5.4,8.65-1.15,1.84-2.44,3.62-3.42,5.54-2.88,5.65-7.71,6.82-14.28,5.64-1.01-.18-2-.59-2.94-1.01-6.18-2.78-7.63-7.45-4.31-13.37,2.49-4.44,4.85-8.95,7.24-13.44.39-.74.66-1.54.85-2Z" fill="currentColor"/>
+          </svg>
+        ) : (
+          <svg width="48" height="48" viewBox="0 0 124.15 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.26,77.53l14.14-13.26L0,56.95l14.64-10.61-9.84-9.22,17.66-4.05c.97-4.42-4.98-6.76-3.77-11.1,2.36.64,6.98,2.62,9.27,1.57,3.08-1.41,2.91-10.52,4.1-13.58.32-.83.71-1.31,1.4-1.87l13.88,10.34c3.32-5.22,1.93-12.4,5.81-17.42,2.22,2.77,6.51,6.99,10.34,6.82s7.27-4.58,8.85-7.84l4.67,18.69c4.74-1.49,7.83-5.55,11.64-8.43.48-.36,3.4-2.55,3.76-2.17l2.28,17.68,13.63-5.56-6.06,16.16c1.89-.05,4.08.5,5.92.52,2.36.02,9.44-1.3,10.38,1.74,1.1,3.56-3.58,7.56-2.86,10.69.64,2.77,7.89,4.24,8.45,7.64-2.72,3.58-8.14,2.87-10.99,6.34l9.5,13.1c-1.02,1.54-2.83,2.06-4.6,2.15-2.28.12-5.89-1.07-7.08,1.76-1.87,4.44,3.21,11.31,4.17,15.66l-14.39-3.03c-.3,1.59-.61,2.75-.5,4.42.3,4.51,4.66,14.25-3.68,13.78-3.66-.21-9.32-3.62-12.83-1.49-2.39,1.45-.43,5.33-.67,7.67-.06.58-.62,2.21-1.17,2.38-.92.28-12.37-10.92-12.97-10.34l-6.57,14.65-5.43-18.69-12.48,14.54c-.91,1-1.82-.7-2.63-1.21-.6-2.5-.29-10.01-3.59-10.53-3.92-.62-10.77,3.46-13.43,2.32-.76-.33-1.2-1.45-1.3-2.23-.14-1.08-.23-2.86-.29-4.01-.2-4.4,1.6-10.21-4.89-9.45-2.49.29-4.08,2.27-6.17-.69-.1-.55,1.56-2.68,1.99-3.24,3.31-4.27,7.7-8.24,10.98-12.51.2-.25.49-.32.38-.76H1.26Z" fill="currentColor"/>
+          </svg>
+        )}
+      </div>
+
+      {/* Conteúdo do card */}
+      {children}
+    </motion.div>
+  );
+}
+
+// Componente principal da Timeline
+export default function Timeline({ children, lineImage }: TimelineProps) {
+  return (
+    <div className="space-y-12 flex flex-col items-start relative max-w-6xl mx-auto">
+      {/* Linha timeline vertical conectando todos os ícones */}
+      <div
+        className="absolute left-[22px] top-8 bottom-8 w-1 z-0"
+        style={{
+          backgroundImage: `url(${lineImage})`,
+          backgroundRepeat: 'repeat-y',
+          backgroundSize: '4px auto',
+          backgroundPosition: 'center',
+          opacity: 1
+        }}
+      />
+
+      {/* Fallback com Image component */}
+      <div className="absolute left-[22px] top-8 bottom-8 w-1 z-0">
+        <Image
+          src={lineImage}
+          alt="Timeline"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {/* Itens da timeline */}
+      {children}
+    </div>
+  );
+}
+
+// Exportar também o TimelineItem para uso individual
+export { TimelineItem };

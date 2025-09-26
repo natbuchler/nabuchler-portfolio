@@ -42,14 +42,16 @@ Custom fonts: Playfair Display, Roboto Flex, Roboto, Raleway, Comfortaa
 
 ### Component Architecture
 
-**Reusable Components** (all in `src/app/page.tsx`):
-- `Icon`: Handles SVG icons with consistent sizing (32px, 48px, 64px, 124px)
-- `TitleSubTitle`: Section headers with animated underlines
-- `CardCase`: Case study cards with alternating layouts
-- `CardInsight`: Leadership insight cards with icons
-- `CardExperience`: Timeline experience cards with background blur effects
-
-**Client-Side Hydration**: Uses `ClientOnly` wrapper to prevent SSR hydration mismatches with Framer Motion.
+**Reusable Components**:
+- `Icon`: Handles SVG icons with consistent sizing (32px, 48px, 64px, 124px) - in `src/app/page.tsx`
+- `TitleSubTitle`: Section headers with animated underlines - in `src/app/page.tsx`
+- `CardCase`: Case study cards with alternating layouts - in `src/app/page.tsx`
+- `CardInsight`: Leadership insight cards with icons - in `src/app/page.tsx`
+- `CardExperience`: Timeline experience cards with background blur effects - in `src/app/page.tsx`
+- `Timeline`: Modular timeline container with vertical line background - in `src/components/Timeline.tsx`
+- `TimelineItem`: Individual timeline items with icon and content wrapper - in `src/components/Timeline.tsx`
+- `ClientOnly`: SSR hydration wrapper for Framer Motion - in `src/components/ClientOnly.tsx`
+- `FigmaComponent`: Figma MCP integration interface - in `src/components/figma-component.tsx`
 
 ### Asset Management
 
@@ -68,17 +70,26 @@ The project includes Figma MCP (Model Context Protocol) integration setup:
 
 ## Key Implementation Notes
 
-**Timeline Section**: Experience cards use relative positioning with an absolute SVG timeline (`Line-timeline.svg`) positioned behind icons using `left-[22px]` for precise center alignment.
+**Timeline Architecture**: The Experience section uses a modular `Timeline` component that:
+- Manages vertical line background (`Line-timeline.svg`) positioned at `left-[22px]`
+- Uses z-index layering: line (z-0), content (z-10), icons (z-20)
+- `TimelineItem` components wrap individual experience cards with custom icons
+- Icons alternate colors: `#421d13` (brown) and `#c95127` (orange)
+- SVG icons are inline with `fill="currentColor"` for precise color control
 
 **Animation Pattern**: Consistent `framer-motion` usage with `whileInView` triggers for scroll-based animations, all using `viewport={{ once: true }}` for performance.
 
 **Responsive Design**: Mobile-first approach with `md:` breakpoints for desktop layouts, especially in navigation and card layouts.
 
-**Color Consistency**: SVG icons use the design system colors - ensure `cy.svg` uses `fill: #ad8a6c` to match the theme.
+**Figma Integration**: Optional MCP integration accessible via footer link, opens modal with file loading and real-time connection capabilities.
 
 ## File Modifications
 
-When editing the experience section, note:
-- Icons are 48px with `shrink-0` to prevent flex shrinking
-- Timeline SVG uses `object-contain` and precise positioning
+**Timeline Components**: When editing the Experience section:
+- Use `Timeline` component as wrapper with `lineImage` prop
+- Wrap individual experiences in `TimelineItem` with `icon`, `iconColor`, and `index` props
+- Icons are 48px SVG with `z-20` positioning to appear over timeline
+- Line uses dual rendering approach (CSS background + Image) for reliability
 - Cards use backdrop blur effects: `bg-[rgba(255,255,255,0.35)] backdrop-blur-sm`
+
+**SVG Assets**: Timeline line (`Line-timeline.svg`) is 4px wide with variable height, positioned absolutely with `top-8 bottom-8` for full coverage.
