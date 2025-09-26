@@ -1,26 +1,215 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Design System Colors */
+  --brown: #421d13;
+  --beige: #ad8a6c;
+  --text-gray: #6b6763;
+  --background: #e3dcd6;
+  --orange: #c95127;
+  --card: rgba(173, 138, 108, 0.2);
+  --card-30: #d0bfb0;
+  --white-35: rgba(255, 255, 255, 0.35);
 }
 
 @theme inline {
+  --color-brown: var(--brown);
+  --color-beige: var(--beige);
+  --color-text-gray: var(--text-gray);
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-orange: var(--orange);
+  --color-card: var(--card);
+  --color-card-30: var(--card-30);
+  --color-white-35: var(--white-35);
+  
+  --font-playfair: var(--font-playfair);
+  --font-roboto-flex: var(--font-roboto-flex);
+  --font-roboto: var(--font-roboto);
+  --font-raleway: var(--font-raleway);
+  --font-comfortaa: var(--font-comfortaa);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--brown);
+  font-family: var(--font-roboto-flex), sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom utility classes for the design */
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+.font-roboto-flex {
+  font-family: var(--font-roboto-flex), sans-serif;
+}
+
+.font-roboto {
+  font-family: var(--font-roboto), sans-serif;
+}
+
+.font-raleway {
+  font-family: var(--font-raleway), sans-serif;
+}
+
+.font-comfortaa {
+  font-family: var(--font-comfortaa), sans-serif;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+button, .button {
+  transition: all 0.3s ease;
+}
+
+button:hover, .button:hover {
+  transform: translateY(-1px);
+}
+
+/* List styles for experience cards */
+.css-ed5n1g {
+  margin: 0;
+  padding: 0;
+}
+
+.css-ed5n1g li {
+  list-style-type: disc;
+  margin-left: 30px;
+  margin-bottom: 0;
+}
+
+.css-ed5n1g li:last-child {
+  margin-bottom: 0;
+}
+
+/* Custom mask utilities for complex image masks */
+.mask-alpha {
+  -webkit-mask-composite: intersect;
+  mask-composite: intersect;
+}
+
+.mask-intersect {
+  -webkit-mask-composite: intersect;
+  mask-composite: intersect;
+}
+
+.mask-no-clip {
+  -webkit-mask-clip: border-box;
+  mask-clip: border-box;
+}
+
+.mask-no-repeat {
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.mask-position-center {
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .text-responsive-h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .text-responsive-h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+  
+  .text-responsive-h3 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-responsive-h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .text-responsive-h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+  
+  .text-responsive-h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+}
+
+/* Highlights marquee with perfect spacing */
+.highlights-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.highlights-track {
+  display: flex;
+  align-items: center;
+  animation: highlights-scroll 30s linear infinite;
+  width: fit-content;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-right: 24px;
+  flex-shrink: 0;
+}
+
+.highlight-text {
+  font-family: var(--font-comfortaa), sans-serif;
+  font-weight: 300;
+  font-size: 1.125rem;
+  color: var(--brown);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .highlight-text {
+    font-size: 1.875rem;
+  }
+}
+
+.highlight-icon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .highlight-icon {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@keyframes highlights-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-16.666%);
+  }
 }
