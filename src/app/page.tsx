@@ -6,10 +6,6 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import ClientOnly from '@/components/ClientOnly';
 import Timeline, { TimelineItem } from '@/components/Timeline';
-import FigmaComponent from '@/components/figma-component';
-import FigmaMCPComponent from '@/components/FigmaMCPComponent';
-import FigmaMCPDemo from '@/components/FigmaMCPDemo';
-import InsightCard from '@/components/InsightCard';
 import Button, { ButtonGroup } from '@/components/Button';
 
 // Asset constants
@@ -265,8 +261,6 @@ function CardExperience({
 export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState<string>('');
-  const [showFigmaPanel, setShowFigmaPanel] = useState(false);
-  const [showMCPPanel, setShowMCPPanel] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
   const [emailCopied, setEmailCopied] = useState(false);
 
@@ -861,247 +855,43 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Figma MCP Component Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-[#e3dcd6] to-[#d0bfb0]">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="space-y-8">
-            <TitleSubTitle title="Figma MCP Integration" />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-lg shadow-lg"
-            >
-              <FigmaMCPComponent />
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* Figma MCP Demo Section */}
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="space-y-8">
-            <TitleSubTitle title="Figma MCP Demo" />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-lg shadow-lg"
-            >
-              <FigmaMCPDemo />
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* Insight Card from Figma Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef]">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="space-y-8">
-            <TitleSubTitle title="Insight Card do Figma" />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <InsightCard nodeId="insight-card" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* Button Examples Section */}
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="space-y-8">
-            <TitleSubTitle title="Button States Examples" />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-lg shadow-lg p-8"
-            >
-              <div className="space-y-8">
-                {/* Primary Buttons */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-[#421d13]">Primary Buttons - All States</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="flex flex-col items-center gap-2">
-                      <Button variant="primary">Default</Button>
-                      <span className="text-xs text-[#6b6763]">Default State</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                      <Button
-                        variant="primary"
-                        style={{
-                          backgroundColor: '#ad8a6c',
-                          color: '#421d13',
-                          boxShadow: '0 4px 4px rgba(0,0,0,0.2)'
-                        }}
-                      >
-                        Hover
-                      </Button>
-                      <span className="text-xs text-[#6b6763]">Hover State</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                      <Button
-                        variant="primary"
-                        style={{
-                          backgroundColor: '#ad8a6c33',
-                          color: '#421d13',
-                          boxShadow: 'inset 0 4px 4px rgba(0,0,0,0.2)'
-                        }}
-                      >
-                        Focus
-                      </Button>
-                      <span className="text-xs text-[#6b6763]">Focus State</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                      <Button variant="primary" disabled>Disabled</Button>
-                      <span className="text-xs text-[#6b6763]">Disabled State</span>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Secondary Buttons */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-[#421d13]">Secondary Buttons - All States</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="flex flex-col items-center gap-2">
-                      <Button variant="secondary">Default</Button>
-                      <span className="text-xs text-[#6b6763]">Default State</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                      <Button
-                        variant="secondary"
-                        style={{
-                          backgroundColor: 'transparent',
-                          color: '#ad8a6c',
-                          border: '2px solid #ad8a6c',
-                          boxShadow: '0px 4px 4px rgba(0,0,0,0.2)'
-                        }}
-                      >
-                        Hover
-                      </Button>
-                      <span className="text-xs text-[#6b6763]">Hover State</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                      <Button
-                        variant="secondary"
-                        style={{
-                          backgroundColor: 'transparent',
-                          color: '#ad8a6c33',
-                          border: '2px solid #ad8a6c33'
-                        }}
-                      >
-                        Focus
-                      </Button>
-                      <span className="text-xs text-[#6b6763]">Focus State</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                      <Button variant="secondary" disabled>Disabled</Button>
-                      <span className="text-xs text-[#6b6763]">Disabled State</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Usage Examples */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-[#421d13]">Usage Examples</h3>
-                  <div className="space-y-3">
-                    <ButtonGroup>
-                      <Button variant="primary">Save Changes</Button>
-                      <Button variant="secondary">Cancel</Button>
-                    </ButtonGroup>
-
-                    <ButtonGroup>
-                      <Button
-                        variant="primary"
-                        onClick={() => window.open('https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing', '_blank')}
-                      >
-                        Download CV
-                      </Button>
-                      <Button variant="secondary">View Portfolio</Button>
-                    </ButtonGroup>
-
-                    <ButtonGroup>
-                      <Button variant="primary" disabled>Processing...</Button>
-                      <Button variant="secondary" disabled>Unavailable</Button>
-                    </ButtonGroup>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Figma Panel */}
-      {showFigmaPanel && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-4 border-b flex justify-between items-center">
-              <h3 className="text-xl font-semibold">Figma Integration (API)</h3>
-              <button
-                onClick={() => setShowFigmaPanel(false)}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
-              >
-                ×
-              </button>
-            </div>
-            <div className="p-4">
-              <FigmaComponent />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* MCP Panel */}
-      {showMCPPanel && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-4 border-b flex justify-between items-center">
-              <h3 className="text-xl font-semibold">Figma MCP Integration</h3>
-              <button
-                onClick={() => setShowMCPPanel(false)}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
-              >
-                ×
-              </button>
-            </div>
-            <div className="p-4">
-              <FigmaMCPComponent />
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Footer */}
       <footer className="py-12 border-t border-[#ad8a6c]/20">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center space-y-6">
             <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] space-y-4">
-              <p>Built on Cursor, with Next.js, Tailwind CSS & Framer Motion</p>
-              <p>© 2025 Natasha Buchler. All rights reserved.</p>
-              <div className="flex gap-4 justify-center">
-                <button
-                  onClick={() => setShowFigmaPanel(true)}
-                  className="text-xs text-[#ad8a6c] hover:text-[#421d13] transition-colors"
-                >
-                  Figma API
-                </button>
-                <button
-                  onClick={() => setShowMCPPanel(true)}
-                  className="text-xs text-[#c95127] hover:text-[#421d13] transition-colors font-semibold"
-                >
-                  Figma MCP ✨
-                </button>
+              <div className="flex flex-col items-center gap-3">
+                <p>Hands-on Design & Code – built with Next.js, Tailwind CSS & Framer Motion</p>
+                <div className="flex items-center gap-2">
+                  <Image
+                    src="/Logo Claude AI.svg"
+                    alt="Claude AI"
+                    width={20}
+                    height={20}
+                    className="opacity-60 hover:opacity-100 transition-opacity"
+                  />
+                  <Image
+                    src="/Cursor Logo SVG.svg"
+                    alt="Cursor"
+                    width={20}
+                    height={20}
+                    className="opacity-60 hover:opacity-100 transition-opacity"
+                  />
+                  <Image
+                    src="/Figma Logo SVG.svg"
+                    alt="Figma"
+                    width={20}
+                    height={20}
+                    className="opacity-60 hover:opacity-100 transition-opacity"
+                  />
+                </div>
               </div>
+              <p>© 2025 Natasha Buchler. All rights reserved.</p>
             </div>
           </div>
         </div>
