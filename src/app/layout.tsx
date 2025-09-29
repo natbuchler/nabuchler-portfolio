@@ -33,8 +33,11 @@ const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  title: "Natasha Buchler - Strategic Designer & Executive Leader",
-  description: "Strategic Designer & Executive Leader with 7+ years leading design teams across B2B platforms, fintech, and global marketplaces.",
+  title: "nabuchler",
+  description: "Portfolio of Natasha Buchler",
+  icons: {
+    icon: "/rosto.svg",
+  },
 };
 
 export default function RootLayout({
