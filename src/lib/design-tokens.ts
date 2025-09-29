@@ -113,7 +113,7 @@ export const getTypographyStyle = (variant: keyof typeof typography) => {
     fontFamily: style.fontFamily,
     fontSize: `${style.fontSize}px`,
     fontWeight: style.fontWeight,
-    lineHeight: typeof style.lineHeight === 'number' ? style.lineHeight : `${style.lineHeight}px`,
+    lineHeight: `${style.lineHeight}px`,
   };
 };
 

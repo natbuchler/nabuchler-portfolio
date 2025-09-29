@@ -9,14 +9,30 @@ export interface UseFigmaOptions {
   autoConnect?: boolean;
 }
 
+export interface MCPData {
+  nodeId?: string;
+  type?: string;
+  name?: string;
+  dimensions?: { width: number; height: number };
+  children?: unknown[];
+  timestamp?: string;
+  source?: string;
+  html?: string;
+  css?: string;
+  framework?: string;
+  language?: string;
+  image?: string;
+  format?: string;
+}
+
 export interface UseFigmaReturn {
   file: FigmaFile | null;
   loading: boolean;
   error: string | null;
   mcpConnected: boolean;
   components: FigmaNode[];
-  selectedNode: any;
-  mcpData: any;
+  selectedNode: FigmaNode | null;
+  mcpData: MCPData | null;
   fetchFile: (fileKey?: string) => Promise<void>;
   connectMCP: () => Promise<void>;
   disconnectMCP: () => void;
@@ -32,8 +48,8 @@ export function useFigma(options: UseFigmaOptions = {}): UseFigmaReturn {
   const [error, setError] = useState<string | null>(null);
   const [mcpConnected, setMcpConnected] = useState(false);
   const [components, setComponents] = useState<FigmaNode[]>([]);
-  const [selectedNode, setSelectedNode] = useState<any>(null);
-  const [mcpData, setMcpData] = useState<any>(null);
+  const [selectedNode, setSelectedNode] = useState<FigmaNode | null>(null);
+  const [mcpData, setMcpData] = useState<MCPData | null>(null);
 
   const figmaService = useMemo(() => new FigmaService(), []);
 

@@ -37,8 +37,23 @@ export interface FigmaNode {
   };
 }
 
+export interface FigmaComponent {
+  key: string;
+  name: string;
+  description?: string;
+  componentSetId?: string;
+  documentationLinks?: Array<{ uri: string }>;
+}
+
+export interface FigmaStyle {
+  key: string;
+  name: string;
+  description?: string;
+  styleType: 'FILL' | 'TEXT' | 'EFFECT' | 'GRID';
+}
+
 export interface FigmaFile {
   document: FigmaNode;
-  components: Record<string, any>;
-  styles: Record<string, any>;
+  components: Record<string, FigmaComponent>;
+  styles: Record<string, FigmaStyle>;
 }

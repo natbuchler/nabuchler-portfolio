@@ -1,6 +1,32 @@
 import axios from 'axios';
 import { figmaConfig, FigmaFile, FigmaNode } from './figma-config';
 
+export interface MCPMetadataResponse {
+  nodeId: string;
+  type: string;
+  name: string;
+  dimensions: { width: number; height: number };
+  children: unknown[];
+  timestamp: string;
+  source: string;
+}
+
+export interface MCPCodeResponse {
+  html: string;
+  css: string;
+  framework: string;
+  language: string;
+  source: string;
+}
+
+export interface MCPScreenshotResponse {
+  image: string;
+  format: string;
+  width: number;
+  height: number;
+  source: string;
+}
+
 export class FigmaService {
   private baseURL = 'https://api.figma.com/v1';
   private mcpServerURL = 'http://127.0.0.1:3845';
@@ -60,7 +86,7 @@ export class FigmaService {
     /**
    * Obtém metadados do Figma via MCP
    */
-    async getMCPMetadata(nodeId?: string): Promise<any> {
+    async getMCPMetadata(nodeId?: string): Promise<MCPMetadataResponse> {
       try {
         console.log("🔍 Pedindo metadados MCP para nodeId:", nodeId);
 
@@ -78,7 +104,7 @@ export class FigmaService {
         console.log("✅ Metadados MCP obtidos:", response.data);
         return response.data;
       } catch (error) {
-        console.warn("⚠️  MCP Server não disponível, usando dados mock:", error.message);
+        console.warn("⚠️  MCP Server não disponível, usando dados mock:", error instanceof Error ? error.message : String(error));
 
         // Fallback com dados mock
         return {
@@ -96,7 +122,7 @@ export class FigmaService {
     /**
      * Obtém código do componente via MCP
      */
-    async getMCPCode(nodeId?: string): Promise<any> {
+    async getMCPCode(nodeId?: string): Promise<MCPCodeResponse> {
       try {
         console.log("💻 Pedindo código MCP para nodeId:", nodeId);
 
@@ -115,7 +141,7 @@ export class FigmaService {
         console.log("✅ Código MCP obtido:", response.data);
         return response.data;
       } catch (error) {
-        console.warn("⚠️  MCP Server não disponível, usando código mock:", error.message);
+        console.warn("⚠️  MCP Server não disponível, usando código mock:", error instanceof Error ? error.message : String(error));
 
         // Fallback com código mock
         return {
@@ -131,7 +157,7 @@ export class FigmaService {
     /**
      * Obtém screenshot via MCP
      */
-    async getMCPScreenshot(nodeId?: string): Promise<any> {
+    async getMCPScreenshot(nodeId?: string): Promise<MCPScreenshotResponse> {
       try {
         console.log("📸 Pedindo screenshot MCP para nodeId:", nodeId);
 
@@ -162,7 +188,7 @@ export class FigmaService {
 
         return response.data;
       } catch (error) {
-        console.warn("⚠️  MCP Server não disponível, usando screenshot mock:", error.message);
+        console.warn("⚠️  MCP Server não disponível, usando screenshot mock:", error instanceof Error ? error.message : String(error));
 
         // Fallback com placeholder
         return {

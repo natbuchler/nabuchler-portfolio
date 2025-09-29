@@ -24,7 +24,7 @@ export default function InsightCard({ nodeId }: InsightCardProps) {
       // Buscar especificamente o componente "Insight Card"
       const result = await figmaService.getMCPCode(nodeId || 'insight-card');
 
-      if (result && result.status !== 'waiting-for-mcp') {
+      if (result) {
         setFigmaCode(result);
         console.log('✅ Código do Insight Card obtido:', result);
       } else {

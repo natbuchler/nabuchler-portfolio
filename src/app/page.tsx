@@ -187,7 +187,11 @@ function CardCase({ side = "Right", title, description, image }: {
   );
 }
 
-function CardInsight({ title, description, icon = "cy" }: { title: string; description: string; icon?: string }) {
+function CardInsight({ title, description, icon = "cy" }: {
+  title: string;
+  description: string;
+  icon?: "cy" | "ponto" | "rosto" | "Medium" | "Email" | "CV" | "Linkedin" | "puzzle" | "lamp" | "medal" | "strategy";
+}) {
   return (
     <motion.div
       className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl p-6 flex-1 min-w-[250px]"
@@ -197,7 +201,7 @@ function CardInsight({ title, description, icon = "cy" }: { title: string; descr
       viewport={{ once: true }}
     >
       <div className="space-y-4">
-        <Icon tipo={icon as any} size="48" />
+        <Icon tipo={icon} size="48" />
         <h3 className="font-playfair font-semibold text-xl md:text-2xl text-[#421d13] leading-tight">
           {title}
         </h3>
@@ -477,7 +481,7 @@ export default function Portfolio() {
           >
             <div className="space-y-8">
               <h1 className="font-playfair font-bold text-4xl md:text-5xl lg:text-6xl text-[#421d13] leading-[1.2]">
-                Hey, I'm Natasha Buchler,
+                Hey, I&apos;m Natasha Buchler,
               </h1>
 
               <p className="font-roboto-flex font-light text-lg md:text-2xl text-[#6b6763] leading-relaxed">
@@ -627,7 +631,7 @@ export default function Portfolio() {
                 />
               </div>
               <blockquote className="font-playfair font-bold text-xl md:text-3xl text-[#6b6763] leading-relaxed">
-                "Great design leadership isn't about having all the answers, it's about asking the right questions, creating the right environment, and empowering teams to discover solutions together."
+                &ldquo;Great design leadership isn&apos;t about having all the answers, it&apos;s about asking the right questions, creating the right environment, and empowering teams to discover solutions together.&rdquo;
               </blockquote>
             </motion.div>
           </div>
@@ -679,7 +683,7 @@ export default function Portfolio() {
               >
                 <div className="space-y-6 font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] leading-relaxed">
                   <p>
-                    With 15+ years in design and 7+ in leadership, I've scaled design impact across 32 countries, building distributed teams that deliver measurable business outcomes. I specialize in creating inclusive, high-performing design organizations that bridge user needs with business objectives.
+                    With 15+ years in design and 7+ in leadership, I&apos;ve scaled design impact across 32 countries, building distributed teams that deliver measurable business outcomes. I specialize in creating inclusive, high-performing design organizations that bridge user needs with business objectives.
                   </p>
                   <p>
                     My approach combines strategic thinking with hands-on leadership, developing frameworks and processes that enable teams to work effectively across cultures and time zones. This includes career frameworks, quality assurance processes, and experimentation methodologies that scale globally.
@@ -827,7 +831,7 @@ export default function Portfolio() {
                   onClick={() => platform.name === 'Email' ? copyEmailToClipboard() : window.open(platform.url, '_blank')}
                 >
                   <Icon
-                    tipo={platform.name as any}
+                    tipo={platform.name as "cy" | "ponto" | "rosto" | "Medium" | "Email" | "CV" | "Linkedin" | "puzzle" | "lamp" | "medal" | "strategy"}
                     size="48"
                     className="force-orange-color"
                   />
