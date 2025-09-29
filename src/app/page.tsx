@@ -865,31 +865,43 @@ export default function Portfolio() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center space-y-6">
             <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] space-y-4">
-              <div className="flex flex-col items-center gap-3">
-                <p>Hands-on Design & Code – built with Next.js, Tailwind CSS & Framer Motion</p>
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/Logo Claude AI.svg"
-                    alt="Claude AI"
-                    width={20}
-                    height={20}
-                    className="opacity-60 hover:opacity-100 transition-opacity"
-                  />
-                  <Image
-                    src="/Cursor Logo SVG.svg"
-                    alt="Cursor"
-                    width={20}
-                    height={20}
-                    className="opacity-60 hover:opacity-100 transition-opacity"
-                  />
-                  <Image
-                    src="/Figma Logo SVG.svg"
-                    alt="Figma"
-                    width={20}
-                    height={20}
-                    className="opacity-60 hover:opacity-100 transition-opacity"
-                  />
-                </div>
+              <div className="flex flex-col items-center gap-4">
+                <p className="text-center leading-relaxed">
+                  Crafted hands-on by Natasha — built with{' '}
+                  <span className="inline-flex items-center gap-1">
+                    Cursor
+                    <Image
+                      src="/Cursor Logo SVG.svg"
+                      alt="Cursor"
+                      width={16}
+                      height={16}
+                      className="opacity-60 hover:opacity-100 transition-opacity"
+                    />
+                  </span>
+                  ,{' '}
+                  <span className="inline-flex items-center gap-1">
+                    Claude
+                    <Image
+                      src="/Logo Claude AI.svg"
+                      alt="Claude AI"
+                      width={16}
+                      height={16}
+                      className="opacity-60 hover:opacity-100 transition-opacity"
+                    />
+                  </span>
+                  {' '}&{' '}
+                  <span className="inline-flex items-center gap-1">
+                    Figma
+                    <Image
+                      src="/Figma Logo SVG.svg"
+                      alt="Figma"
+                      width={16}
+                      height={16}
+                      className="opacity-60 hover:opacity-100 transition-opacity"
+                    />
+                  </span>
+                  , powered by Next.js, Tailwind CSS & Framer Motion.
+                </p>
               </div>
               <p>© 2025 Natasha Buchler. All rights reserved.</p>
             </div>
