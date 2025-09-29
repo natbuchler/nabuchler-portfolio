@@ -366,9 +366,9 @@ export default function Portfolio() {
   return (
     <ClientOnly>
       <div className="bg-[#e3dcd6] min-h-screen">
-      {/* Photo positioned behind header */}
+      {/* Photo positioned behind header - Desktop only */}
       <motion.div
-        className="absolute top-0 right-0 w-[772px] h-[700px] z-0"
+        className="hidden md:block absolute top-0 right-0 w-[772px] h-[700px] z-0"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -478,11 +478,67 @@ export default function Portfolio() {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative h-[700px]">
+      <section id="hero" className="relative md:h-[700px]">
         {/* Content container */}
         <div className="relative z-10 w-full">
+          {/* Mobile Layout - Image above text */}
+          <div className="block md:hidden">
+            {/* Mobile Photo */}
+            <motion.div
+              className="w-full flex justify-center pt-8 pb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Image
+                src={imgPhoto}
+                alt="Natasha Buchler"
+                width={772}
+                height={700}
+                className="w-full h-auto object-contain max-h-[250px]"
+                priority
+              />
+            </motion.div>
+
+            {/* Mobile Content */}
+            <motion.div
+              className="px-8 pb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <div className="space-y-6">
+                <h1 className="font-playfair font-bold text-3xl text-[#421d13] leading-[1.2] text-center">
+                  Hey, I&apos;m Natasha Buchler,
+                </h1>
+
+                <p className="font-roboto-flex font-light text-base text-[#6b6763] leading-relaxed text-center">
+                  a Strategic Designer & Executive Leader with 7+ years leading design teams across B2B platforms, fintech, and global marketplaces. Building high-performing teams and scaling design frameworks that drive measurable business impact across 32 countries.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    variant="primary"
+                    onClick={() => scrollToSection('cases')}
+                    className="hover:transform hover:-translate-y-0.5 shadow-md"
+                  >
+                    View case studies
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() => scrollToSection('leadership')}
+                    className="hover:transform hover:-translate-y-0.5"
+                  >
+                    About my leadership
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Desktop Layout - Text with image behind */}
           <motion.div
-            className="absolute left-16 md:left-24 top-[110px] max-w-2xl"
+            className="hidden md:block absolute left-16 md:left-24 top-[110px] max-w-2xl"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
