@@ -367,8 +367,9 @@ export default function Portfolio() {
     <ClientOnly>
       <div className="bg-[#e3dcd6] min-h-screen">
       {/* Photo positioned behind header - Desktop only */}
+      {/* Photo for xl+ (1280px+) only */}
       <motion.div
-        className="hidden md:block absolute top-0 right-0 w-[772px] h-[700px] z-0"
+        className="hidden xl:block absolute top-0 right-0 w-[772px] h-[700px] z-0"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -483,7 +484,7 @@ export default function Portfolio() {
         <div className="relative z-10 w-full">
           {/* Mobile Layout - Image above text */}
           <div className="block md:hidden">
-            {/* Mobile Photo */}
+            {/* Mobile Icon */}
             <motion.div
               className="w-full flex justify-center pt-8 pb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -491,12 +492,10 @@ export default function Portfolio() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <Image
-                src={imgPhoto}
-                alt="Natasha Buchler"
-                width={772}
-                height={700}
-                className="w-full h-auto object-contain max-h-[250px]"
-                priority
+                src={imgRosto}
+                alt="Ícone rosto"
+                width={120}
+                height={120}
               />
             </motion.div>
 
@@ -538,7 +537,7 @@ export default function Portfolio() {
 
           {/* Desktop Layout - Text with image behind */}
           <motion.div
-            className="hidden md:block absolute left-16 md:left-24 top-[110px] max-w-2xl"
+            className="hidden md:block absolute left-16 md:left-24 top-[54px] max-w-2xl"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}

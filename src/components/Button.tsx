@@ -119,7 +119,7 @@ interface ButtonGroupProps {
 
 export function ButtonGroup({ children, className = '' }: ButtonGroupProps) {
   return (
-    <div className={`content-stretch flex gap-[24px] items-center relative size-full ${className}`}>
+    <div className={`flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-center lg:justify-start relative w-full ${className}`}>
       {children}
     </div>
   );
