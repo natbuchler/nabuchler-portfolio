@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Build**: `npm run build` (production build with Turbopack)
 - **Production server**: `npm start`
 - **Lint**: `npm run lint` (ESLint with Next.js config)
+- **Type Check**: TypeScript type checking is built into the build process
 
 ## Project Architecture
 
@@ -25,9 +26,12 @@ This is a **Natasha Buchler Portfolio** - a Next.js 15 application with App Rout
 
 **Key Technologies**:
 - **Next.js 15** with App Router and Turbopack
-- **Tailwind CSS v4** with custom design system
+- **React 19** with latest features
+- **Tailwind CSS v4** with custom design system and inline theme configuration
 - **Framer Motion** for animations and scroll-triggered effects
 - **TypeScript** for type safety
+- **Figma API integrations**: `@figma/rest-api-spec`, `figma-api`, `axios`
+- **ESLint** with Next.js configuration for code quality
 
 ### Design System
 
@@ -37,6 +41,11 @@ Custom CSS variables in `src/app/globals.css`:
 - `--background: #e3dcd6` (main background)
 - `--text-gray: #6b6763` (secondary text)
 - `--orange: #c95127` (highlight color)
+- `--card: rgba(173, 138, 108, 0.2)` (card background)
+- `--card-30: #d0bfb0` (card variant)
+- `--white-35: rgba(255, 255, 255, 0.35)` (backdrop blur effects)
+
+Tailwind CSS v4 theme integration makes these variables available as: `bg-brown`, `text-beige`, `bg-background`, etc.
 
 Custom fonts: Playfair Display, Roboto Flex, Roboto, Raleway, Comfortaa
 
@@ -51,7 +60,14 @@ Custom fonts: Playfair Display, Roboto Flex, Roboto, Raleway, Comfortaa
 - `Timeline`: Modular timeline container with vertical line background - in `src/components/Timeline.tsx`
 - `TimelineItem`: Individual timeline items with icon and content wrapper - in `src/components/Timeline.tsx`
 - `ClientOnly`: SSR hydration wrapper for Framer Motion - in `src/components/ClientOnly.tsx`
-- `FigmaComponent`: Figma MCP integration interface - in `src/components/figma-component.tsx`
+
+**Figma Integration Components**:
+- `FigmaComponent`: Original Figma API integration - in `src/components/figma-component.tsx`
+- `FigmaMCPComponent`: Main MCP integration interface with tabs - in `src/components/FigmaMCPComponent.tsx`
+- `FigmaDirectMCP`: Direct MCP connection component (recommended) - in `src/components/FigmaDirectMCP.tsx`
+- `FigmaRealMCP`: MCP via API routes - in `src/components/FigmaRealMCP.tsx`
+- `AutoFigmaSync`: Auto-sync functionality - in `src/components/AutoFigmaSync.tsx`
+- `FigmaButtons`: Interface buttons for Figma operations - in `src/components/FigmaButtons.tsx`
 
 ### Asset Management
 
@@ -60,13 +76,29 @@ Custom fonts: Playfair Display, Roboto Flex, Roboto, Raleway, Comfortaa
 - Images: Photos and GIFs for hero section, about section, and case studies
 - Timeline visualization using SVG path with opacity
 
-### Figma Integration (Optional)
+### Figma Integration Architecture
 
-The project includes Figma MCP (Model Context Protocol) integration setup:
-- Environment variables: `FIGMA_ACCESS_TOKEN`, `FIGMA_FILE_KEY`, `FIGMA_MCP_SERVER_URL`
+The project includes comprehensive Figma integration with two approaches:
+
+**1. Figma REST API Integration**:
+- Environment variables: `FIGMA_ACCESS_TOKEN`, `FIGMA_FILE_KEY`
 - Service layer: `src/lib/figma-service.ts`
 - React hook: `src/hooks/use-figma.ts`
 - Component: `src/components/figma-component.tsx`
+
+**2. Figma MCP (Model Context Protocol) Integration**:
+- Environment variable: `FIGMA_MCP_SERVER_URL` (default: `http://127.0.0.1:3845/sse`)
+- Multiple MCP components with different connection methods
+- API routes for MCP operations: `src/app/api/figma-mcp/*` and `src/app/api/figma-direct-mcp/route.ts`
+- Supports real-time metadata extraction, code generation, screenshots, and design variables
+- Requires Figma Desktop with MCP server enabled
+
+**MCP API Routes**:
+- `/api/figma-mcp/metadata` - Extract element metadata
+- `/api/figma-mcp/code` - Generate HTML/CSS/React code
+- `/api/figma-mcp/screenshot` - Capture element screenshots
+- `/api/figma-mcp/variables` - Extract design tokens/variables
+- `/api/figma-direct-mcp` - Direct MCP proxy endpoint
 
 ## Key Implementation Notes
 
@@ -81,7 +113,11 @@ The project includes Figma MCP (Model Context Protocol) integration setup:
 
 **Responsive Design**: Mobile-first approach with `md:` breakpoints for desktop layouts, especially in navigation and card layouts.
 
-**Figma Integration**: Optional MCP integration accessible via footer link, opens modal with file loading and real-time connection capabilities.
+**Figma Integration**: Comprehensive integration accessible via footer "Figma MCP ✨" link, opens modal with multiple tabs:
+- **Direct MCP**: Recommended approach with real-time connection to Figma Desktop
+- **API Routes**: Server-side MCP proxy for additional security
+- **Demo**: Static demonstration of capabilities
+- Operations include metadata extraction, code generation, screenshot capture, and design variable extraction
 
 ## File Modifications
 

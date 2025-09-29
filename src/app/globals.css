@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  /* Design System Colors */
+  /* Design System Colors - Extracted from Figma DS */
   --brown: #421d13;
   --beige: #ad8a6c;
   --text-gray: #6b6763;
   --background: #e3dcd6;
   --orange: #c95127;
-  --card: rgba(173, 138, 108, 0.2);
+  --card: #ad8a6c33;
   --card-30: #d0bfb0;
-  --white-35: rgba(255, 255, 255, 0.35);
+  --white-35: #ffffff59;
 }
 
 @theme inline {
@@ -230,4 +230,84 @@ button:hover, .button:hover {
 
 .force-orange-color svg * {
   fill: #c95127 !important;
+}
+
+/* Button Styles - Based on Figma Design System */
+
+/* Base button styles */
+.btn-base {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  padding: 8px 24px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-height: 43px;
+}
+
+/* Primary Button States */
+.btn-primary {
+  background-color: #421d13;
+  color: #e3dcd6;
+  border-color: #421d13;
+}
+
+.btn-primary:hover {
+  background-color: #2d1308;
+  border-color: #2d1308;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(66, 29, 19, 0.3);
+}
+
+.btn-primary:focus {
+  outline: none;
+  ring: 2px solid #421d13;
+  ring-opacity: 0.5;
+  ring-offset: 2px;
+}
+
+.btn-primary:disabled {
+  background-color: #6b6763;
+  color: #ad8a6c;
+  border-color: #6b6763;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Secondary Button States */
+.btn-secondary {
+  background-color: transparent;
+  color: #421d13;
+  border-color: #421d13;
+}
+
+.btn-secondary:hover {
+  background-color: #421d13;
+  color: #e3dcd6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(66, 29, 19, 0.3);
+}
+
+.btn-secondary:focus {
+  outline: none;
+  ring: 2px solid #421d13;
+  ring-opacity: 0.5;
+  ring-offset: 2px;
+}
+
+.btn-secondary:disabled {
+  background-color: transparent;
+  color: #6b6763;
+  border-color: #6b6763;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }

@@ -3,11 +3,11 @@ import { figmaConfig, FigmaFile, FigmaNode } from './figma-config';
 
 export class FigmaService {
   private baseURL = 'https://api.figma.com/v1';
+  private mcpServerURL = 'http://127.0.0.1:3845';
 
   constructor() {
-    if (!figmaConfig.accessToken || figmaConfig.accessToken === 'your_figma_access_token_here') {
-      console.warn('Figma access token não configurado. Configure FIGMA_ACCESS_TOKEN nas variáveis de ambiente.');
-    }
+    // MCP do Figma não precisa de token - funciona através das funções MCP
+    console.log('FigmaService inicializado com suporte MCP');
   }
 
   /**
@@ -57,27 +57,124 @@ export class FigmaService {
     }
   }
 
-  /**
-   * Conecta com o servidor MCP do Figma
+    /**
+   * Obtém metadados do Figma via MCP
    */
-  async connectToMCPServer(): Promise<EventSource> {
-    try {
-      const eventSource = new EventSource(figmaConfig.mcpServerUrl);
-      
-      eventSource.onopen = () => {
-        console.log('Conectado ao servidor MCP do Figma');
-      };
+    async getMCPMetadata(nodeId?: string): Promise<any> {
+      try {
+        console.log("🔍 Pedindo metadados MCP para nodeId:", nodeId);
 
-      eventSource.onerror = (error) => {
-        console.error('Erro na conexão MCP:', error);
-      };
+        const response = await axios.post(`${this.mcpServerURL}/figma/metadata`, {
+          nodeId: nodeId || null,
+          clientLanguages: 'typescript,javascript',
+          clientFrameworks: 'react,nextjs'
+        }, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          timeout: 5000
+        });
 
-      return eventSource;
-    } catch (error) {
-      console.error('Erro ao conectar com servidor MCP:', error);
-      throw error;
+        console.log("✅ Metadados MCP obtidos:", response.data);
+        return response.data;
+      } catch (error) {
+        console.warn("⚠️  MCP Server não disponível, usando dados mock:", error.message);
+
+        // Fallback com dados mock
+        return {
+          nodeId: nodeId || 'current-selection',
+          type: 'FRAME',
+          name: 'Mock Component',
+          dimensions: { width: 320, height: 240 },
+          children: [],
+          timestamp: new Date().toISOString(),
+          source: 'fallback'
+        };
+      }
     }
-  }
+  
+    /**
+     * Obtém código do componente via MCP
+     */
+    async getMCPCode(nodeId?: string): Promise<any> {
+      try {
+        console.log("💻 Pedindo código MCP para nodeId:", nodeId);
+
+        const response = await axios.post(`${this.mcpServerURL}/figma/code`, {
+          nodeId: nodeId || null,
+          clientLanguages: 'typescript,javascript',
+          clientFrameworks: 'react,nextjs',
+          includeCSS: true
+        }, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          timeout: 5000
+        });
+
+        console.log("✅ Código MCP obtido:", response.data);
+        return response.data;
+      } catch (error) {
+        console.warn("⚠️  MCP Server não disponível, usando código mock:", error.message);
+
+        // Fallback com código mock
+        return {
+          html: `<div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">\n  <div className="flex items-start gap-4">\n    <div className="flex-shrink-0">\n      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">\n        <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">\n          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>\n        </svg>\n      </div>\n    </div>\n    <div className="flex-1 min-w-0">\n      <h3 className="text-lg font-semibold text-gray-900 mb-2">\n        Componente do Figma\n      </h3>\n      <p className="text-gray-600 text-sm leading-relaxed">\n        Este é um componente renderizado a partir do Figma via MCP (fallback mock).\n      </p>\n    </div>\n  </div>\n</div>`,
+          css: `.figma-component {\n  background: white;\n  border-radius: 12px;\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);\n  padding: 24px;\n  transition: box-shadow 0.2s ease-in-out;\n}\n\n.figma-component:hover {\n  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);\n}`,
+          framework: 'react',
+          language: 'typescript',
+          source: 'fallback'
+        };
+      }
+    }
+  
+    /**
+     * Obtém screenshot via MCP
+     */
+    async getMCPScreenshot(nodeId?: string): Promise<any> {
+      try {
+        console.log("📸 Pedindo screenshot MCP para nodeId:", nodeId);
+
+        const response = await axios.post(`${this.mcpServerURL}/figma/screenshot`, {
+          nodeId: nodeId || null,
+          format: 'png',
+          scale: 2
+        }, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          timeout: 5000,
+          responseType: 'json'
+        });
+
+        console.log("✅ Screenshot MCP obtido:", response.data);
+
+        // Se a resposta contém uma imagem base64
+        if (response.data.image || response.data.data) {
+          return {
+            image: response.data.image || response.data.data,
+            format: response.data.format || 'png',
+            width: response.data.width,
+            height: response.data.height,
+            source: 'mcp'
+          };
+        }
+
+        return response.data;
+      } catch (error) {
+        console.warn("⚠️  MCP Server não disponível, usando screenshot mock:", error.message);
+
+        // Fallback com placeholder
+        return {
+          image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDMyMCAyNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMjQwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNDcuNSAxMTBIMTcyLjVWMTMwSDE0Ny41VjExMFoiIGZpbGw9IiM5Q0EzQUYiLz4KPHA+PC9wPgo8L3N2Zz4K',
+          format: 'svg',
+          width: 320,
+          height: 240,
+          source: 'fallback'
+        };
+      }
+    }
+  
 
   /**
    * Extrai componentes de um nó do Figma

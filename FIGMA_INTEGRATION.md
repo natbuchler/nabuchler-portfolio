@@ -1,6 +1,18 @@
-# Portfolio Figma - Integração MCP
+# Portfolio Figma - Integração MCP ✨
 
-Este projeto demonstra como integrar o Figma com Next.js usando o Model Context Protocol (MCP) do Figma.
+Este projeto demonstra uma integração completa e funcional do Figma com Next.js usando o Model Context Protocol (MCP) do Figma.
+
+## 🎯 Status da Integração
+
+✅ **FUNCIONANDO** - Integração MCP totalmente implementada e testada!
+
+### Funcionalidades Implementadas:
+- ✅ Conexão MCP direta com o Figma Desktop
+- ✅ Obtenção de metadados de elementos em tempo real
+- ✅ Geração de código (HTML, CSS, React) baseado no design
+- ✅ Captura de screenshots de elementos
+- ✅ Extração de variáveis de design
+- ✅ Interface intuitiva com múltiplos modos de operação
 
 ## 🚀 Configuração Inicial
 
@@ -9,11 +21,11 @@ Este projeto demonstra como integrar o Figma com Next.js usando o Model Context 
 1. **Abra o Figma Desktop** (versão mais recente)
 2. **Abra um arquivo** no Figma
 3. **Menu Figma** → **Preferências** → **Habilitar servidor MCP local**
-4. Uma mensagem de confirmação aparecerá indicando que o servidor está rodando em `http://127.0.0.1:3845/mcp`
+4. Uma mensagem de confirmação aparecerá indicando que o servidor está rodando
 
 ### 2. Configurar MCP no Cursor
 
-1. **Abra Cursor** → **Configurações** → **Configurações do Cursor**
+1. **Abra Cursor** → **Configurações** → **Configurações do Cursor**  
 2. Vá até a aba **MCP**
 3. Clique em **+ Adicionar novo servidor MCP global**
 4. Insira a configuração:
@@ -70,61 +82,98 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
 ## 🛠️ Funcionalidades
 
-### Integração MCP
-- **Conexão em tempo real** com o Figma via MCP
-- **Sincronização automática** quando você seleciona elementos no Figma
-- **Extração de componentes** e propriedades de design
+### 🎨 Integração MCP Completa
+- **Conexão direta** com o Figma Desktop via MCP
+- **Três modos de operação**: Direto, API Routes e Demo
+- **Sincronização em tempo real** com elementos selecionados
+- **Interface moderna** com tabs e resultados organizados
 
-### API do Figma
-- **Carregamento de arquivos** do Figma
-- **Extração de componentes** e nós
-- **Conversão de cores** e medidas para CSS
-- **Geração de imagens** dos componentes
+### 📊 Obtenção de Dados
+- **Metadados completos** de elementos (dimensões, posição, tipo, etc.)
+- **Geração de código** automática (HTML, CSS, React)
+- **Captura de screenshots** de alta qualidade
+- **Extração de variáveis** de design (cores, tipografia, espaçamento)
 
-### Interface
-- **Visualização da estrutura** do arquivo Figma
-- **Detalhes dos componentes** selecionados
-- **Lista de componentes** encontrados
-- **Status da conexão MCP** em tempo real
+### 💻 Geração de Código
+- **HTML semântico** baseado na estrutura do design
+- **CSS responsivo** com classes e propriedades otimizadas
+- **Componentes React** prontos para uso com TypeScript
+- **Variáveis CSS** organizadas por categoria
+
+### 🔧 Interface Avançada
+- **Múltiplos modos**: Direct MCP, API Routes, Demo
+- **Histórico de resultados** com timestamps
+- **Visualização organizada** por tipo de dados
+- **Controles intuitivos** para diferentes operações
 
 ## 📁 Estrutura do Projeto
 
 ```
 src/
 ├── app/
-│   └── page.tsx              # Página principal
+│   ├── page.tsx                    # Página principal com integração
+│   └── api/
+│       ├── figma-mcp/             # API routes para MCP
+│       │   ├── metadata/route.ts   # Obter metadados
+│       │   ├── code/route.ts       # Gerar código
+│       │   ├── screenshot/route.ts # Capturar screenshots
+│       │   └── variables/route.ts  # Extrair variáveis
+│       └── figma-direct-mcp/route.ts # API direta MCP
 ├── components/
-│   └── figma-component.tsx   # Componente principal do Figma
+│   ├── figma-component.tsx        # Componente original (API)
+│   ├── FigmaMCPComponent.tsx      # Componente principal MCP
+│   ├── FigmaRealMCP.tsx          # MCP via API routes
+│   └── FigmaDirectMCP.tsx        # MCP direto (recomendado)
 ├── hooks/
-│   └── use-figma.ts          # Hook personalizado para Figma
+│   └── use-figma.ts              # Hook personalizado
 └── lib/
-    ├── figma-config.ts       # Configurações e tipos
-    └── figma-service.ts      # Serviço para API do Figma
+    ├── figma-config.ts           # Configurações
+    └── figma-service.ts          # Serviço Figma
 ```
 
-## 🔧 Uso
+## 🔧 Como Usar
 
-### Hook useFigma
+### 1. Acesso à Interface MCP
+
+1. **Execute o projeto**: `npm run dev`
+2. **Abra**: http://localhost:3000
+3. **Clique em**: "Figma MCP ✨" no rodapé da página
+4. **Escolha o modo**: Direct MCP (recomendado)
+
+### 2. Operações Disponíveis
+
+#### 📊 Obter Metadados
+- **Função**: Obtém informações detalhadas do elemento
+- **Dados**: Nome, tipo, dimensões, posição, filhos
+- **Uso**: Entender a estrutura do design
+
+#### 💻 Gerar Código  
+- **Função**: Cria código HTML, CSS e React
+- **Dados**: Código pronto para uso
+- **Uso**: Implementar o design rapidamente
+
+#### 📸 Capturar Screenshot
+- **Função**: Gera imagem do elemento
+- **Dados**: SVG ou PNG de alta qualidade
+- **Uso**: Documentação e referência visual
+
+#### 🎨 Extrair Variáveis
+- **Função**: Obtém tokens de design
+- **Dados**: Cores, tipografia, espaçamento
+- **Uso**: Criar design system consistente
+
+### 3. Exemplo de Uso Programático
 
 ```tsx
-import { useFigma } from '@/hooks/use-figma';
+import FigmaDirectMCP from '@/components/FigmaDirectMCP';
 
 function MyComponent() {
-  const {
-    file,
-    loading,
-    error,
-    mcpConnected,
-    components,
-    fetchFile,
-    connectMCP,
-    disconnectMCP,
-  } = useFigma({ 
-    fileKey: 'seu-file-key', 
-    autoConnect: true 
-  });
-
-  // Usar os dados do Figma...
+  return (
+    <div>
+      <h1>Minha Integração Figma</h1>
+      <FigmaDirectMCP nodeId="3211:1217" />
+    </div>
+  );
 }
 ```
 

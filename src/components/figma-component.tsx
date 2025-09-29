@@ -108,6 +108,16 @@ export default function FigmaComponent({ fileKey }: FigmaComponentProps) {
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
           <strong>Erro:</strong> {error}
+          {error.includes('File key do Figma não configurado') && (
+            <div className="mt-2 text-sm">
+              <p>Para resolver este erro:</p>
+              <ol className="list-decimal list-inside mt-1">
+                <li>Acesse o arquivo <code className="bg-red-200 px-1 rounded">.env.local</code> na raiz do projeto</li>
+                <li>Verifique se <code className="bg-red-200 px-1 rounded">FIGMA_ACCESS_TOKEN</code> e <code className="bg-red-200 px-1 rounded">FIGMA_FILE_KEY</code> estão configurados</li>
+                <li>Reinicie o servidor de desenvolvimento</li>
+              </ol>
+            </div>
+          )}
         </div>
       )}
 

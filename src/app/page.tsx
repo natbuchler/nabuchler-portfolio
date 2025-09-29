@@ -7,6 +7,10 @@ import { useState, useEffect } from 'react';
 import ClientOnly from '@/components/ClientOnly';
 import Timeline, { TimelineItem } from '@/components/Timeline';
 import FigmaComponent from '@/components/figma-component';
+import FigmaMCPComponent from '@/components/FigmaMCPComponent';
+import FigmaMCPDemo from '@/components/FigmaMCPDemo';
+import InsightCard from '@/components/InsightCard';
+import Button, { ButtonGroup } from '@/components/Button';
 
 // Asset constants
 const imgPexelsEllyFairytale = "/pexels-elly-fairytale-3823207-1.jpg";
@@ -163,9 +167,12 @@ function CardCase({ side = "Right", title, description, image }: {
           <p className="font-roboto-flex text-base md:text-lg text-[#6b6763] leading-relaxed mt-2">
             {description}
           </p>
-          <button className="border border-[#421d13] text-[#421d13] px-6 py-2 rounded-lg font-roboto font-medium hover:bg-[#421d13] hover:text-[#e3dcd6] transition-all duration-300 w-fit mt-10">
+          <Button
+            variant="secondary"
+            className="w-fit mt-10"
+          >
             Dive Deeper
-          </button>
+          </Button>
         </div>
       </div>
       <div className="flex-1 relative min-h-[250px] md:min-h-[364px]">
@@ -255,6 +262,9 @@ export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState<string>('');
   const [showFigmaPanel, setShowFigmaPanel] = useState(false);
+  const [showMCPPanel, setShowMCPPanel] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
+  const [emailCopied, setEmailCopied] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -273,11 +283,69 @@ export default function Portfolio() {
     return () => clearInterval(interval);
   }, []);
 
+  // Intersection Observer for active section tracking
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -80% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe all sections
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 80; // Account for sticky header
+      const elementPosition = element.offsetTop - headerHeight;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+
       setMobileMenuOpen(false);
+      setActiveSection(sectionId);
+    }
+  };
+
+  const copyEmailToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText('nabuchler@gmail.com');
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 3000); // Hide notification after 3 seconds
+    } catch (err) {
+      console.error('Failed to copy email: ', err);
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = 'nabuchler@gmail.com';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 3000);
+      } catch (fallbackErr) {
+        console.error('Fallback copy failed: ', fallbackErr);
+      }
+      document.body.removeChild(textArea);
     }
   };
 
@@ -323,9 +391,16 @@ export default function Portfolio() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  className="font-raleway font-medium text-[#421d13] hover:text-[#ad8a6c] transition-colors"
+                  className={`font-raleway font-medium transition-all duration-200 relative ${
+                    activeSection === item.id
+                      ? 'text-[#ad8a6c] font-semibold'
+                      : 'text-[#421d13] hover:text-[#ad8a6c]'
+                  }`}
                 >
                   {item.name}
+                  {activeSection === item.id && (
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#ad8a6c] rounded-full" />
+                  )}
                 </button>
               ))}
               </nav>
@@ -372,9 +447,16 @@ export default function Portfolio() {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.id)}
-                    className="font-raleway font-medium text-[#421d13] hover:text-[#ad8a6c] transition-colors text-left"
+                    className={`font-raleway font-medium transition-all duration-200 text-left relative ${
+                      activeSection === item.id
+                        ? 'text-[#ad8a6c] font-semibold'
+                        : 'text-[#421d13] hover:text-[#ad8a6c]'
+                    }`}
                   >
                     {item.name}
+                    {activeSection === item.id && (
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-[#ad8a6c] rounded-full" />
+                    )}
                   </button>
                 ))}
               </div>
@@ -384,7 +466,7 @@ export default function Portfolio() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-[700px]">
+      <section id="hero" className="relative h-[700px]">
         {/* Content container */}
         <div className="relative z-10 w-full">
           <motion.div
@@ -402,20 +484,22 @@ export default function Portfolio() {
                 a Strategic Designer & Executive Leader with 7+ years leading design teams across B2B platforms, fintech, and global marketplaces. Building high-performing teams and scaling design frameworks that drive measurable business impact across 32 countries.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
+              <ButtonGroup>
+                <Button
+                  variant="primary"
                   onClick={() => scrollToSection('cases')}
-                  className="bg-[#421d13] text-[#e3dcd6] px-6 py-3 rounded-lg font-roboto font-medium hover:bg-[#421d13]/90 hover:transform hover:-translate-y-0.5 transition-all duration-300 shadow-md"
+                  className="hover:transform hover:-translate-y-0.5 shadow-md"
                 >
                   View case studies
-                </button>
-                <button
+                </Button>
+                <Button
+                  variant="secondary"
                   onClick={() => scrollToSection('leadership')}
-                  className="border border-[#421d13] text-[#421d13] px-6 py-3 rounded-lg font-roboto font-medium hover:bg-[#421d13] hover:text-[#e3dcd6] hover:transform hover:-translate-y-0.5 transition-all duration-300"
+                  className="hover:transform hover:-translate-y-0.5"
                 >
                   About my leadership
-                </button>
-              </div>
+                </Button>
+              </ButtonGroup>
             </div>
           </motion.div>
         </div>
@@ -602,14 +686,22 @@ export default function Portfolio() {
                   </p>
                 </div>
                 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-[#421d13] text-[#e3dcd6] px-6 py-3 rounded-lg font-roboto font-medium hover:bg-[#421d13]/90 hover:transform hover:-translate-y-0.5 transition-all duration-300 shadow-md">
+                <ButtonGroup>
+                  <Button
+                    variant="primary"
+                    className="hover:transform hover:-translate-y-0.5 shadow-md"
+                    onClick={() => window.open('https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing', '_blank')}
+                  >
                     Download CV
-                  </button>
-                  <button className="border border-[#421d13] text-[#421d13] px-6 py-3 rounded-lg font-roboto font-medium hover:bg-[#421d13] hover:text-[#e3dcd6] hover:transform hover:-translate-y-0.5 transition-all duration-300">
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    className="hover:transform hover:-translate-y-0.5"
+                    onClick={() => window.open('https://medium.com/@nabuchler', '_blank')}
+                  >
                     Read my articles
-                  </button>
-                </div>
+                  </Button>
+                </ButtonGroup>
               </motion.div>
             </div>
           </div>
@@ -683,13 +775,23 @@ export default function Portfolio() {
               </TimelineItem>
             </Timeline>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-[#421d13] text-[#e3dcd6] px-6 py-3 rounded-lg font-roboto font-medium hover:bg-[#421d13]/90 hover:transform hover:-translate-y-0.5 transition-all duration-300 shadow-md">
-                Download CV
-              </button>
-              <button className="border border-[#421d13] text-[#421d13] px-6 py-3 rounded-lg font-roboto font-medium hover:bg-[#421d13] hover:text-[#e3dcd6] hover:transform hover:-translate-y-0.5 transition-all duration-300">
-                Read my articles
-              </button>
+            <div className="flex justify-center">
+              <ButtonGroup>
+                <Button
+                  variant="primary"
+                  className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
+                  onClick={() => window.open('https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing', '_blank')}
+                >
+                  Download CV
+                </Button>
+                <Button
+                  variant="secondary"
+                  className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
+                  onClick={() => window.open('https://medium.com/@nabuchler', '_blank')}
+                >
+                  Read my articles
+                </Button>
+              </ButtonGroup>
             </div>
           </div>
         </div>
@@ -708,23 +810,228 @@ export default function Portfolio() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              {['Linkedin', 'Medium', 'Email', 'CV'].map((platform) => (
+              {[
+                { name: 'Linkedin', url: 'https://www.linkedin.com/in/nbuchler/' },
+                { name: 'Medium', url: 'https://medium.com/@nabuchler' },
+                { name: 'Email' },
+                { name: 'CV', url: 'https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing' }
+              ].map((platform) => (
                 <div
-                  key={platform}
+                  key={platform.name}
                   className="cursor-pointer hover:scale-110 transition-transform"
                   style={{
                     color: '#c95127',
                     fill: '#c95127',
                     filter: 'none'
                   }}
+                  onClick={() => platform.name === 'Email' ? copyEmailToClipboard() : window.open(platform.url, '_blank')}
                 >
                   <Icon
-                    tipo={platform as any}
+                    tipo={platform.name as any}
                     size="48"
                     className="force-orange-color"
                   />
                 </div>
               ))}
+            </motion.div>
+
+            {/* Email Copied Notification */}
+            {emailCopied && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-[#421d13] text-[#e3dcd6] px-6 py-3 rounded-lg shadow-lg z-50"
+              >
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-[#ad8a6c]" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="font-roboto-flex font-medium">
+                    Email copied! (nabuchler@gmail.com)
+                  </span>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Figma MCP Component Section */}
+      <section className="py-12 md:py-20 bg-gradient-to-br from-[#e3dcd6] to-[#d0bfb0]">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="space-y-8">
+            <TitleSubTitle title="Figma MCP Integration" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-lg shadow-lg"
+            >
+              <FigmaMCPComponent />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Figma MCP Demo Section */}
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="space-y-8">
+            <TitleSubTitle title="Figma MCP Demo" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-lg shadow-lg"
+            >
+              <FigmaMCPDemo />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Insight Card from Figma Section */}
+      <section className="py-12 md:py-20 bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef]">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="space-y-8">
+            <TitleSubTitle title="Insight Card do Figma" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <InsightCard nodeId="insight-card" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Button Examples Section */}
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="space-y-8">
+            <TitleSubTitle title="Button States Examples" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-lg shadow-lg p-8"
+            >
+              <div className="space-y-8">
+                {/* Primary Buttons */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-[#421d13]">Primary Buttons - All States</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="flex flex-col items-center gap-2">
+                      <Button variant="primary">Default</Button>
+                      <span className="text-xs text-[#6b6763]">Default State</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <Button
+                        variant="primary"
+                        style={{
+                          backgroundColor: '#ad8a6c',
+                          color: '#421d13',
+                          boxShadow: '0 4px 4px rgba(0,0,0,0.2)'
+                        }}
+                      >
+                        Hover
+                      </Button>
+                      <span className="text-xs text-[#6b6763]">Hover State</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <Button
+                        variant="primary"
+                        style={{
+                          backgroundColor: '#ad8a6c33',
+                          color: '#421d13',
+                          boxShadow: 'inset 0 4px 4px rgba(0,0,0,0.2)'
+                        }}
+                      >
+                        Focus
+                      </Button>
+                      <span className="text-xs text-[#6b6763]">Focus State</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <Button variant="primary" disabled>Disabled</Button>
+                      <span className="text-xs text-[#6b6763]">Disabled State</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Secondary Buttons */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-[#421d13]">Secondary Buttons - All States</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="flex flex-col items-center gap-2">
+                      <Button variant="secondary">Default</Button>
+                      <span className="text-xs text-[#6b6763]">Default State</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <Button
+                        variant="secondary"
+                        style={{
+                          backgroundColor: 'transparent',
+                          color: '#ad8a6c',
+                          border: '2px solid #ad8a6c',
+                          boxShadow: '0px 4px 4px rgba(0,0,0,0.2)'
+                        }}
+                      >
+                        Hover
+                      </Button>
+                      <span className="text-xs text-[#6b6763]">Hover State</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <Button
+                        variant="secondary"
+                        style={{
+                          backgroundColor: 'transparent',
+                          color: '#ad8a6c33',
+                          border: '2px solid #ad8a6c33'
+                        }}
+                      >
+                        Focus
+                      </Button>
+                      <span className="text-xs text-[#6b6763]">Focus State</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <Button variant="secondary" disabled>Disabled</Button>
+                      <span className="text-xs text-[#6b6763]">Disabled State</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Usage Examples */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-[#421d13]">Usage Examples</h3>
+                  <div className="space-y-3">
+                    <ButtonGroup>
+                      <Button variant="primary">Save Changes</Button>
+                      <Button variant="secondary">Cancel</Button>
+                    </ButtonGroup>
+
+                    <ButtonGroup>
+                      <Button
+                        variant="primary"
+                        onClick={() => window.open('https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing', '_blank')}
+                      >
+                        Download CV
+                      </Button>
+                      <Button variant="secondary">View Portfolio</Button>
+                    </ButtonGroup>
+
+                    <ButtonGroup>
+                      <Button variant="primary" disabled>Processing...</Button>
+                      <Button variant="secondary" disabled>Unavailable</Button>
+                    </ButtonGroup>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -735,7 +1042,7 @@ export default function Portfolio() {
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-4 border-b flex justify-between items-center">
-              <h3 className="text-xl font-semibold">Figma Integration</h3>
+              <h3 className="text-xl font-semibold">Figma Integration (API)</h3>
               <button
                 onClick={() => setShowFigmaPanel(false)}
                 className="text-gray-500 hover:text-gray-700 text-2xl"
@@ -750,6 +1057,26 @@ export default function Portfolio() {
         </div>
       )}
 
+      {/* MCP Panel */}
+      {showMCPPanel && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4 border-b flex justify-between items-center">
+              <h3 className="text-xl font-semibold">Figma MCP Integration</h3>
+              <button
+                onClick={() => setShowMCPPanel(false)}
+                className="text-gray-500 hover:text-gray-700 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            <div className="p-4">
+              <FigmaMCPComponent />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <footer className="py-12 border-t border-[#ad8a6c]/20">
         <div className="container mx-auto px-4 md:px-8">
@@ -757,12 +1084,20 @@ export default function Portfolio() {
             <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] space-y-4">
               <p>Built on Cursor, with Next.js, Tailwind CSS & Framer Motion</p>
               <p>© 2025 Natasha Buchler. All rights reserved.</p>
-              <button
-                onClick={() => setShowFigmaPanel(true)}
-                className="text-xs text-[#ad8a6c] hover:text-[#421d13] transition-colors"
-              >
-                Figma Integration
-              </button>
+              <div className="flex gap-4 justify-center">
+                <button
+                  onClick={() => setShowFigmaPanel(true)}
+                  className="text-xs text-[#ad8a6c] hover:text-[#421d13] transition-colors"
+                >
+                  Figma API
+                </button>
+                <button
+                  onClick={() => setShowMCPPanel(true)}
+                  className="text-xs text-[#c95127] hover:text-[#421d13] transition-colors font-semibold"
+                >
+                  Figma MCP ✨
+                </button>
+              </div>
             </div>
           </div>
         </div>
