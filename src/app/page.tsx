@@ -324,6 +324,14 @@ export default function Portfolio() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    setMobileMenuOpen(false);
+  };
+
   const copyEmailToClipboard = async () => {
     try {
       await navigator.clipboard.writeText('nabuchler@gmail.com');
@@ -380,7 +388,13 @@ export default function Portfolio() {
         <div className="container mx-auto px-4 md:px-8 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Icon tipo="rosto" size="32" />
+              <button
+                onClick={scrollToTop}
+                className="hover:scale-110 transition-transform duration-200 cursor-pointer"
+                title="Voltar ao topo"
+              >
+                <Icon tipo="rosto" size="32" />
+              </button>
               <div className="w-px h-6 bg-[#ad8a6c]"></div>
 
               {/* Desktop Navigation */}
