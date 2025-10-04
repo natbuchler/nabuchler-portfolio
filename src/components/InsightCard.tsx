@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { FigmaService } from '@/lib/figma-service';
 
 interface InsightCardProps {
@@ -12,9 +12,8 @@ export default function InsightCard({ nodeId }: InsightCardProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const figmaService = new FigmaService();
-
-  const loadInsightCardFromFigma = async () => {
+  const loadInsightCardFromFigma = useCallback(async () => {
+    const figmaService = new FigmaService();
     setLoading(true);
     setError(null);
 
@@ -80,12 +79,12 @@ export default function InsightCard({ nodeId }: InsightCardProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [nodeId]);
 
   // Carregar automaticamente ao montar o componente
   useEffect(() => {
     loadInsightCardFromFigma();
-  }, [nodeId]);
+  }, [nodeId, loadInsightCardFromFigma]);
 
   // Função para renderizar o código HTML como JSX (simulado)
   const renderFigmaComponent = () => {
@@ -194,7 +193,7 @@ export default function InsightCard({ nodeId }: InsightCardProps) {
             </svg>
           </div>
           <h3 className="text-lg font-medium text-gray-900 mb-2">Nenhum dado do Figma disponível</h3>
-          <p className="text-gray-500 mb-4">Clique em "Recarregar do Figma" para tentar buscar o componente Insight Card.</p>
+          <p className="text-gray-500 mb-4">Clique em &quot;Recarregar do Figma&quot; para tentar buscar o componente Insight Card.</p>
         </div>
       )}
 
