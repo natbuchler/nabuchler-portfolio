@@ -207,30 +207,30 @@ export default function Case3TPM() {
       <main className="container mx-auto px-4 md:px-8 py-16 max-w-[1200px]">
 
         {/* Title Section */}
-        <section className="mb-24">
-          <div className="flex gap-12 items-center">
-            <div className="flex-1 max-w-[655px]">
-              <h1 className="font-playfair font-bold text-[64px] leading-[1.2] text-[#421d13] mb-8">
+        <section className="mb-16 md:mb-24">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+            <div className="flex-1 w-full md:max-w-[655px]">
+              <h1 className="font-playfair font-bold text-4xl md:text-[64px] leading-[1.2] text-[#421d13] mb-6 md:mb-8">
                 3TPM - Global Product Architecture
               </h1>
-              <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+              <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
                 Leading cross-functional design strategy to solve product variant complexity across +30 countries, enabling major partnerships and delivering measurable business impact in one quarter.
               </p>
             </div>
-            <div className="relative w-[558px] h-[553.5px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full md:w-[558px] h-[300px] md:h-[553.5px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/Befor-after.png"
                 alt="Before and After comparison"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>
         </section>
 
         {/* Numbers Section */}
-        <section className="mb-24">
-          <div className="flex gap-7 justify-center">
+        <section className="mb-16 md:mb-24">
+          <div className="flex flex-wrap gap-4 md:gap-7 justify-center">
             <CardNumbers number="+24" label="Conversion Rate" />
             <CardNumbers number="+21%" label="Ticket Size (BR)" />
             <CardNumbers number="+30" label="Countries" />
@@ -239,11 +239,11 @@ export default function Case3TPM() {
         </section>
 
         {/* Problem Section */}
-        <section className="mb-24">
-          <div className="flex justify-between items-start mb-8">
-            <div className="max-w-[637px]">
+        <section className="mb-16 md:mb-24">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
+            <div className="w-full md:max-w-[637px]">
               <TitleCase title="The problem" />
-              <div className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
+              <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
                 <p>
                   Picture this: a customer in Argentina searching for &quot;Cerveza Patricia 960ml&quot; sees two products with identical images and names, but different pack sizes. They add the wrong one to cart, complete the purchase, and only realize the mistake when the delivery arrives.
                 </p>
@@ -252,12 +252,12 @@ export default function Case3TPM() {
                 </p>
               </div>
             </div>
-            <div className="relative w-[518px] h-[542.5px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full md:w-[518px] h-[300px] md:h-[542.5px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/Photo arm.png"
                 alt="Product architecture challenge"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>
@@ -269,7 +269,7 @@ export default function Case3TPM() {
             className="mb-8 bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl"
           />
 
-          <div className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
+          <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
             <p>
               The chaos wasn&apos;t just frustrating users. It was blocking contracts with Nestlé, L&apos;Oréal, and Gloria. These partners needed a governed, scalable platform; and our current architecture couldn&apos;t deliver it.
             </p>
@@ -280,10 +280,10 @@ export default function Case3TPM() {
         </section>
 
         {/* Strategic Challenge Section */}
-        <section className="mb-24">
+        <section className="mb-16 md:mb-24">
           <TitleCase title="The strategic challenge" />
 
-          <div className="relative w-full h-[638px] rounded-3xl overflow-hidden mb-8">
+          <div className="relative w-full h-[300px] md:h-[638px] rounded-3xl overflow-hidden mb-8">
             <Image
               src="/Fluxogram.png"
               alt="Strategic challenge flowchart"
@@ -292,7 +292,7 @@ export default function Case3TPM() {
             />
           </div>
 
-          <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
+          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
             When I took over the main shopping journey at BEES, I inherited more than broken taxonomy. I inherited a structural problem that required alignment across:
           </p>
 
@@ -315,25 +315,25 @@ export default function Case3TPM() {
             <Tag label="Strategic Design" />
           </div>
 
-          <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
             The biggest challenge wasn&apos;t design, it was alignment. Different teams had conflicting priorities. Platform couldn&apos;t prioritize fast enough and commercial pressure was mounting.
           </p>
         </section>
 
         {/* Team's Approach Section */}
-        <section className="mb-24">
+        <section className="mb-16 md:mb-24">
           <TitleCase title="Team's approach" />
 
           {/* 1. Research before solutions */}
-          <div className="flex gap-4 mb-12">
-            <div className="flex-1 max-w-[678px] space-y-6">
-              <h3 className="font-playfair font-bold text-[28px] leading-[44px] text-[#c95127]">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-4 mb-12">
+            <div className="flex-1 w-full md:max-w-[678px] space-y-6">
+              <h3 className="font-playfair font-bold text-2xl md:text-[28px] leading-[44px] text-[#c95127]">
                 1. Research before solutions
               </h3>
-              <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+              <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
                 Before defining any solution, I led qualitative field research in Argentina and São Paulo with 15+ POCs across Off Trade, On Trade, and Pharma segments. The goal: understand the real pain, not assume it.
               </p>
-              <p className="font-roboto font-medium text-[16px] text-[#6b6763] uppercase tracking-[-0.24px]">
+              <p className="font-roboto font-medium text-sm md:text-[16px] text-[#6b6763] uppercase tracking-[-0.24px]">
                 Key findings:
               </p>
               <BulletList
@@ -345,70 +345,70 @@ export default function Case3TPM() {
                 ]}
               />
             </div>
-            <div className="relative w-[507px] h-[508.5px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full md:w-[507px] h-[300px] md:h-[508.5px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/Team.png"
                 alt="Team collaboration"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>
 
           {/* 2. Facilitating cross-functional alignment */}
           <div className="mb-12">
-            <h3 className="font-playfair font-bold text-[28px] leading-[44px] text-[#c95127] mb-6">
+            <h3 className="font-playfair font-bold text-2xl md:text-[28px] leading-[44px] text-[#c95127] mb-6">
               2. Facilitating cross-functional alignment
             </h3>
-            <div className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6 mb-6">
+            <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6 mb-6">
               <p>
                 I facilitated an inception with Product, Engineering, Data Science, and Nestlé representatives. This wasn&apos;t a design review, it was a strategic alignment session.
               </p>
               <p>We emerged with two clear hypotheses:</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div className="bg-[rgba(255,255,255,0.35)] rounded-3xl p-6 text-center">
-                <h4 className="font-roboto font-medium text-[20px] text-[#421d13] uppercase tracking-[-0.3px] mb-4">
+                <h4 className="font-roboto font-medium text-lg md:text-[20px] text-[#421d13] uppercase tracking-[-0.3px] mb-4">
                   App (BEES Customer)
                 </h4>
-                <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+                <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
                   At the point of sale, clarity drives conversion. If the app doesn&apos;t guide the choice well, the order doesn&apos;t happen.
                 </p>
               </div>
               <div className="bg-[rgba(255,255,255,0.35)] rounded-3xl p-6 text-center">
-                <h4 className="font-roboto font-medium text-[20px] text-[#421d13] uppercase tracking-[-0.3px] mb-4">
+                <h4 className="font-roboto font-medium text-lg md:text-[20px] text-[#421d13] uppercase tracking-[-0.3px] mb-4">
                   Platform (BEES One)
                 </h4>
-                <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+                <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
                   How do you scale a global B2B operation if your catalog still treats every SKU as an isolated unit?
                 </p>
               </div>
             </div>
 
-            <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+            <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
               This alignment was critical. It ensured design work wasn&apos;t just guessing, it was grounded in real user needs and tailored to our platform&apos;s strategic constraints.
             </p>
           </div>
 
           {/* 3. Validating with users */}
-          <div className="flex gap-14 mb-12">
-            <div className="relative w-[636.5px] h-[643px] rounded-3xl overflow-hidden shrink-0">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-14 mb-12">
+            <div className="relative w-full md:w-[636.5px] h-[300px] md:h-[643px] rounded-3xl overflow-hidden shrink-0 order-2 md:order-1">
               <Image
                 src="/simplified-detailed.png"
                 alt="Simplified vs Detailed view"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
-            <div className="flex-1 max-w-[510px] space-y-6">
-              <h3 className="font-playfair font-bold text-[28px] leading-[44px] text-[#c95127]">
+            <div className="flex-1 w-full md:max-w-[510px] space-y-6 order-1 md:order-2">
+              <h3 className="font-playfair font-bold text-2xl md:text-[28px] leading-[44px] text-[#c95127]">
                 3. Validating with users
               </h3>
-              <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+              <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
                 I led 12 usability tests in São Paulo (Off Trade, On Trade, Pharma) using high-fidelity Figma prototypes. We tested two extremes: detailed variant presentation vs. simplified.
               </p>
-              <p className="font-roboto font-medium text-[16px] text-[#6b6763] uppercase tracking-[-0.24px]">
+              <p className="font-roboto font-medium text-sm md:text-[16px] text-[#6b6763] uppercase tracking-[-0.24px]">
                 Results were clear:
               </p>
               <BulletList
@@ -431,12 +431,12 @@ export default function Case3TPM() {
           />
 
           {/* 4. The "MVP of the MVP" decision */}
-          <div className="flex gap-14">
-            <div className="flex-1 max-w-[760px] space-y-6">
-              <h3 className="font-playfair font-bold text-[28px] leading-[44px] text-[#c95127]">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-14">
+            <div className="flex-1 w-full md:max-w-[760px] space-y-6">
+              <h3 className="font-playfair font-bold text-2xl md:text-[28px] leading-[44px] text-[#c95127]">
                 4. The &quot;MVP of the MVP&quot; decision
               </h3>
-              <div className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
+              <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
                 <p>
                   Here&apos;s where leadership mattered most. Platform teams couldn&apos;t deliver the full 3TPM architecture in time. Commercial pressure was intense. Nestlé and L&apos;Oréal contracts were on hold.
                 </p>
@@ -444,7 +444,7 @@ export default function Case3TPM() {
                   I made the call: ship a simplified version directly in the app, without waiting for complete platform support.
                 </p>
               </div>
-              <p className="font-roboto font-medium text-[16px] text-[#6b6763] uppercase tracking-[-0.24px]">
+              <p className="font-roboto font-medium text-sm md:text-[16px] text-[#6b6763] uppercase tracking-[-0.24px]">
                 This meant:
               </p>
               <BulletList
@@ -455,26 +455,26 @@ export default function Case3TPM() {
                   'Accepting technical debt we\'d need to refactor later'
                 ]}
               />
-              <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+              <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
                 It wasn&apos;t the perfect solution. But it was the right solution for that moment.
               </p>
             </div>
-            <div className="relative w-[326px] h-[643px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full md:w-[326px] h-[300px] md:h-[643px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/mvp=mvp.png"
                 alt="MVP of MVP"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>
         </section>
 
         {/* Impact Section */}
-        <section className="mb-24">
+        <section className="mb-16 md:mb-24">
           <TitleCase title="The impact" />
 
-          <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
+          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
             Despite shipping an &quot;MVP of the MVP&quot; without full platform support, results were immediate and significant:
           </p>
 
@@ -488,34 +488,34 @@ export default function Case3TPM() {
             className="mb-10"
           />
 
-          <div className="flex gap-7 justify-center mb-10">
+          <div className="flex flex-wrap gap-4 md:gap-7 justify-center mb-10">
             {[
               { title: '+24% Conversion', desc: 'Across 7 pilot markets vs. markets without the feature' },
               { title: 'Contract unblocked', desc: 'Nestlé & L\'Oréal went live 4 weeks after MVP' },
               { title: '+21% Ticket Size', desc: 'In Brazil, where variant clarity drove larger orders' },
               { title: 'R$250k+ Orders', desc: 'Argentina saw order sizes over R$250,000 with improved variant selection' }
             ].map((item, i) => (
-              <div key={i} className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl p-6 w-[281px]">
-                <h3 className="font-playfair font-semibold text-[28px] text-[#421d13] tracking-[0.56px] mb-4">
+              <div key={i} className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl p-6 w-full md:w-[281px]">
+                <h3 className="font-playfair font-semibold text-2xl md:text-[28px] text-[#421d13] tracking-[0.56px] mb-4">
                   {item.title}
                 </h3>
-                <p className="font-roboto-flex text-[18px] leading-[1.5] text-[#6b6763] tracking-[0.36px]">
+                <p className="font-roboto-flex text-base md:text-[18px] leading-[1.5] text-[#6b6763] tracking-[0.36px]">
                   {item.desc}
                 </p>
               </div>
             ))}
           </div>
 
-          <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
             Critically, we achieved this in one quarter, working within severe technical and timeline constraints. The variant selector wasn&apos;t just a UX improvement. It was a business unlock.
           </p>
         </section>
 
         {/* What I Learned Section */}
-        <section className="mb-24">
+        <section className="mb-16 md:mb-24">
           <TitleCase title="What I learned" />
 
-          <div className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6 mb-6">
+          <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6 mb-6">
             <p>
               This project taught me that great systems aren&apos;t born from perfect screens—they&apos;re built on clear conversations, smart trade-offs, and team trust.
             </p>
@@ -533,7 +533,7 @@ export default function Case3TPM() {
             className="mb-10"
           />
 
-          <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
+          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
             I grew my influence significantly. I earned trust from engineers, PMs, data teams, and senior leadership by showing I could:
           </p>
 
@@ -556,7 +556,7 @@ export default function Case3TPM() {
         </section>
 
         {/* Next Case Section */}
-        <section className="mb-24 flex justify-end">
+        <section className="mb-16 md:mb-24 flex justify-center md:justify-end">
           <CardCaseS
             title="Coming soon"
             image=""

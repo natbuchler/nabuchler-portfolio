@@ -127,9 +127,9 @@ export default function Portfolio() {
 
   return (
     <ClientOnly>
-      <div className="bg-[#e3dcd6] min-h-screen">
+      <div className="bg-[#e3dcd6] min-h-screen pt-[72px] md:pt-0">
         {/* Header */}
-        <header className="sticky top-0 z-50 bg-[rgba(173,138,108,0.2)] backdrop-blur-sm border-b border-[#ad8a6c]/20">
+        <header className="fixed md:sticky top-0 left-0 right-0 z-50 bg-[rgba(173,138,108,0.2)] backdrop-blur-sm border-b border-[#ad8a6c]/20">
           <div className="container mx-auto px-4 md:px-8 py-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -164,48 +164,46 @@ export default function Portfolio() {
                 </nav>
               </div>
 
-              {/* Mobile Menu Button */}
-              <button
-                className="md:hidden p-2"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                <div className="w-6 h-6 flex flex-col justify-center items-center">
-                  <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
-                  <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                  <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
+              {/* Right side: Location/Time + Mobile Menu Button */}
+              <div className="flex items-center gap-3">
+                {/* Location and Time */}
+                <div className="flex items-center gap-2 text-[#ad8a6c]">
+                  <span className="font-raleway text-xs md:text-base">São Paulo</span>
+                  <div className="w-4 h-4 md:w-6 md:h-6 relative opacity-30">
+                    <Image
+                      src="/cy.svg"
+                      alt="Location"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="font-raleway text-xs md:text-base">{currentTime}</span>
                 </div>
-              </button>
 
-              {/* Location and Time - Desktop Only */}
-              <div className="hidden md:flex items-center gap-2 text-[#ad8a6c]">
-                <span className="font-raleway text-sm md:text-base">São Paulo</span>
-                <div className="w-6 h-6 relative opacity-30">
-                  <Image
-                    src="/cy.svg"
-                    alt="Location"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <span className="font-raleway text-sm md:text-base">{currentTime}</span>
+                {/* Mobile Menu Button */}
+                <button
+                  className="md:hidden p-2"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  aria-label="Toggle menu"
+                >
+                  <div className="w-6 h-6 flex flex-col justify-center items-center">
+                    <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm ${mobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
+                    <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                    <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm ${mobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
+                  </div>
+                </button>
               </div>
             </div>
 
-            {/* Mobile Navigation */}
+            {/* Mobile Navigation - NO ANIMATION */}
             {mobileMenuOpen && (
-              <motion.nav
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="md:hidden mt-4 pb-4"
-              >
+              <nav className="md:hidden mt-4 pb-4">
                 <div className="flex flex-col space-y-3">
                   {navigationItems.map((item) => (
                     <button
                       key={item.name}
                       onClick={() => scrollToSection(item.id)}
-                      className={`font-raleway font-medium transition-all duration-200 text-left relative ${
+                      className={`font-raleway font-medium text-left relative ${
                         activeSection === item.id
                           ? 'text-[#ad8a6c] font-semibold'
                           : 'text-[#421d13] hover:text-[#ad8a6c]'
@@ -218,7 +216,7 @@ export default function Portfolio() {
                     </button>
                   ))}
                 </div>
-              </motion.nav>
+              </nav>
             )}
           </div>
         </header>

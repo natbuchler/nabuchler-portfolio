@@ -33,13 +33,13 @@ export function BulletList({
   const IconComponent = iconType === 'orange-point' ? OrangePointIcon : BrownCyIcon;
 
   return (
-    <ul className={`space-y-4 pl-6 ${className}`}>
+    <ul className={`space-y-3 md:space-y-4 pl-4 md:pl-6 ${className}`}>
       {items.map((item, index) => (
         <li
           key={index}
-          className="flex gap-2 font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]"
+          className="flex gap-2 font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]"
         >
-          <span className="mt-2 shrink-0">
+          <span className="mt-1 md:mt-2 shrink-0">
             <IconComponent />
           </span>
           <span>{item}</span>

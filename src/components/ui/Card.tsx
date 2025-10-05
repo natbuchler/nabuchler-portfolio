@@ -59,36 +59,49 @@ export function CardCase({
 
   return (
     <motion.div
-      className={`flex flex-col md:flex-row ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'} ${bgColor} rounded-[24px] overflow-hidden max-w-[997px] w-full h-auto md:h-[364px]`}
+      className={`flex flex-col md:flex-row ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'} ${bgColor} rounded-2xl md:rounded-[24px] overflow-hidden max-w-[997px] w-full h-auto md:h-[364px] cursor-pointer group`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && onClick?.()}
+      aria-label={`View case study: ${title}`}
     >
-      <div className={`w-full md:w-[573px] p-8 ${contentBg} flex flex-col justify-center items-start`}>
-        <div className={`flex flex-col gap-10 justify-center w-full ${isRight ? 'items-end' : 'items-start'}`}>
-          <div className={`flex flex-col gap-2 items-start w-full ${isRight ? 'text-right' : 'text-left'}`}>
-            <h3 className="font-playfair font-bold text-[40px] text-[#421d13] leading-[1.5] w-full">
+      {/* Content Section */}
+      <div className={`w-full md:w-[573px] p-6 md:p-8 ${contentBg} flex flex-col justify-center items-start`}>
+        <div className={`flex flex-col gap-6 md:gap-10 justify-center w-full ${isRight ? 'md:items-end' : 'md:items-start'}`}>
+          <div className={`flex flex-col gap-3 md:gap-2 items-start w-full ${isRight ? 'md:text-right' : 'text-left'}`}>
+            {/* Title - Mobile optimized */}
+            <h3 className="font-playfair font-bold text-2xl md:text-[40px] text-[#421d13] leading-[1.3] md:leading-[1.5] w-full">
               {title}
             </h3>
-            <p className="font-roboto-flex text-[18px] text-[#6b6763] leading-[1.5] tracking-[0.36px] w-full">
+            {/* Description - Mobile optimized */}
+            <p className="font-roboto-flex text-base md:text-[18px] text-[#6b6763] leading-[1.6] md:leading-[1.5] tracking-[0.32px] md:tracking-[0.36px] w-full">
               {description}
             </p>
           </div>
-          <div className={`flex h-[48px] items-center py-4 ${isRight ? 'justify-end pl-4' : 'justify-start -ml-4'}`}>
-            <ButtonTertiary variant="right" onClick={onClick}>
+          {/* Button - Mobile aligned left, Desktop follows side */}
+          <div className={`flex h-[48px] items-center py-4 w-full ${isRight ? 'justify-start md:justify-end md:pl-4' : 'justify-start -ml-4'}`}>
+            <ButtonTertiary variant="right" onClick={(e) => { e.stopPropagation(); onClick?.(); }}>
               Dive Deeper
             </ButtonTertiary>
           </div>
         </div>
       </div>
-      <div className="w-full md:w-[424px] relative h-[250px] md:h-[364px]">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-contain object-right"
-        />
+
+      {/* Image Section - Optimized aspect ratio for mobile */}
+      <div className="w-full md:w-[424px] relative h-[180px] sm:h-[220px] md:h-[364px] flex items-center justify-center bg-gradient-to-b from-transparent to-[rgba(173,138,108,0.05)]">
+        <div className="relative w-full h-full max-h-[180px] sm:max-h-[220px] md:max-h-full">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-contain object-center md:object-right transition-transform duration-300 md:group-hover:scale-105"
+          />
+        </div>
       </div>
     </motion.div>
   );

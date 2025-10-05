@@ -78,7 +78,11 @@ export default function LatestArticles() {
 
   const scrollToIndex = (index: number, smooth: boolean = true) => {
     if (scrollContainerRef.current) {
-      const scrollAmount = index * (cardWidth + gap);
+      // Calculate card width dynamically based on first card
+      const firstCard = scrollContainerRef.current.querySelector('div[class*="snap-center"]');
+      const cardTotalWidth = firstCard ? (firstCard as HTMLElement).offsetWidth + 32 : cardWidth + gap; // 32px = gap-8
+
+      const scrollAmount = index * cardTotalWidth;
 
       if (smooth) {
         // Smooth scroll with better easing
@@ -99,6 +103,33 @@ export default function LatestArticles() {
       scrollToIndex(articles.length, false);
     }
   }, [infiniteArticles.length]);
+
+  // Track scroll position to update currentIndex
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer || articles.length === 0) return;
+
+    const handleScroll = () => {
+      const scrollLeft = scrollContainer.scrollLeft;
+      const containerWidth = scrollContainer.offsetWidth;
+
+      // Calculate card width dynamically based on first card
+      const firstCard = scrollContainer.querySelector('div[class*="snap-center"]');
+      const cardTotalWidth = firstCard ? (firstCard as HTMLElement).offsetWidth + 32 : cardWidth + gap; // 32px = gap-8
+
+      const scrolledIndex = Math.round(scrollLeft / cardTotalWidth);
+
+      // Map the infinite array index back to the original article index
+      const actualIndex = scrolledIndex % articles.length;
+
+      if (actualIndex !== currentIndex) {
+        setCurrentIndex(actualIndex);
+      }
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll);
+    return () => scrollContainer.removeEventListener('scroll', handleScroll);
+  }, [articles.length, currentIndex]);
 
   if (isLoading) {
     return (
@@ -175,7 +206,7 @@ export default function LatestArticles() {
             {/* Cards Container - Modern scrollable design */}
             <div
               ref={scrollContainerRef}
-              className="flex gap-8 overflow-x-auto md:overflow-hidden scroll-smooth px-4 md:px-0 snap-x snap-mandatory pb-2"
+              className="flex gap-8 md:gap-11 overflow-x-auto md:overflow-hidden scroll-smooth snap-x snap-mandatory pb-2"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               data-node-id="3371:1016"
             >
@@ -188,7 +219,7 @@ export default function LatestArticles() {
               {infiniteArticles.map((article, index) => (
                 <div
                   key={`${article.id}-${index}`}
-                  className="snap-center flex-shrink-0"
+                  className="snap-center flex-shrink-0 w-[calc(100vw-4rem)] md:w-auto first:ml-0"
                 >
                   <ArticleCard
                     title={article.title}
@@ -196,6 +227,7 @@ export default function LatestArticles() {
                     image={article.thumbnail}
                     url={article.link}
                     language={article.language}
+                    className="w-full md:w-[287px]"
                   />
                 </div>
               ))}

@@ -31,10 +31,12 @@
 
 * {
   box-sizing: border-box;
+  max-width: 100%;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -43,6 +45,9 @@ body {
   font-family: var(--font-roboto-flex), sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 /* Custom utility classes for the design */
@@ -66,17 +71,30 @@ body {
   font-family: var(--font-comfortaa), sans-serif;
 }
 
-/* Smooth animations */
-* {
-  transition: all 0.2s ease-in-out;
+/* Smooth animations - DESKTOP ONLY */
+@media (min-width: 768px) {
+  * {
+    transition: all 0.2s ease-in-out;
+  }
+
+  button, .button {
+    transition: all 0.3s ease;
+  }
+
+  button:hover, .button:hover {
+    transform: translateY(-1px);
+  }
 }
 
-button, .button {
-  transition: all 0.3s ease;
-}
+/* Mobile - NO transitions to prevent jittering */
+@media (max-width: 767px) {
+  * {
+    transition: none !important;
+  }
 
-button:hover, .button:hover {
-  transform: translateY(-1px);
+  button, .button {
+    transition: none !important;
+  }
 }
 
 /* List styles for experience cards */

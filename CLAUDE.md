@@ -129,12 +129,29 @@ The project includes comprehensive Figma integration with two approaches:
 **🚨 CRITICAL: Header & Footer Standardization**:
 - **ALL pages MUST use the EXACT same Header and Footer components from the main portfolio page** (`src/app/page.tsx`)
 - **NEVER create custom headers or footers** for case study pages or other routes
-- Header includes:
-  - Rosto icon (via `Icon` component) with home navigation
+- **Header structure (MOBILE & DESKTOP)**:
+  - **Mobile behavior**: `fixed top-0` with `pt-[72px]` on main container to compensate
+  - **Desktop behavior**: `md:sticky top-0` with no padding compensation (uses negative margin on Hero)
+  - Background: `bg-[rgba(173,138,108,0.2)] backdrop-blur-sm` (same on mobile and desktop)
+  - Border: `border-b border-[#ad8a6c]/20`
+  - Z-index: `z-50`
+  - Rosto icon (via `Icon` component) with home navigation/scroll to top
   - Vertical divider line (`w-px h-6 bg-[#ad8a6c]`)
-  - Desktop navigation (About, Cases, Leadership, Experience, Contact)
-  - Location and real-time clock (São Paulo timezone)
+  - **Desktop navigation**: Horizontal menu (About, Cases, Leadership, Experience, Contact)
+  - **Mobile navigation**: Hamburger menu button (opens collapsible menu)
+  - **Location and clock**: Visible on BOTH mobile and desktop
+    - Mobile: Smaller text (`text-xs`) and icon (`w-4 h-4`)
+    - Desktop: Normal size (`text-base`, `w-6 h-6`)
+  - São Paulo timezone real-time clock
   - Cy icon with 30% opacity
+- **Mobile header NO ANIMATIONS**: Menu open/close must not use `motion.nav` - use plain `<nav>` only
+- **Header code pattern**:
+  ```tsx
+  <div className="bg-[#e3dcd6] min-h-screen pt-[72px] md:pt-0">
+    <header className="fixed md:sticky top-0 left-0 right-0 z-50 bg-[rgba(173,138,108,0.2)] backdrop-blur-sm border-b border-[#ad8a6c]/20">
+      {/* Header content */}
+    </header>
+  ```
 - Footer structure follows the same pattern from main page
 - This ensures consistent branding and UX across all pages
 - Case study pages at `/cases/*` should import and reuse the header logic from main page
@@ -149,6 +166,49 @@ The project includes comprehensive Figma integration with two approaches:
 **Animation Pattern**: Consistent `framer-motion` usage with `whileInView` triggers for scroll-based animations, all using `viewport={{ once: true }}` for performance.
 
 **Responsive Design**: Mobile-first approach with `md:` breakpoints for desktop layouts, especially in navigation and card layouts.
+
+**🚨 CRITICAL: Mobile Animation Policy**:
+- **NEVER use Framer Motion animations on mobile** (below `md:` breakpoint = < 768px)
+- Mobile layouts must use plain `<div>` elements instead of `<motion.div>`
+- Desktop layouts (>= 768px) can use `<motion.div>` with animations
+- Use separate mobile/desktop rendering blocks: `<div className="block md:hidden">` for mobile, `<div className="hidden md:block">` for desktop
+- This prevents "jittering" or "sambar" effects on mobile browsers
+- Button hover effects should also be desktop-only: `hover:transform hover:-translate-y-0.5` only when needed
+- **MotionDiv Component Available**: Use `MotionDiv` from `@/components/ui/MotionDiv` as a wrapper that automatically handles mobile/desktop split
+- Example pattern from Hero.tsx:
+  ```tsx
+  {/* Mobile Layout - NO ANIMATIONS */}
+  <div className="block md:hidden">
+    <div className="w-full flex justify-center pt-8 pb-6">
+      {/* Plain content without motion */}
+    </div>
+  </div>
+
+  {/* Desktop Layout - WITH ANIMATIONS */}
+  <div className="hidden md:block">
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Animated content */}
+    </motion.div>
+  </div>
+  ```
+
+  Or use the MotionDiv wrapper:
+  ```tsx
+  import { MotionDiv } from '@/components/ui/MotionDiv';
+
+  <MotionDiv
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    className="your-classes"
+  >
+    {/* Content - will be static on mobile, animated on desktop */}
+  </MotionDiv>
+  ```
 
 **Figma Integration**: Comprehensive integration accessible via footer "Figma MCP ✨" link, opens modal with multiple tabs:
 - **Direct MCP**: Recommended approach with real-time connection to Figma Desktop
