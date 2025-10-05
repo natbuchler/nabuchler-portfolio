@@ -18,7 +18,7 @@ export interface ButtonTertiaryProps {
   /** Variant - default or right (with chevron) */
   variant?: 'default' | 'right' | 'left';
   /** Optional click handler */
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   /** Custom CSS classes */
   className?: string;
 }
