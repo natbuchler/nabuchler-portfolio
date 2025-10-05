@@ -1,0 +1,883 @@
+# Design System Rules - Natasha Buchler Portfolio
+
+> **Purpose**: Comprehensive guide for integrating Figma designs using Model Context Protocol (MCP) into this Next.js portfolio application.
+
+---
+
+## 1. Design Token Definitions
+
+### 1.1 Token Location
+**Primary Source**: `src/lib/design-tokens.ts`
+**Secondary Source**: `src/app/globals.css` (CSS variables)
+
+### 1.2 Token Structure
+
+#### TypeScript Design Tokens (`src/lib/design-tokens.ts`)
+```typescript
+// Color Palette - Extracted from Figma
+export const colors = {
+  // Primary Colors
+  brown: '#421d13',        // Primary text, buttons
+  beige: '#ad8a6c',        // Accent color, hover states
+  background: '#e3dcd6',   // Main background
+  orange: '#c95127',       // Highlight color, CTAs
+
+  // Text Colors
+  textPrimary: '#421d13',
+  textSecondary: '#6b6763',
+  textAccent: '#ad8a6c',
+
+  // Background Colors
+  bgPrimary: '#e3dcd6',
+  bgCard: 'rgba(173, 138, 108, 0.2)',  // Semi-transparent cards
+  bgCardAlt: '#d0bfb0',
+  bgGlass: 'rgba(255, 255, 255, 0.35)', // Glassmorphism effect
+
+  // Border Colors
+  borderLight: 'rgba(173, 138, 108, 0.2)',
+} as const;
+
+// Typography System
+export const typography = {
+  fonts: {
+    playfair: 'var(--font-playfair)',      // Headers, titles
+    robotoFlex: 'var(--font-roboto-flex)', // Body text (flexible)
+    roboto: 'var(--font-roboto)',          // Buttons, UI elements
+    raleway: 'var(--font-raleway)',        // Navigation
+    comfortaa: 'var(--font-comfortaa)',    // Special text, highlights
+  },
+
+  // Figma typography tokens
+  h1: { fontSize: 64, fontWeight: 700, lineHeight: 1.2 },
+  h2: { fontSize: 48, fontWeight: 700, lineHeight: 72 },
+  h3: { fontSize: 40, fontWeight: 700, lineHeight: 1.5 },
+  h4: { fontSize: 32, fontWeight: 600, lineHeight: 1 },
+  // ... more variants
+} as const;
+
+// Spacing Scale (8px base grid)
+export const spacing = {
+  '1': '0.25rem',   // 4px
+  '2': '0.5rem',    // 8px
+  '4': '1rem',      // 16px
+  '6': '1.5rem',    // 24px
+  '8': '2rem',      // 32px
+  '12': '3rem',     // 48px
+  // ... follows 8px grid system
+} as const;
+```
+
+#### CSS Variables (`src/app/globals.css`)
+```css
+:root {
+  /* Design System Colors - Extracted from Figma DS */
+  --brown: #421d13;
+  --beige: #ad8a6c;
+  --text-gray: #6b6763;
+  --background: #e3dcd6;
+  --orange: #c95127;
+  --card: #ad8a6c33;
+  --card-30: #d0bfb0;
+  --white-35: #ffffff59;
+}
+
+@theme inline {
+  /* Tailwind v4 integration */
+  --color-brown: var(--brown);
+  --color-beige: var(--beige);
+  /* ... mapped for Tailwind usage */
+}
+```
+
+### 1.3 Token Usage Pattern
+
+**✅ CORRECT - Using design tokens:**
+```typescript
+import { colors, typography, spacing } from '@/lib/design-tokens';
+
+// In component
+<div style={{
+  backgroundColor: colors.brown,
+  color: colors.background,
+  padding: spacing['4']
+}} />
+
+// Or with Tailwind classes
+<div className="bg-brown text-background p-4" />
+```
+
+**❌ WRONG - Hardcoded values:**
+```typescript
+// Don't do this
+<div style={{ backgroundColor: '#421d13' }} />
+<div className="bg-[#421d13]" />
+```
+
+### 1.4 Token Transformation
+- **Export utilities**: `getTypographyStyle()`, `getColorValue()`
+- **CSS variable mapping**: Tokens automatically available in Tailwind via `@theme inline`
+- **Type safety**: All tokens are typed with `as const` for autocomplete
+
+---
+
+## 2. Component Library
+
+### 2.1 Component Organization
+
+```
+src/components/
+├── ui/                    # Design System Components (Reusable)
+│   ├── Icon.tsx          # Icon system with design tokens
+│   ├── Typography.tsx    # TitleSubTitle, text components
+│   ├── Card.tsx          # CardCase, CardInsight, CardExperience
+│   └── Timeline.tsx      # Timeline and TimelineItem
+├── sections/             # Page-Specific Sections
+│   ├── Hero.tsx
+│   ├── CaseStudies.tsx
+│   ├── HowILead.tsx
+│   ├── About.tsx
+│   ├── Experience.tsx
+│   └── Contact.tsx
+├── features/             # Feature-Specific Components
+│   └── figma/           # Figma integration features
+│       ├── FigmaMCPComponent.tsx
+│       ├── FigmaDirectMCP.tsx
+│       └── FigmaRealMCP.tsx
+├── Button.tsx           # Core button component
+└── ClientOnly.tsx       # SSR wrapper for client components
+```
+
+### 2.2 Component Architecture Pattern
+
+#### Design System Component Template
+```typescript
+/**
+ * Component Name
+ *
+ * Brief description of purpose.
+ * Source: Figma node [NODE_ID] if applicable
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <ComponentName prop="value" />
+ * ```
+ */
+
+'use client'; // Only if client-side interactivity needed
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { colors, typography } from '@/lib/design-tokens';
+
+export interface ComponentNameProps {
+  /** Prop description */
+  variant?: 'primary' | 'secondary';
+  /** Optional content */
+  children?: React.ReactNode;
+  /** Additional classes */
+  className?: string;
+}
+
+/**
+ * Main component with full JSDoc documentation
+ */
+export function ComponentName({
+  variant = 'primary',
+  children,
+  className = ''
+}: ComponentNameProps) {
+  return (
+    <motion.div
+      className={`base-classes ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+```
+
+### 2.3 Component Documentation Standards
+
+**Required for ALL UI components:**
+- JSDoc header with description
+- `@component` tag
+- `@example` with usage code
+- Figma source node ID if from Figma
+- TypeScript interface for props
+- Exported interface for reuse
+
+---
+
+## 3. Frameworks & Libraries
+
+### 3.1 Core Stack
+
+```json
+{
+  "framework": "Next.js 15",
+  "react": "React 19",
+  "styling": "Tailwind CSS v4",
+  "animations": "Framer Motion 12",
+  "language": "TypeScript 5.9",
+  "bundler": "Turbopack (Next.js 15 default)"
+}
+```
+
+### 3.2 Key Dependencies
+
+```json
+{
+  "dependencies": {
+    "next": "^15.5.4",              // App Router, Turbopack
+    "react": "^19.1.1",
+    "framer-motion": "^12.23.21",   // Animations
+    "axios": "^1.12.2",             // HTTP client for Figma API
+    "@figma/rest-api-spec": "^0.33.0", // Figma types
+    "figma-api": "^2.0.2-beta"      // Figma SDK
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",   // Tailwind v4 PostCSS
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
+  }
+}
+```
+
+### 3.3 Build Configuration
+
+#### `next.config.ts`
+```typescript
+const nextConfig: NextConfig = {
+  reactStrictMode: false, // Disabled for Framer Motion
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3845',
+        pathname: '/assets/**', // MCP Figma assets
+      },
+    ],
+  },
+};
+```
+
+#### Font Loading (`src/app/layout.tsx`)
+```typescript
+import {
+  Playfair_Display,  // Headers, elegant titles
+  Roboto_Flex,       // Body text, flexible
+  Roboto,            // Buttons, UI
+  Raleway,           // Navigation
+  Comfortaa          // Highlights, special text
+} from "next/font/google";
+
+// CSS Variables injected: --font-playfair, --font-roboto-flex, etc.
+```
+
+### 3.4 Development Commands
+
+```bash
+# Development (with Turbopack)
+npm run dev
+
+# Production build (with Turbopack)
+npm run build
+
+# Type checking (built into build)
+npm run build
+
+# Linting
+npm run lint
+```
+
+---
+
+## 4. Asset Management
+
+### 4.1 Asset Storage Structure
+
+```
+public/
+├── [icon-name].svg        # SVG icons (cy, ponto, rosto, etc.)
+├── [image-name].png       # Images (Photo, Photo2, etc.)
+├── gif.gif                # Animated GIFs
+├── cases/                 # Case study images
+│   └── [case-images].png
+└── [logo].svg             # Brand logos (Cursor, Claude, Figma)
+```
+
+### 4.2 Asset Reference Pattern
+
+#### Static Assets (from `/public`)
+```typescript
+// ✅ Correct - Next.js Image component
+import Image from 'next/image';
+
+<Image
+  src="/photo.png"
+  alt="Description"
+  width={772}
+  height={700}
+  className="object-cover"
+  priority // For above-fold images
+/>
+
+// ✅ Correct - SVG as img
+<img src="/rosto.svg" alt="Icon" />
+```
+
+#### MCP Assets (from Figma)
+```typescript
+// ✅ Correct - Using localhost MCP assets
+<Image
+  src="http://localhost:3845/assets/figma-asset-123.svg"
+  alt="Figma asset"
+  width={24}
+  height={24}
+/>
+```
+
+### 4.3 Asset Optimization
+
+- **Next.js Image**: Automatic optimization for PNG/JPG
+- **SVG**: No optimization, served directly
+- **GIF**: `unoptimized` prop used for animations
+- **Priority loading**: Above-fold images use `priority` prop
+
+### 4.4 CDN Configuration
+- **Current**: No CDN (local development)
+- **Production**: Next.js automatic optimization
+- **MCP Assets**: Served via localhost:3845 (Figma Desktop)
+
+---
+
+## 5. Icon System
+
+### 5.1 Icon Storage
+
+**Location**: `src/components/ui/Icon.tsx` + `/public/*.svg`
+
+**Available Icons**:
+```typescript
+type IconType =
+  | "cy" | "ponto" | "rosto"        // Portfolio icons
+  | "Medium" | "Email" | "CV"       // Contact icons
+  | "Linkedin"                      // Social
+  | "puzzle" | "lamp"               // Leadership
+  | "medal" | "strategy";           // Achievement
+```
+
+### 5.2 Icon Component Architecture
+
+```typescript
+// src/components/ui/Icon.tsx
+export interface IconProps {
+  tipo: IconType;
+  size?: "32" | "64" | "48" | "124"; // Design system sizes
+  className?: string;
+}
+
+export default function Icon({ tipo, size = "48", className }: IconProps) {
+  // Mapping to public assets
+  const iconSources = {
+    rosto: "/rosto.svg",
+    ponto: "/ponto.svg",
+    // ... etc
+  };
+
+  // Special handling for inline SVG (social icons)
+  if (tipo === "Linkedin") {
+    return <svg>...</svg>; // Inline for color control
+  }
+
+  // Next.js Image for other icons
+  return (
+    <div className={`relative w-${size} h-${size} ${className}`}>
+      <Image src={iconSources[tipo]} alt={tipo} fill />
+    </div>
+  );
+}
+```
+
+### 5.3 Icon Naming Convention
+
+**File naming**: `lowercase-with-hyphens.svg`
+**Component prop**: `camelCase` or `PascalCase` (e.g., "Linkedin", "Email")
+**CSS class**: `icon-${name}`
+
+### 5.4 Icon Usage Pattern
+
+```typescript
+// ✅ Correct - Using Icon component
+import Icon from '@/components/ui/Icon';
+
+<Icon tipo="lamp" size="48" />
+<Icon tipo="Linkedin" size="32" className="hover:scale-110" />
+
+// ❌ Wrong - Installing icon packages
+// import { FiHome } from 'react-icons/fi'; // NEVER DO THIS
+```
+
+### 5.5 Icon Color Control
+
+**SVG with `currentColor`**: Inline SVGs use `fill="currentColor"` for dynamic coloring
+```typescript
+<svg fill="currentColor" className="text-orange">
+  <path d="..." fill="currentColor" />
+</svg>
+```
+
+**Image-based icons**: Use CSS filters or provide multiple color variants
+
+---
+
+## 6. Styling Approach
+
+### 6.1 CSS Methodology
+
+**Primary**: **Tailwind CSS v4** with utility-first approach
+**Secondary**: **CSS Modules** via `globals.css`
+**Component-level**: **Inline styles** for dynamic values from design tokens
+
+### 6.2 Tailwind v4 Configuration
+
+```css
+/* src/app/globals.css */
+@import "tailwindcss";
+
+/* Design tokens available as Tailwind classes */
+@theme inline {
+  --color-brown: var(--brown);
+  --color-beige: var(--beige);
+  /* ... all design tokens */
+}
+
+/* Custom utilities */
+.font-playfair { font-family: var(--font-playfair); }
+.font-roboto-flex { font-family: var(--font-roboto-flex); }
+```
+
+**Usage**:
+```tsx
+<div className="bg-brown text-background font-playfair text-5xl" />
+```
+
+### 6.3 Global Styles
+
+**Location**: `src/app/globals.css` (313 lines)
+
+**Key global styles**:
+```css
+/* Smooth scroll behavior */
+html { scroll-behavior: smooth; }
+
+/* Base body styles */
+body {
+  background: var(--background);
+  color: var(--brown);
+  font-family: var(--font-roboto-flex), sans-serif;
+}
+
+/* Marquee animations for highlights */
+@keyframes highlights-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-16.666%); }
+}
+
+/* Button states (from Figma) */
+.btn-base { /* ... */ }
+.btn-primary { /* ... */ }
+.btn-secondary { /* ... */ }
+```
+
+### 6.4 Responsive Design Implementation
+
+**Breakpoints** (Tailwind default):
+```typescript
+const breakpoints = {
+  sm: '640px',   // Mobile landscape
+  md: '768px',   // Tablet
+  lg: '1024px',  // Desktop
+  xl: '1280px',  // Large desktop
+  '2xl': '1536px' // Extra large
+};
+```
+
+**Mobile-first pattern**:
+```tsx
+<div className="
+  text-3xl        // Mobile: 3xl
+  md:text-5xl     // Tablet+: 5xl
+  lg:text-6xl     // Desktop+: 6xl
+">
+```
+
+**Responsive component example**:
+```tsx
+// Hero section - image above text on mobile, side-by-side on desktop
+<div className="
+  flex flex-col         // Mobile: stack
+  md:flex-row           // Desktop: row
+  md:h-[700px]          // Desktop: fixed height
+">
+  {/* Mobile: Icon first */}
+  <div className="block md:hidden">
+    <Icon tipo="rosto" size="124" />
+  </div>
+
+  {/* Desktop: Photo background */}
+  <div className="hidden xl:block absolute top-0 right-0">
+    <Image src="/photo.png" />
+  </div>
+</div>
+```
+
+### 6.5 Animation Patterns
+
+**Framer Motion** - Scroll-triggered animations:
+```tsx
+import { motion } from 'framer-motion';
+
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }} // Only animate once
+>
+  {content}
+</motion.div>
+```
+
+**CSS Animations** - Continuous effects:
+```css
+/* Infinite marquee scroll */
+.highlights-track {
+  animation: highlights-scroll 30s linear infinite;
+}
+```
+
+### 6.6 State-Based Styling
+
+**Button hover/focus states** (using design tokens):
+```typescript
+<button
+  onMouseEnter={(e) => {
+    e.currentTarget.style.backgroundColor = colors.beige;
+    e.currentTarget.style.color = colors.brown;
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.backgroundColor = colors.brown;
+    e.currentTarget.style.color = colors.background;
+  }}
+/>
+```
+
+---
+
+## 7. Project Structure
+
+### 7.1 Directory Organization
+
+```
+portfolio-figma/
+├── .cursor/
+│   └── rules/
+│       └── design_system_rules.mdc  # This file
+├── .figma-mcp-rules.md              # Figma MCP integration rules
+├── CLAUDE.md                         # Claude AI project instructions
+├── public/                           # Static assets
+│   ├── *.svg                        # Icons
+│   ├── *.png                        # Images
+│   └── cases/                       # Case study images
+├── src/
+│   ├── app/                         # Next.js App Router
+│   │   ├── layout.tsx              # Root layout with fonts
+│   │   ├── page.tsx                # Main portfolio page
+│   │   ├── globals.css             # Global styles + Tailwind
+│   │   └── api/                    # API routes
+│   │       ├── figma/              # Figma REST API
+│   │       └── figma-mcp/          # Figma MCP endpoints
+│   ├── components/
+│   │   ├── ui/                     # Design system
+│   │   ├── sections/               # Page sections
+│   │   ├── features/               # Feature-specific
+│   │   ├── Button.tsx              # Core components
+│   │   └── ClientOnly.tsx
+│   └── lib/
+│       ├── design-tokens.ts        # Design system tokens
+│       ├── figma-service.ts        # Figma API service
+│       └── figma-utils.ts          # Figma utilities
+├── package.json
+├── next.config.ts
+├── tsconfig.json
+└── tailwind.config.ts              # (Note: Uses globals.css @theme)
+```
+
+### 7.2 Feature Organization Pattern
+
+**Principle**: Group by feature, not by type
+
+```
+components/
+├── ui/            # Shared UI components (design system)
+├── sections/      # Page-specific sections (Hero, About, etc.)
+└── features/      # Feature modules
+    └── figma/     # All Figma-related components together
+```
+
+### 7.3 Import Path Aliases
+
+**TypeScript config** (`tsconfig.json`):
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+**Usage**:
+```typescript
+import { colors } from '@/lib/design-tokens';
+import Button from '@/components/Button';
+import { TitleSubTitle } from '@/components/ui/Typography';
+```
+
+### 7.4 API Route Organization
+
+```
+src/app/api/
+├── figma/              # REST API routes
+│   ├── metadata/       # GET /api/figma/metadata
+│   ├── code/           # GET /api/figma/code
+│   ├── screenshot/     # GET /api/figma/screenshot
+│   └── variables/      # GET /api/figma/variables
+└── figma-mcp/          # MCP routes
+    ├── metadata/       # GET /api/figma-mcp/metadata
+    ├── code/           # GET /api/figma-mcp/code
+    ├── screenshot/     # GET /api/figma-mcp/screenshot
+    └── variables/      # GET /api/figma-mcp/variables
+```
+
+---
+
+## 8. Figma MCP Integration Workflow
+
+### 8.1 Required MCP Flow
+
+**CRITICAL**: Follow `.figma-mcp-rules.md` for complete integration rules.
+
+```typescript
+// Step 1: Get code from Figma MCP
+const codeResponse = await mcp__figma__get_code({
+  fileKey: "KBKaj4z9hPZRv26GbNFSUz",
+  nodeId: "3211:1217",
+  clientLanguages: "typescript,jsx",
+  clientFrameworks: "react,nextjs,tailwind"
+});
+
+// Step 2: Get screenshot for validation
+const screenshot = await mcp__figma__get_screenshot({
+  fileKey: "KBKaj4z9hPZRv26GbNFSUz",
+  nodeId: "3211:1217",
+  clientLanguages: "typescript",
+  clientFrameworks: "react"
+});
+
+// Step 3: Extract assets
+const assets = codeResponse.assets;
+// {
+//   "icon-123": "http://localhost:3845/assets/abc123.svg"
+// }
+
+// Step 4: Translate to project structure
+// - Use design tokens from src/lib/design-tokens.ts
+// - Use existing components from src/components/ui/
+// - Follow TypeScript patterns
+// - Add JSDoc documentation
+
+// Step 5: Place in correct location
+// - UI component → src/components/ui/
+// - Page section → src/components/sections/
+// - Feature → src/components/features/
+
+// Step 6: Validate
+// - npm run build (must pass)
+// - Visual comparison with screenshot
+// - Responsive behavior test
+```
+
+### 8.2 MCP Asset Handling
+
+**CRITICAL RULES**:
+
+1. ✅ **USE localhost MCP assets directly**
+   ```tsx
+   <Image src="http://localhost:3845/assets/icon.svg" />
+   ```
+
+2. ❌ **NEVER install icon packages**
+   ```tsx
+   // WRONG - Don't do this
+   import { FiHome } from 'react-icons/fi';
+   ```
+
+3. ❌ **NEVER create placeholders**
+   ```tsx
+   // WRONG - Use real MCP asset
+   <img src="/placeholder.svg" />
+   ```
+
+### 8.3 Translation Pattern
+
+**Figma MCP Output** → **Project Code**:
+
+```typescript
+// Figma MCP gives you:
+<div className="bg-[#421d13] text-[#e3dcd6] p-4">
+
+// Translate to:
+import { colors } from '@/lib/design-tokens';
+
+<div className="bg-brown text-background p-4">
+// OR
+<div style={{
+  backgroundColor: colors.brown,
+  color: colors.background
+}}>
+```
+
+### 8.4 Component Placement Decision Tree
+
+```
+Is it reusable across multiple pages?
+├─ YES → src/components/ui/
+└─ NO
+   └─ Is it a full page section?
+      ├─ YES → src/components/sections/
+      └─ NO → src/components/features/[feature-name]/
+```
+
+---
+
+## 9. Quality Checklist
+
+Before marking any Figma-to-code task complete:
+
+### 9.1 Code Quality
+- [ ] Uses design tokens (not hardcoded values)
+- [ ] Reuses existing components where possible
+- [ ] Follows TypeScript best practices
+- [ ] JSDoc documentation added
+- [ ] No ESLint errors
+- [ ] `npm run build` passes
+
+### 9.2 Design Fidelity
+- [ ] Matches Figma screenshot exactly
+- [ ] Colors use design tokens
+- [ ] Typography matches Figma specs
+- [ ] Spacing matches Figma layout
+- [ ] Responsive breakpoints implemented
+
+### 9.3 Accessibility
+- [ ] Semantic HTML used
+- [ ] ARIA labels added where needed
+- [ ] Keyboard navigation works
+- [ ] Focus states visible
+- [ ] Color contrast meets WCAG
+
+### 9.4 Performance
+- [ ] Images optimized (Next.js Image)
+- [ ] No unnecessary re-renders
+- [ ] Lazy loading for below-fold content
+- [ ] Animations use `viewport={{ once: true }}`
+
+### 9.5 MCP Assets
+- [ ] All MCP assets use localhost URLs
+- [ ] No icon packages installed
+- [ ] No placeholder images created
+- [ ] Assets documented in code comments
+
+---
+
+## 10. Quick Reference
+
+### 10.1 Import Patterns
+
+```typescript
+// Design tokens
+import { colors, typography, spacing } from '@/lib/design-tokens';
+
+// UI components
+import Icon from '@/components/ui/Icon';
+import { TitleSubTitle } from '@/components/ui/Typography';
+import { CardCase, CardInsight } from '@/components/ui/Card';
+import Timeline, { TimelineItem } from '@/components/ui/Timeline';
+
+// Core components
+import Button, { ButtonGroup } from '@/components/Button';
+import ClientOnly from '@/components/ClientOnly';
+
+// Next.js
+import Image from 'next/image';
+import Link from 'next/link';
+
+// Animation
+import { motion } from 'framer-motion';
+```
+
+### 10.2 Common Patterns
+
+**Section wrapper**:
+```tsx
+<section id="section-name" className="py-12 md:py-20">
+  <div className="container mx-auto px-4 md:px-8">
+    {/* content */}
+  </div>
+</section>
+```
+
+**Animation wrapper**:
+```tsx
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+>
+```
+
+**Button group**:
+```tsx
+<ButtonGroup>
+  <Button variant="primary">Primary CTA</Button>
+  <Button variant="secondary">Secondary</Button>
+</ButtonGroup>
+```
+
+### 10.3 File Paths Cheat Sheet
+
+| Item | Path |
+|------|------|
+| Design tokens | `src/lib/design-tokens.ts` |
+| Global styles | `src/app/globals.css` |
+| UI components | `src/components/ui/` |
+| Page sections | `src/components/sections/` |
+| Button | `src/components/Button.tsx` |
+| Icons | `src/components/ui/Icon.tsx` |
+| Public assets | `public/` |
+| Figma MCP rules | `.figma-mcp-rules.md` |
+
+---
+
+**Last Updated**: 2025-10-04
+**Version**: 1.0
+**Maintained by**: Claude AI for Natasha Buchler Portfolio

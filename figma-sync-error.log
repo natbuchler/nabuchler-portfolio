@@ -1,0 +1,7 @@
+Error: Invalid request body for initialize request
+    at IncomingMessage.<anonymous> (/Users/nabuchler/Portfolio-figma/figma-full-sync.js:57:24)
+    at IncomingMessage.emit (node:events:514:28)
+    at Readable.read (node:internal/streams/readable:758:10)
+    at flow (node:internal/streams/readable:1248:53)
+    at resume_ (node:internal/streams/readable:1227:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)

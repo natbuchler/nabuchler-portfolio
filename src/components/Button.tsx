@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { colors, getTypographyStyle } from '@/lib/design-tokens';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   children: ReactNode;
   className?: string;
   disabled?: boolean;
@@ -20,7 +20,7 @@ export default function Button({
   const baseClasses = `
     px-6 py-3 rounded-lg font-medium transition-all duration-200
     font-roboto text-lg font-medium leading-6
-    focus:outline-none focus:ring-2 focus:ring-offset-2
+    focus:outline-none focus-visible:outline-none
   `;
 
   const primaryStyle = {
@@ -36,17 +36,25 @@ export default function Button({
     border: `2px solid ${disabled ? '#adadb5' : colors.brown}`,
   };
 
-  const buttonStyle = variant === 'primary' ? primaryStyle : secondaryStyle;
+  const tertiaryStyle = {
+    backgroundColor: 'transparent',
+    color: disabled ? '#c7c7c9' : colors.brown,
+    border: 'none',
+  };
+
+  const buttonStyle = variant === 'primary' ? primaryStyle : variant === 'secondary' ? secondaryStyle : tertiaryStyle;
 
   const variantClasses = {
     primary: `
       hover:shadow-lg
-      focus:ring-2 focus:ring-offset-2
       disabled:cursor-not-allowed
     `,
     secondary: `
       hover:opacity-80
-      focus:ring-2 focus:ring-offset-2
+      disabled:cursor-not-allowed disabled:opacity-50
+    `,
+    tertiary: `
+      hover:opacity-80
       disabled:cursor-not-allowed disabled:opacity-50
     `,
   }[variant] || '';
