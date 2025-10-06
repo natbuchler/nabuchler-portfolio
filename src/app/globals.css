@@ -21,7 +21,7 @@
   --color-card: var(--card);
   --color-card-30: var(--card-30);
   --color-white-35: var(--white-35);
-  
+
   --font-playfair: var(--font-playfair);
   --font-roboto-flex: var(--font-roboto-flex);
   --font-roboto: var(--font-roboto);
@@ -29,9 +29,51 @@
   --font-comfortaa: var(--font-comfortaa);
 }
 
+/* Container definition for consistent widths */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 * {
   box-sizing: border-box;
+}
+
+/* Prevent horizontal overflow on images and media only */
+img, video, iframe {
   max-width: 100%;
+  height: auto;
 }
 
 html {

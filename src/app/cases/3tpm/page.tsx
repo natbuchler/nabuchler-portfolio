@@ -8,6 +8,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import Icon from '@/components/ui/Icon';
@@ -26,6 +27,7 @@ export default function Case3TPM() {
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   const CORRECT_PASSWORD = 'n@Buchler2025';
 
@@ -70,21 +72,21 @@ export default function Case3TPM() {
   // Password protection screen
   if (!isAuthenticated) {
     return (
-      <div className="bg-[#e3dcd6] min-h-screen flex items-center justify-center px-4">
-        <div className="max-w-md w-full">
-          <div className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-[#ad8a6c]/20">
-            <div className="text-center mb-8">
-              <h1 className="font-playfair font-bold text-3xl md:text-4xl text-[#421d13] mb-2">
+      <div className="bg-[#e3dcd6] min-h-screen flex items-center justify-center px-6 py-12">
+        <div className="w-full md:w-auto mx-auto">
+          <div className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl p-8 md:p-12 md:min-w-[480px] md:max-w-[480px] shadow-xl border border-[#ad8a6c]/20">
+            <div className="text-center mb-10">
+              <h1 className="font-playfair font-bold text-3xl md:text-[40px] text-[#421d13] mb-3 leading-tight">
                 Protected Case Study
               </h1>
-              <p className="font-roboto-flex font-light text-lg text-[#6b6763]">
+              <p className="font-roboto-flex font-light text-base md:text-lg text-[#6b6763]">
                 This case study is password protected
               </p>
             </div>
 
-            <form onSubmit={handlePasswordSubmit} className="space-y-6">
+            <form onSubmit={handlePasswordSubmit} className="space-y-8">
               <div>
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-3">
                   <label htmlFor="password" className="block font-roboto-flex font-medium text-[#421d13]">
                     Password
                   </label>
@@ -104,28 +106,30 @@ export default function Case3TPM() {
                     setPassword(e.target.value);
                     setError(false);
                   }}
-                  className={`w-full px-4 py-3 rounded-lg border ${
+                  className={`w-full px-5 py-4 rounded-xl border-2 ${
                     error ? 'border-red-500' : 'border-[#ad8a6c]/30'
-                  } bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#ad8a6c] transition-all font-roboto-flex text-[#421d13]`}
+                  } bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#ad8a6c] focus:border-[#ad8a6c] transition-all font-roboto-flex text-[#421d13] text-lg`}
                   placeholder="Enter password"
                   autoFocus
                 />
                 {error && (
-                  <p className="mt-2 text-sm text-red-600 font-roboto-flex">
+                  <p className="mt-3 text-sm text-red-600 font-roboto-flex">
                     Incorrect password. Please try again.
                   </p>
                 )}
               </div>
 
-              <Button type="submit" variant="primary" className="w-full">
-                Enter
-              </Button>
-
-              <Link href="/" className="w-full block">
-                <Button variant="secondary" className="w-full">
-                  Back to portfolio
+              <div className="space-y-4">
+                <Button type="submit" variant="primary" className="w-full">
+                  Enter
                 </Button>
-              </Link>
+
+                <Link href="/" className="w-full block">
+                  <Button variant="secondary" className="w-full">
+                    Back to portfolio
+                  </Button>
+                </Link>
+              </div>
             </form>
           </div>
         </div>
@@ -146,10 +150,10 @@ export default function Case3TPM() {
   ];
 
   return (
-    <div className="bg-[#e3dcd6] min-h-screen">
+    <div className="bg-[#e3dcd6] min-h-screen pt-[72px]">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[rgba(173,138,108,0.2)] backdrop-blur-sm border-b border-[#ad8a6c]/20">
-        <div className="container mx-auto px-4 md:px-8 py-3">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[rgba(173,138,108,0.2)] backdrop-blur-sm border-b border-[#ad8a6c]/20">
+        <div className="mx-auto px-4 md:px-8 py-3 max-w-[1280px]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <button
@@ -186,38 +190,83 @@ export default function Case3TPM() {
               </nav>
             </div>
 
-            {/* Location and Time - Desktop Only */}
-            <div className="hidden md:flex items-center gap-2 text-[#ad8a6c]">
-              <span className="font-raleway text-sm md:text-base">São Paulo</span>
-              <div className="w-6 h-6 relative opacity-30">
-                <Image
-                  src="/cy.svg"
-                  alt="Location"
-                  fill
-                  className="object-contain"
-                />
+            {/* Right side: Location/Time + Mobile Menu Button */}
+            <div className="flex items-center gap-3">
+              {/* Location and Time - VISIBLE ON MOBILE AND DESKTOP */}
+              <div className="flex items-center gap-2 text-[#ad8a6c]">
+                <span className="font-raleway text-xs md:text-base">São Paulo</span>
+                <div className="w-4 h-4 md:w-6 md:h-6 relative opacity-30">
+                  <Image
+                    src="/cy.svg"
+                    alt="Location"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-raleway text-xs md:text-base">{currentTime}</span>
               </div>
-              <span className="font-raleway text-sm md:text-base">{currentTime}</span>
+
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden p-2"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                  <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm ${mobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
+                  <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                  <span className={`bg-[#421d13] block h-0.5 w-6 rounded-sm ${mobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
+                </div>
+              </button>
             </div>
           </div>
+
+          {/* Mobile Navigation - NO ANIMATION */}
+          {mobileMenuOpen && (
+            <nav className="md:hidden mt-4 pb-4">
+              <div className="flex flex-col space-y-3">
+                {navigationItems.map((item) => {
+                  const isActive = item.id === 'cases';
+                  return (
+                    <Link
+                      key={item.name}
+                      href={`/#${item.id}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`font-raleway font-medium text-left relative ${
+                        isActive
+                          ? 'text-[#ad8a6c] font-semibold'
+                          : 'text-[#421d13] hover:text-[#ad8a6c]'
+                      }`}
+                    >
+                      {item.name}
+                      {isActive && (
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-[#ad8a6c] rounded-full" />
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+            </nav>
+          )}
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 md:px-8 py-16 max-w-[1200px]">
+      <main className="mx-auto px-4 md:px-8 py-16 max-w-[1280px]">
 
         {/* Title Section */}
         <section className="mb-16 md:mb-24">
-          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
-            <div className="flex-1 w-full md:max-w-[655px]">
-              <h1 className="font-playfair font-bold text-4xl md:text-[64px] leading-[1.2] text-[#421d13] mb-6 md:mb-8">
+          {/* Mobile - NO ANIMATION */}
+          <div className="flex flex-col md:hidden gap-8 items-center">
+            <div className="flex-1 w-full">
+              <h1 className="font-playfair font-bold text-4xl leading-[1.2] text-[#421d13] mb-6">
                 3TPM - Global Product Architecture
               </h1>
-              <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+              <p className="font-roboto-flex font-light text-lg leading-[1.5] text-[#6b6763] tracking-[0.48px]">
                 Leading cross-functional design strategy to solve product variant complexity across +30 countries, enabling major partnerships and delivering measurable business impact in one quarter.
               </p>
             </div>
-            <div className="relative w-full md:w-[558px] h-[300px] md:h-[553.5px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full h-[300px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/Befor-after.png"
                 alt="Before and After comparison"
@@ -226,16 +275,57 @@ export default function Case3TPM() {
               />
             </div>
           </div>
+
+          {/* Desktop - WITH ANIMATION */}
+          <motion.div
+            className="hidden md:flex flex-row gap-12 items-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex-1 w-full max-w-[655px]">
+              <h1 className="font-playfair font-bold text-[64px] leading-[1.2] text-[#421d13] mb-8">
+                3TPM - Global Product Architecture
+              </h1>
+              <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+                Leading cross-functional design strategy to solve product variant complexity across +30 countries, enabling major partnerships and delivering measurable business impact in one quarter.
+              </p>
+            </div>
+            <div className="relative w-[558px] h-[553.5px] rounded-3xl overflow-hidden shrink-0">
+              <Image
+                src="/Befor-after.png"
+                alt="Before and After comparison"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </motion.div>
         </section>
 
         {/* Numbers Section */}
         <section className="mb-16 md:mb-24">
-          <div className="flex flex-wrap gap-4 md:gap-7 justify-center">
+          {/* Mobile - NO ANIMATION */}
+          <div className="flex md:hidden flex-wrap gap-4 justify-center">
             <CardNumbers number="+24" label="Conversion Rate" />
             <CardNumbers number="+21%" label="Ticket Size (BR)" />
             <CardNumbers number="+30" label="Countries" />
             <CardNumbers number="64k+" label="SKUs" />
           </div>
+
+          {/* Desktop - WITH ANIMATION */}
+          <motion.div
+            className="hidden md:flex flex-wrap gap-7 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <CardNumbers number="+24" label="Conversion Rate" />
+            <CardNumbers number="+21%" label="Ticket Size (BR)" />
+            <CardNumbers number="+30" label="Countries" />
+            <CardNumbers number="64k+" label="SKUs" />
+          </motion.div>
         </section>
 
         {/* Problem Section */}

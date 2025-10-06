@@ -80,7 +80,12 @@ export default function LatestArticles() {
     if (scrollContainerRef.current) {
       // Calculate card width dynamically based on first card
       const firstCard = scrollContainerRef.current.querySelector('div[class*="snap-center"]');
-      const cardTotalWidth = firstCard ? (firstCard as HTMLElement).offsetWidth + 32 : cardWidth + gap; // 32px = gap-8
+
+      // Get actual rendered width including gap
+      const cardElement = firstCard as HTMLElement;
+      const cardWidth = cardElement ? cardElement.offsetWidth : 287;
+      const computedGap = 32; // gap-8 = 32px
+      const cardTotalWidth = cardWidth + computedGap;
 
       const scrollAmount = index * cardTotalWidth;
 
@@ -111,11 +116,13 @@ export default function LatestArticles() {
 
     const handleScroll = () => {
       const scrollLeft = scrollContainer.scrollLeft;
-      const containerWidth = scrollContainer.offsetWidth;
 
       // Calculate card width dynamically based on first card
       const firstCard = scrollContainer.querySelector('div[class*="snap-center"]');
-      const cardTotalWidth = firstCard ? (firstCard as HTMLElement).offsetWidth + 32 : cardWidth + gap; // 32px = gap-8
+      const cardElement = firstCard as HTMLElement;
+      const cardWidth = cardElement ? cardElement.offsetWidth : 287;
+      const computedGap = 32; // gap-8 = 32px
+      const cardTotalWidth = cardWidth + computedGap;
 
       const scrolledIndex = Math.round(scrollLeft / cardTotalWidth);
 
@@ -219,7 +226,7 @@ export default function LatestArticles() {
               {infiniteArticles.map((article, index) => (
                 <div
                   key={`${article.id}-${index}`}
-                  className="snap-center flex-shrink-0 w-[calc(100vw-4rem)] md:w-auto first:ml-0"
+                  className="snap-center flex-shrink-0 w-[calc(100vw-7rem)] md:w-auto first:ml-0"
                 >
                   <ArticleCard
                     title={article.title}

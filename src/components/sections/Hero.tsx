@@ -88,7 +88,7 @@ export default function Hero({ onScrollToSection }: HeroProps) {
 
         {/* Desktop Layout - Text with image behind - WITH ANIMATIONS */}
         <div className="hidden md:block">
-          <div className="container mx-auto px-4 md:px-8 pt-[110px]">
+          <div className="mx-auto px-4 md:px-8 pt-[110px] max-w-[1280px]">
             <motion.div
               className="max-w-2xl"
               initial={{ opacity: 0, x: -20 }}

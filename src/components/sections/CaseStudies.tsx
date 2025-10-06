@@ -17,7 +17,7 @@ const IMG_MEDITATION = "/pexels-elly-fairytale-3823207-1.jpg";
 export default function CaseStudies() {
   return (
     <section id="cases" className="py-12 md:py-20" data-node-id="3211:1219">
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
         <div className="space-y-12">
           <TitleSubTitle title="Case studies" />
 
