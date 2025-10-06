@@ -28,8 +28,7 @@ export default function Case3TPM() {
   const [error, setError] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-
-  const CORRECT_PASSWORD = 'n@Buchler2025';
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Check if already authenticated (session storage)
   useEffect(() => {
@@ -57,15 +56,34 @@ export default function Case3TPM() {
     return () => clearInterval(interval);
   }, []);
 
-  const handlePasswordSubmit = (e: React.FormEvent) => {
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === CORRECT_PASSWORD) {
-      setIsAuthenticated(true);
-      sessionStorage.setItem('3tpm-auth', 'true');
-      setError(false);
-    } else {
+    setIsLoading(true);
+    setError(false);
+
+    try {
+      const response = await fetch('/api/auth/verify-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, caseId: '3tpm' })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsAuthenticated(true);
+        sessionStorage.setItem('3tpm-auth', 'true');
+        setError(false);
+      } else {
+        setError(true);
+        setPassword('');
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
       setError(true);
       setPassword('');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -125,8 +143,13 @@ export default function Case3TPM() {
               </div>
 
               <div className="space-y-4">
-                <Button type="submit" variant="primary" className="w-full">
-                  Enter
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="w-full"
+                  disabled={isLoading}
+                >
+                  {isLoading ? 'Verifying...' : 'Enter'}
                 </Button>
 
                 <Link href="/" className="w-full block">

@@ -37,7 +37,7 @@ export function QuoteBlock({
   return (
     <div className={`p-6 ${className}`}>
       <p className={`font-playfair font-bold ${textSize} text-[#421d13] text-center max-w-[978px] mx-auto`}>
-        {quote}
+        &ldquo;{quote}&rdquo;
       </p>
       {author && (
         <p className="font-roboto-flex text-[18px] text-[#6b6763] text-center mt-4">
