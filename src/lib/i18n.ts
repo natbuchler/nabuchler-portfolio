@@ -19,7 +19,7 @@ import pt from '@/locales/pt.json';
 export type Locale = 'en' | 'pt';
 
 export const locales: Locale[] = ['en', 'pt'];
-export const defaultLocale: Locale = 'pt';
+export const defaultLocale: Locale = 'en';
 
 const translations = { en, pt } as const;
 
