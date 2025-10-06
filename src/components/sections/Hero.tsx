@@ -17,13 +17,18 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Icon from '@/components/ui/Icon';
 import Button, { ButtonGroup } from '@/components/Button';
+import { Locale, getTranslations } from '@/lib/i18n';
 
 interface HeroProps {
   /** Callback to scroll to a specific section */
   onScrollToSection: (sectionId: string) => void;
+  /** Current locale */
+  locale: Locale;
 }
 
-export default function Hero({ onScrollToSection }: HeroProps) {
+export default function Hero({ onScrollToSection, locale }: HeroProps) {
+  const t = getTranslations(locale);
+
   return (
     <section id="hero" className="relative md:h-[700px] md:-mt-[80px] md:pt-[80px] overflow-x-hidden">
       {/* Photo backdrop - Desktop only (xl+ = 1280px+) - starts from top of section (including negative margin) */}
@@ -64,11 +69,11 @@ export default function Hero({ onScrollToSection }: HeroProps) {
           <div className="px-8 pb-8">
             <div className="space-y-6">
               <h1 className="font-playfair font-bold text-3xl text-[#421d13] leading-[1.2] text-center">
-                Hey, I&apos;m Natasha Buchler,
+                {t.hero.greeting}
               </h1>
 
               <p className="font-roboto-flex font-light text-base text-[#6b6763] leading-relaxed text-center">
-                a Strategic Designer & Executive Leader with 7+ years leading design teams across B2B platforms, fintech, and global marketplaces. Building high-performing teams and scaling design frameworks that drive measurable business impact across 32 countries.
+                {t.hero.description}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -76,13 +81,13 @@ export default function Hero({ onScrollToSection }: HeroProps) {
                   variant="primary"
                   onClick={() => onScrollToSection('cases')}
                 >
-                  View case studies
+                  {t.hero.cta.cases}
                 </Button>
                 <Button
                   variant="secondary"
                   onClick={() => onScrollToSection('leadership')}
                 >
-                  About my leadership
+                  {t.hero.cta.leadership}
                 </Button>
               </div>
             </div>
@@ -100,11 +105,11 @@ export default function Hero({ onScrollToSection }: HeroProps) {
             >
               <div className="space-y-8">
                 <h1 className="font-playfair font-bold text-4xl md:text-5xl lg:text-6xl text-[#421d13] leading-[1.2]">
-                  Hey, I&apos;m Natasha Buchler,
+                  {t.hero.greeting}
                 </h1>
 
                 <p className="font-roboto-flex font-light text-lg md:text-2xl text-[#6b6763] leading-relaxed">
-                  a Strategic Designer & Executive Leader with 7+ years leading design teams across B2B platforms, fintech, and global marketplaces. Building high-performing teams and scaling design frameworks that drive measurable business impact across 32 countries.
+                  {t.hero.description}
                 </p>
 
                 <ButtonGroup>
@@ -113,14 +118,14 @@ export default function Hero({ onScrollToSection }: HeroProps) {
                     onClick={() => onScrollToSection('cases')}
                     className="hover:transform hover:-translate-y-0.5 shadow-md"
                   >
-                    View case studies
+                    {t.hero.cta.cases}
                   </Button>
                   <Button
                     variant="secondary"
                     onClick={() => onScrollToSection('leadership')}
                     className="hover:transform hover:-translate-y-0.5"
                   >
-                    About my leadership
+                    {t.hero.cta.leadership}
                   </Button>
                 </ButtonGroup>
               </div>

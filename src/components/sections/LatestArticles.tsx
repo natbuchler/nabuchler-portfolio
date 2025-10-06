@@ -15,8 +15,14 @@ import { motion } from 'framer-motion';
 import { TitleSubTitle } from '@/components/ui/Typography';
 import ArticleCard from '@/components/ui/ArticleCard';
 import { fetchMediumArticles, type MediumArticle } from '@/lib/medium-service';
+import { Locale, getTranslations } from '@/lib/i18n';
 
-export default function LatestArticles() {
+interface LatestArticlesProps {
+  locale: Locale;
+}
+
+export default function LatestArticles({ locale }: LatestArticlesProps) {
+  const t = getTranslations(locale);
   const [articles, setArticles] = useState<MediumArticle[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -147,9 +153,9 @@ export default function LatestArticles() {
       >
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
-            <TitleSubTitle title="Latest articles" />
+            <TitleSubTitle title={t.articles.title} />
             <div className="flex items-center justify-center h-[400px]">
-              <p className="text-[#6b6763]">Loading articles...</p>
+              <p className="text-[#6b6763]">{t.articles.loading}</p>
             </div>
           </div>
         </div>
@@ -176,7 +182,7 @@ export default function LatestArticles() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <TitleSubTitle title="Latest articles" />
+            <TitleSubTitle title={t.articles.title} />
           </motion.div>
 
           {/* Carousel Container - Modern minimal approach */}

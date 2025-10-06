@@ -7,23 +7,151 @@
     "contact": "Contato"
   },
   "hero": {
-    "greeting": "Hey, I'm Natasha Buchler,",
-    "description": "a Strategic Designer & Executive Leader with 7+ years leading design teams across B2B platforms, fintech, and global marketplaces. Building high-performing teams and scaling design frameworks that drive measurable business impact across 32 countries.",
+    "greeting": "Hey, sou a Natasha Buchler,",
+    "description": "Designer Estratégica e Líder Executiva com mais de 7 anos liderando times de design em plataformas B2B, fintech e marketplaces globais. Construindo equipes de alta performance e escalando frameworks de design que geram impacto mensurável em 32 países.",
     "cta": {
-      "cases": "View case studies",
-      "leadership": "About my leadership"
+      "cases": "Ver cases",
+      "leadership": "Sobre minha liderança"
     }
   },
   "highlights": {
-    "growth": "150% growth in experimentation",
-    "satisfaction": "100% manager satisfaction",
-    "promotion": "#1 promotion rate",
-    "countries": "32 countries"
+    "growth": "150% de crescimento em experimentação",
+    "satisfaction": "100% de satisfação dos gestores",
+    "promotion": "Nº1 em taxa de promoção",
+    "countries": "32 países"
+  },
+  "caseStudies": {
+    "title": "Cases",
+    "case3tpm": {
+      "title": "3TPM - Arquitetura Global de Produto",
+      "description": "Liderou o design e implementação de um framework abrangente de arquitetura de produto em 32 países, resultando em 150% de crescimento em experimentação."
+    }
+  },
+  "howILead": {
+    "title": "Como eu lidero",
+    "subtitle": "Minha abordagem para construir times de design que entregam.",
+    "insights": {
+      "crossFunctional": {
+        "title": "Influência cross-funcional",
+        "description": "Construindo pontes entre times de design, engenharia, produto e negócios para criar soluções alinhadas e de alto impacto."
+      },
+      "balanced": {
+        "title": "Estratégia balanceada",
+        "description": "Combinando design thinking centrado no usuário com objetivos de negócio para entregar soluções significativas e mensuráveis."
+      },
+      "inclusive": {
+        "title": "Liderança inclusiva",
+        "description": "Fomentando ambientes diversos e inclusivos onde cada voz é ouvida e cada perspectiva agrega valor ao processo criativo."
+      },
+      "problemFraming": {
+        "title": "Enquadramento de problemas",
+        "description": "Abordando desafios complexos com pensamento sistemático, definição clara de problemas e tomada de decisão baseada em dados."
+      }
+    },
+    "quote": "Grande liderança em design não é sobre ter todas as respostas, é sobre fazer as perguntas certas, criar o ambiente certo e empoderar times para descobrir soluções juntos."
+  },
+  "about": {
+    "title": "Sobre mim",
+    "tags": {
+      "globalLeader": "líder global",
+      "experience": "+15 anos"
+    },
+    "paragraph1": "Com mais de 15 anos em design e mais de 7 em liderança, escalei o impacto do design em 32 países, construindo times distribuídos que entregam resultados de negócio mensuráveis. Sou especializada em criar organizações de design inclusivas e de alta performance que conectam necessidades dos usuários com objetivos de negócio.",
+    "paragraph2": "Minha abordagem combina pensamento estratégico com liderança prática, desenvolvendo frameworks e processos que permitem que times trabalhem efetivamente através de culturas e fusos horários. Isso inclui frameworks de carreira, processos de garantia de qualidade e metodologias de experimentação que escalam globalmente.",
+    "cta": {
+      "cv": "Baixar CV",
+      "articles": "Ler meus artigos"
+    }
+  },
+  "experience": {
+    "title": "Experiência",
+    "subtitle": "Uma jornada construindo organizações de design, escalando impacto e liderando times em mercados globais.",
+    "jobs": {
+      "stealth": {
+        "role": "Consultora de Service Design",
+        "company": "Stealth AI Startup",
+        "period": "Junho 2025 - Presente",
+        "description": "Definiu visão de UX e narrativa de produto para soluções de IA em setor regulado, equilibrando inovação, governança e clareza para o usuário.",
+        "achievements": [
+          "Construiu sistemas de service design escaláveis",
+          "Facilitou alinhamento de stakeholders",
+          "Garantiu consistência e replicabilidade do produto"
+        ]
+      },
+      "abinbev": {
+        "role": "Gerente Global de Design de Produto",
+        "company": "AB InBev",
+        "period": "Maio 2022 - Set 2025",
+        "description": "Responsável pela estratégia de UX da BEES, uma plataforma global de comércio B2B operando em mais de 30 países.",
+        "achievements": [
+          "Lidera times de jornadas de produto centrais",
+          "Gerencia time de design distribuído",
+          "Co-criou framework global de carreira em design"
+        ]
+      },
+      "vindi": {
+        "role": "Coordenadora de Design",
+        "company": "Vindi",
+        "period": "Ago 2020 – Jun 2021",
+        "description": "Gerenciou DesignOps, Product Designers e UX Research para plataforma fintech.",
+        "achievements": [
+          "Criou plano de carreira em design",
+          "Expandiu capacidade de entrega do time",
+          "Promoveu design orientado por métricas"
+        ]
+      },
+      "zup": {
+        "role": "Líder de Estratégia de Pagamentos & UX",
+        "company": "Zup Innovation",
+        "period": "Mar 2019 – Jul 2020",
+        "description": "Liderou estratégia de UX para produtos de telecom e finanças, direcionando redesigns e visões unificadas.",
+        "achievements": [
+          "Redesenhou o app do Banco Safra",
+          "Definiu solução de pagamento Claro & Nextel",
+          "Conduziu workshops de discovery e pesquisa"
+        ]
+      }
+    },
+    "cta": {
+      "cv": "Baixar CV",
+      "articles": "Ler meus artigos"
+    }
+  },
+  "articles": {
+    "title": "Últimos artigos",
+    "loading": "Carregando artigos..."
+  },
+  "contact": {
+    "title": "Entre em contato",
+    "subtitle": "Vamos construir algo incrível juntos. Estou sempre aberta para discutir novas oportunidades e colaborações.",
+    "platforms": {
+      "linkedin": {
+        "label": "LinkedIn",
+        "ariaLabel": "Visite meu perfil no LinkedIn"
+      },
+      "medium": {
+        "label": "Medium",
+        "ariaLabel": "Leia meus artigos no Medium"
+      },
+      "email": {
+        "label": "Email",
+        "tooltip": "Clique para copiar",
+        "ariaLabel": "Copiar endereço de email"
+      },
+      "cv": {
+        "label": "Currículo",
+        "ariaLabel": "Baixe meu currículo"
+      }
+    },
+    "emailCopied": {
+      "title": "Email copiado!",
+      "email": "nabuchler@gmail.com"
+    }
   },
   "footer": {
-    "crafted": "Crafted hands-on by Natasha — built with",
-    "powered": "powered by Next.js, Tailwind CSS & Framer Motion.",
-    "rights": "© 2025 Natasha Buchler. All rights reserved."
+    "crafted": "Criado por Natasha — desenvolvido com",
+    "powered": "usando Next.js, Tailwind CSS e Framer Motion.",
+    "rights": "© 2025 Natasha Buchler. Todos os direitos reservados."
   },
   "location": {
     "city": "São Paulo"

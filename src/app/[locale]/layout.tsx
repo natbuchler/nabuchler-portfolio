@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Roboto_Flex, Roboto, Raleway, Comfortaa } from "next/font/google";
+import { Locale, locales } from "@/lib/i18n";
 import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -40,15 +41,24 @@ export const metadata: Metadata = {
   },
 };
 
+// Generate static params for all supported locales
+export function generateStaticParams() {
+  return locales.map((locale) => ({
+    locale,
+  }));
+}
+
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: Locale };
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={params.locale} suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
-        <div 
+        <div
           className={`${playfairDisplay.variable} ${robotoFlex.variable} ${roboto.variable} ${raleway.variable} ${comfortaa.variable}`}
           suppressHydrationWarning
         >

@@ -20,6 +20,134 @@
     "promotion": "#1 promotion rate",
     "countries": "32 countries"
   },
+  "caseStudies": {
+    "title": "Case studies",
+    "case3tpm": {
+      "title": "3TPM - Global Product Architecture",
+      "description": "Led the design and implementation of a comprehensive product architecture framework across 32 countries, resulting in 150% growth in experimentation."
+    }
+  },
+  "howILead": {
+    "title": "How I lead",
+    "subtitle": "My approach to building design teams that deliver.",
+    "insights": {
+      "crossFunctional": {
+        "title": "Cross-functional influence",
+        "description": "Building bridges between design, engineering, product and business teams to create aligned, high-impact solutions."
+      },
+      "balanced": {
+        "title": "Balanced strategy",
+        "description": "Combining user-centered design thinking with business objectives to deliver solutions that are both meaningful and measurable"
+      },
+      "inclusive": {
+        "title": "Inclusive leadership",
+        "description": "Fostering diverse, inclusive environments where every voice is heard and every perspective adds value to the creative process."
+      },
+      "problemFraming": {
+        "title": "Problem framing",
+        "description": "Approaching complex challenges with systematic thinking, clear problem definition, and data-driven decision making."
+      }
+    },
+    "quote": "Great design leadership isn't about having all the answers, it's about asking the right questions, creating the right environment, and empowering teams to discover solutions together."
+  },
+  "about": {
+    "title": "About me",
+    "tags": {
+      "globalLeader": "global leader",
+      "experience": "+15 years"
+    },
+    "paragraph1": "With 15+ years in design and 7+ in leadership, I've scaled design impact across 32 countries, building distributed teams that deliver measurable business outcomes. I specialize in creating inclusive, high-performing design organizations that bridge user needs with business objectives.",
+    "paragraph2": "My approach combines strategic thinking with hands-on leadership, developing frameworks and processes that enable teams to work effectively across cultures and time zones. This includes career frameworks, quality assurance processes, and experimentation methodologies that scale globally.",
+    "cta": {
+      "cv": "Download CV",
+      "articles": "Read my articles"
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "A journey of building design organizations, scaling impact, and leading teams across global markets.",
+    "jobs": {
+      "stealth": {
+        "role": "Service Design Consultant",
+        "company": "Stealth AI Startup",
+        "period": "June 2025 - Present",
+        "description": "Defined UX vision and product narrative for AI solutions in a regulated sector, balancing innovation, governance, and user clarity.",
+        "achievements": [
+          "Built scalable service design systems",
+          "Facilitated stakeholder alignment",
+          "Ensured product consistency and replicability"
+        ]
+      },
+      "abinbev": {
+        "role": "Global Product Design Manager",
+        "company": "AB InBev",
+        "period": "May 2022 - Sep 2025",
+        "description": "Own the strategic UX for BEES, a global B2B commerce platform operating in 30+ countries.",
+        "achievements": [
+          "Lead core product journey teams",
+          "Manage distributed design team",
+          "Co-created global design career framework"
+        ]
+      },
+      "vindi": {
+        "role": "Design Coordinator",
+        "company": "Vindi",
+        "period": "Aug 2020 – June 2021",
+        "description": "Managed DesignOps, Product Designers, and UX Research for fintech platform.",
+        "achievements": [
+          "Created design career path",
+          "Expanded team delivery capacity",
+          "Promoted metric-driven design"
+        ]
+      },
+      "zup": {
+        "role": "Payment Strategy & UX Lead",
+        "company": "Zup Innovation",
+        "period": "Mar 2019 – Jul 2020",
+        "description": "Led UX strategy for telecom and finance products, directing redesigns and unified visions.",
+        "achievements": [
+          "Redesigned Safra Bank app",
+          "Defined Claro & Nextel payment solution",
+          "Conducted discovery and research workshops"
+        ]
+      }
+    },
+    "cta": {
+      "cv": "Download CV",
+      "articles": "Read my articles"
+    }
+  },
+  "articles": {
+    "title": "Latest articles",
+    "loading": "Loading articles..."
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Let's build something amazing together. I'm always open to discussing new opportunities and collaborations.",
+    "platforms": {
+      "linkedin": {
+        "label": "LinkedIn",
+        "ariaLabel": "Visit my LinkedIn profile"
+      },
+      "medium": {
+        "label": "Medium",
+        "ariaLabel": "Read my Medium articles"
+      },
+      "email": {
+        "label": "Email",
+        "tooltip": "Click to copy",
+        "ariaLabel": "Copy email address to clipboard"
+      },
+      "cv": {
+        "label": "Resume",
+        "ariaLabel": "Download my resume"
+      }
+    },
+    "emailCopied": {
+      "title": "Email copied!",
+      "email": "nabuchler@gmail.com"
+    }
+  },
   "footer": {
     "crafted": "Crafted hands-on by Natasha — built with",
     "powered": "powered by Next.js, Tailwind CSS & Framer Motion.",

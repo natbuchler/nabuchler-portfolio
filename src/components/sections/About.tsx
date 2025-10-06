@@ -9,13 +9,20 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { TitleSubTitle } from '@/components/ui/Typography';
 import Button, { ButtonGroup } from '@/components/Button';
+import { Locale, getTranslations } from '@/lib/i18n';
 
-export default function About() {
+interface AboutProps {
+  locale: Locale;
+}
+
+export default function About({ locale }: AboutProps) {
+  const t = getTranslations(locale);
+
   return (
     <section id="about" className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-8">
         <div className="space-y-12 max-w-6xl mx-auto">
-          <TitleSubTitle title="About me" />
+          <TitleSubTitle title={t.about.title} />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div
@@ -36,12 +43,12 @@ export default function About() {
                 {/* Tags */}
                 <div className="absolute top-14 left-4 bg-[#c95127] px-4 py-2 rounded-full">
                   <span className="font-roboto font-medium text-sm text-[#e3dcd6] uppercase tracking-wide">
-                    global leader
+                    {t.about.tags.globalLeader}
                   </span>
                 </div>
                 <div className="absolute bottom-14 right-14 bg-[#d0bfb0] px-4 py-2 rounded-full">
                   <span className="font-roboto font-medium text-sm text-[#421d13] uppercase tracking-wide">
-                    +15 years
+                    {t.about.tags.experience}
                   </span>
                 </div>
               </div>
@@ -55,12 +62,8 @@ export default function About() {
               viewport={{ once: true }}
             >
               <div className="space-y-6 font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] leading-relaxed">
-                <p>
-                  With 15+ years in design and 7+ in leadership, I&apos;ve scaled design impact across 32 countries, building distributed teams that deliver measurable business outcomes. I specialize in creating inclusive, high-performing design organizations that bridge user needs with business objectives.
-                </p>
-                <p>
-                  My approach combines strategic thinking with hands-on leadership, developing frameworks and processes that enable teams to work effectively across cultures and time zones. This includes career frameworks, quality assurance processes, and experimentation methodologies that scale globally.
-                </p>
+                <p>{t.about.paragraph1}</p>
+                <p>{t.about.paragraph2}</p>
               </div>
 
               <ButtonGroup>
@@ -69,14 +72,14 @@ export default function About() {
                   className="hover:transform hover:-translate-y-0.5 shadow-md"
                   onClick={() => window.open('https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing', '_blank')}
                 >
-                  Download CV
+                  {t.about.cta.cv}
                 </Button>
                 <Button
                   variant="secondary"
                   className="hover:transform hover:-translate-y-0.5"
                   onClick={() => window.open('https://medium.com/@nabuchler', '_blank')}
                 >
-                  Read my articles
+                  {t.about.cta.articles}
                 </Button>
               </ButtonGroup>
             </motion.div>

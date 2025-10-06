@@ -12,6 +12,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ClientOnly from '@/components/ClientOnly';
 import Icon from '@/components/ui/Icon';
+import { Locale, getTranslations } from '@/lib/i18n';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 // Section components
 import Hero from '@/components/sections/Hero';
@@ -22,7 +24,8 @@ import Experience from '@/components/sections/Experience';
 import LatestArticles from '@/components/sections/LatestArticles';
 import Contact from '@/components/sections/Contact';
 
-export default function Portfolio() {
+export default function Portfolio({ params }: { params: { locale: Locale } }) {
+  const t = getTranslations(params.locale);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState<string>('');
   const [activeSection, setActiveSection] = useState<string>('');
@@ -118,11 +121,11 @@ export default function Portfolio() {
   };
 
   const navigationItems = [
-    { name: 'About', id: 'about' },
-    { name: 'Cases', id: 'cases' },
-    { name: 'Leadership', id: 'leadership' },
-    { name: 'Experience', id: 'experience' },
-    { name: 'Contact', id: 'contact' }
+    { name: t.nav.about, id: 'about' },
+    { name: t.nav.cases, id: 'cases' },
+    { name: t.nav.leadership, id: 'leadership' },
+    { name: t.nav.experience, id: 'experience' },
+    { name: t.nav.contact, id: 'contact' }
   ];
 
   return (
@@ -168,7 +171,7 @@ export default function Portfolio() {
               <div className="flex items-center gap-3">
                 {/* Location and Time */}
                 <div className="flex items-center gap-2 text-[#ad8a6c]">
-                  <span className="font-raleway text-xs md:text-base">São Paulo</span>
+                  <span className="font-raleway text-xs md:text-base">{t.location.city}</span>
                   <div className="w-4 h-4 md:w-6 md:h-6 relative opacity-30">
                     <Image
                       src="/cy.svg"
@@ -178,6 +181,11 @@ export default function Portfolio() {
                     />
                   </div>
                   <span className="font-raleway text-xs md:text-base">{currentTime}</span>
+                </div>
+
+                {/* Language Switcher */}
+                <div className="hidden md:block">
+                  <LanguageSwitcher currentLocale={params.locale} />
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -222,7 +230,7 @@ export default function Portfolio() {
         </header>
 
         {/* Hero Section */}
-        <Hero onScrollToSection={scrollToSection} />
+        <Hero onScrollToSection={scrollToSection} locale={params.locale} />
 
         {/* Highlights Section */}
         <section className="py-8 md:py-12 -mt-8 md:-mt-12 overflow-hidden">
@@ -237,25 +245,25 @@ export default function Portfolio() {
                 {Array.from({ length: 6 }).map((_, setIndex) => (
                   <React.Fragment key={setIndex}>
                     <div className="highlight-item">
-                      <span className="highlight-text">150% growth in experimentation</span>
+                      <span className="highlight-text">{t.highlights.growth}</span>
                       <div className="highlight-icon">
                         <Image src="/gif.gif" alt="Animation" fill className="object-contain" unoptimized />
                       </div>
                     </div>
                     <div className="highlight-item">
-                      <span className="highlight-text">100% manager satisfaction</span>
+                      <span className="highlight-text">{t.highlights.satisfaction}</span>
                       <div className="highlight-icon">
                         <Image src="/gif.gif" alt="Animation" fill className="object-contain" unoptimized />
                       </div>
                     </div>
                     <div className="highlight-item">
-                      <span className="highlight-text">#1 promotion rate</span>
+                      <span className="highlight-text">{t.highlights.promotion}</span>
                       <div className="highlight-icon">
                         <Image src="/gif.gif" alt="Animation" fill className="object-contain" unoptimized />
                       </div>
                     </div>
                     <div className="highlight-item">
-                      <span className="highlight-text">32 countries</span>
+                      <span className="highlight-text">{t.highlights.countries}</span>
                       <div className="highlight-icon">
                         <Image src="/gif.gif" alt="Animation" fill className="object-contain" unoptimized />
                       </div>
@@ -268,22 +276,22 @@ export default function Portfolio() {
         </section>
 
         {/* Case Studies Section */}
-        <CaseStudies />
+        <CaseStudies locale={params.locale} />
 
         {/* How I Lead Section */}
-        <HowILead />
+        <HowILead locale={params.locale} />
 
         {/* About Me Section */}
-        <About />
+        <About locale={params.locale} />
 
         {/* Experience Section */}
-        <Experience />
+        <Experience locale={params.locale} />
 
         {/* Latest Articles Section */}
-        <LatestArticles />
+        <LatestArticles locale={params.locale} />
 
         {/* Contact Section */}
-        <Contact />
+        <Contact locale={params.locale} />
 
         {/* Footer */}
         <footer className="py-12 border-t border-[#ad8a6c]/20">
@@ -292,7 +300,7 @@ export default function Portfolio() {
               <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] space-y-4">
                 <div className="flex flex-col items-center gap-4">
                   <p className="text-center leading-relaxed">
-                    Crafted hands-on by Natasha — built with{' '}
+                    {t.footer.crafted}{' '}
                     <span className="inline-flex items-center gap-1">
                       Cursor
                       <Image
@@ -325,10 +333,10 @@ export default function Portfolio() {
                         className="opacity-60 hover:opacity-100 transition-opacity"
                       />
                     </span>
-                    , powered by Next.js, Tailwind CSS & Framer Motion.
+                    , {t.footer.powered}
                   </p>
                 </div>
-                <p>© 2025 Natasha Buchler. All rights reserved.</p>
+                <p>{t.footer.rights}</p>
               </div>
             </div>
           </div>

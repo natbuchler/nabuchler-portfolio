@@ -9,71 +9,62 @@ import { TitleSubTitle } from '@/components/ui/Typography';
 import { CardExperience } from '@/components/ui/Card';
 import Timeline, { TimelineItem } from '@/components/ui/Timeline';
 import Button, { ButtonGroup } from '@/components/Button';
+import { Locale, getTranslations } from '@/lib/i18n';
 
-export default function Experience() {
+interface ExperienceProps {
+  locale: Locale;
+}
+
+export default function Experience({ locale }: ExperienceProps) {
+  const t = getTranslations(locale);
+
   return (
     <section id="experience" className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-8">
         <div className="space-y-12 max-w-6xl mx-auto">
           <TitleSubTitle
-            title="Experience"
-            subtitle="A journey of building design organizations, scaling impact, and leading teams across global markets."
+            title={t.experience.title}
+            subtitle={t.experience.subtitle}
           />
 
           <Timeline lineImage="/Line-timeline.svg">
             <TimelineItem icon="ponto" iconColor="#421d13" index={0}>
               <CardExperience
-                role="Service Design Consultant"
-                company="Stealth AI Startup"
-                period="June 2025 - Present"
-                description="Defined UX vision and product narrative for AI solutions in a regulated sector, balancing innovation, governance, and user clarity."
-                achievements={[
-                  "Built scalable service design systems",
-                  "Facilitated stakeholder alignment",
-                  "Ensured product consistency and replicability"
-                ]}
+                role={t.experience.jobs.stealth.role}
+                company={t.experience.jobs.stealth.company}
+                period={t.experience.jobs.stealth.period}
+                description={t.experience.jobs.stealth.description}
+                achievements={t.experience.jobs.stealth.achievements}
               />
             </TimelineItem>
 
             <TimelineItem icon="cy" iconColor="#c95127" index={1}>
               <CardExperience
-                role="Global Product Design Manager"
-                company="AB InBev"
-                period="May 2022 - Sep 2025"
-                description="Own the strategic UX for BEES, a global B2B commerce platform operating in 30+ countries."
-                achievements={[
-                  "Lead core product journey teams",
-                  "Manage distributed design team",
-                  "Co-created global design career framework"
-                ]}
+                role={t.experience.jobs.abinbev.role}
+                company={t.experience.jobs.abinbev.company}
+                period={t.experience.jobs.abinbev.period}
+                description={t.experience.jobs.abinbev.description}
+                achievements={t.experience.jobs.abinbev.achievements}
               />
             </TimelineItem>
 
             <TimelineItem icon="ponto" iconColor="#421d13" index={2}>
               <CardExperience
-                role="Design Coordinator"
-                company="Vindi"
-                period="Aug 2020 – June 2021"
-                description="Managed DesignOps, Product Designers, and UX Research for fintech platform."
-                achievements={[
-                  "Created design career path",
-                  "Expanded team delivery capacity",
-                  "Promoted metric-driven design"
-                ]}
+                role={t.experience.jobs.vindi.role}
+                company={t.experience.jobs.vindi.company}
+                period={t.experience.jobs.vindi.period}
+                description={t.experience.jobs.vindi.description}
+                achievements={t.experience.jobs.vindi.achievements}
               />
             </TimelineItem>
 
             <TimelineItem icon="cy" iconColor="#c95127" index={3}>
               <CardExperience
-                role="Payment Strategy & UX Lead"
-                company="Zup Innovation"
-                period="Mar 2019 – Jul 2020"
-                description="Led UX strategy for telecom and finance products, directing redesigns and unified visions."
-                achievements={[
-                  "Redesigned Safra Bank app",
-                  "Defined Claro & Nextel payment solution",
-                  "Conducted discovery and research workshops"
-                ]}
+                role={t.experience.jobs.zup.role}
+                company={t.experience.jobs.zup.company}
+                period={t.experience.jobs.zup.period}
+                description={t.experience.jobs.zup.description}
+                achievements={t.experience.jobs.zup.achievements}
               />
             </TimelineItem>
           </Timeline>
@@ -85,14 +76,14 @@ export default function Experience() {
                 className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
                 onClick={() => window.open('https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing', '_blank')}
               >
-                Download CV
+                {t.experience.cta.cv}
               </Button>
               <Button
                 variant="secondary"
                 className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
                 onClick={() => window.open('https://medium.com/@nabuchler', '_blank')}
               >
-                Read my articles
+                {t.experience.cta.articles}
               </Button>
             </ButtonGroup>
           </div>

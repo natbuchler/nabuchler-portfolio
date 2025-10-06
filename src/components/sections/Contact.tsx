@@ -11,8 +11,14 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { TitleSubTitle } from '@/components/ui/Typography';
+import { Locale, getTranslations } from '@/lib/i18n';
 
-export default function Contact() {
+interface ContactProps {
+  locale: Locale;
+}
+
+export default function Contact({ locale }: ContactProps) {
+  const t = getTranslations(locale);
   const [emailCopied, setEmailCopied] = useState(false);
   const [hoveredPlatform, setHoveredPlatform] = useState<string | null>(null);
 
@@ -42,27 +48,27 @@ export default function Contact() {
   const platforms = [
     {
       name: 'Linkedin',
-      label: 'LinkedIn',
+      label: t.contact.platforms.linkedin.label,
       url: 'https://www.linkedin.com/in/nbuchler/',
-      ariaLabel: 'Visit my LinkedIn profile'
+      ariaLabel: t.contact.platforms.linkedin.ariaLabel
     },
     {
       name: 'Medium',
-      label: 'Medium',
+      label: t.contact.platforms.medium.label,
       url: 'https://medium.com/@nabuchler',
-      ariaLabel: 'Read my Medium articles'
+      ariaLabel: t.contact.platforms.medium.ariaLabel
     },
     {
       name: 'Email',
-      label: 'Email',
-      tooltip: 'Click to copy',
-      ariaLabel: 'Copy email address to clipboard'
+      label: t.contact.platforms.email.label,
+      tooltip: t.contact.platforms.email.tooltip,
+      ariaLabel: t.contact.platforms.email.ariaLabel
     },
     {
       name: 'CV',
-      label: 'Resume',
+      label: t.contact.platforms.cv.label,
       url: 'https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing',
-      ariaLabel: 'Download my resume'
+      ariaLabel: t.contact.platforms.cv.ariaLabel
     }
   ];
 
@@ -70,7 +76,7 @@ export default function Contact() {
     <section id="contact" className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-8">
         <div className="space-y-8 max-w-4xl mx-auto text-center">
-          <TitleSubTitle title="Get in touch" />
+          <TitleSubTitle title={t.contact.title} />
 
           {/* Value Proposition */}
           <motion.p
@@ -80,7 +86,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            Let's build something amazing together. I'm always open to discussing new opportunities and collaborations.
+            {t.contact.subtitle}
           </motion.p>
 
           {/* Contact Icons with Labels */}
@@ -171,8 +177,8 @@ export default function Contact() {
               </svg>
             </div>
             <div>
-              <p className="font-roboto-flex font-semibold text-sm">Email copied!</p>
-              <p className="font-roboto-flex text-xs text-[#6b6763] mt-0.5">nabuchler@gmail.com</p>
+              <p className="font-roboto-flex font-semibold text-sm">{t.contact.emailCopied.title}</p>
+              <p className="font-roboto-flex text-xs text-[#6b6763] mt-0.5">{t.contact.emailCopied.email}</p>
             </div>
           </div>
         </motion.div>

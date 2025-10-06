@@ -9,37 +9,44 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { TitleSubTitle } from '@/components/ui/Typography';
 import { CardInsight } from '@/components/ui/Card';
+import { Locale, getTranslations } from '@/lib/i18n';
 
-export default function HowILead() {
+interface HowILeadProps {
+  locale: Locale;
+}
+
+export default function HowILead({ locale }: HowILeadProps) {
+  const t = getTranslations(locale);
+
   return (
     <section id="leadership" className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-8">
         <div className="space-y-12 max-w-6xl mx-auto">
           <TitleSubTitle
-            title="How I lead"
-            subtitle="My approach to building design teams that deliver."
+            title={t.howILead.title}
+            subtitle={t.howILead.subtitle}
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <CardInsight
               icon="medal"
-              title="Cross-functional influence"
-              description="Building bridges between design, engineering, product and business teams to create aligned, high-impact solutions."
+              title={t.howILead.insights.crossFunctional.title}
+              description={t.howILead.insights.crossFunctional.description}
             />
             <CardInsight
               icon="strategy"
-              title="Balanced strategy"
-              description="Combining user-centered design thinking with business objectives to deliver solutions that are both meaningful and measurable"
+              title={t.howILead.insights.balanced.title}
+              description={t.howILead.insights.balanced.description}
             />
             <CardInsight
               icon="lamp"
-              title="Inclusive leadership"
-              description="Fostering diverse, inclusive environments where every voice is heard and every perspective adds value to the creative process."
+              title={t.howILead.insights.inclusive.title}
+              description={t.howILead.insights.inclusive.description}
             />
             <CardInsight
               icon="puzzle"
-              title="Problem framing"
-              description="Approaching complex challenges with systematic thinking, clear problem definition, and data-driven decision making."
+              title={t.howILead.insights.problemFraming.title}
+              description={t.howILead.insights.problemFraming.description}
             />
           </div>
 
@@ -59,7 +66,7 @@ export default function HowILead() {
               />
             </div>
             <blockquote className="font-playfair font-bold text-xl md:text-3xl text-[#6b6763] leading-relaxed">
-              &ldquo;Great design leadership isn&apos;t about having all the answers, it&apos;s about asking the right questions, creating the right environment, and empowering teams to discover solutions together.&rdquo;
+              &ldquo;{t.howILead.quote}&rdquo;
             </blockquote>
           </motion.div>
         </div>
