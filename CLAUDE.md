@@ -167,21 +167,31 @@ The project includes comprehensive Figma integration with two approaches:
 
 **Responsive Design**: Mobile-first approach with `md:` breakpoints for desktop layouts, especially in navigation and card layouts.
 
-**🚨 CRITICAL: Mobile Animation Policy**:
-- **NEVER use Framer Motion animations on mobile** (below `md:` breakpoint = < 768px)
-- Mobile layouts must use plain `<div>` elements instead of `<motion.div>`
-- Desktop layouts (>= 768px) can use `<motion.div>` with animations
-- Use separate mobile/desktop rendering blocks: `<div className="block md:hidden">` for mobile, `<div className="hidden md:block">` for desktop
-- This prevents "jittering" or "sambar" effects on mobile browsers
-- Button hover effects should also be desktop-only: `hover:transform hover:-translate-y-0.5` only when needed
-- **MotionDiv Component Available**: Use `MotionDiv` from `@/components/ui/MotionDiv` as a wrapper that automatically handles mobile/desktop split
-- Example pattern from Hero.tsx:
+**Animation Best Practices**:
+- ✅ **Use `whileInView` with `viewport={{ once: true }}`** for scroll-triggered animations
+- ✅ Animations work well on **all breakpoints** (mobile and desktop) when properly optimized
+- ✅ Keep animations **subtle and performant**: `opacity` and small `y` translations (10-20px)
+- ✅ Use **short durations** (0.3-0.6s) for snappy feel
+- ✅ Always include `viewport={{ once: true }}` to prevent re-triggering on scroll
+- 🎯 **Hero section exception**: Keep mobile/desktop split for initial page load animations
+- Example pattern (works on all breakpoints):
+  ```tsx
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+    className="flex flex-col md:flex-row gap-8"
+  >
+    {/* Content - animates smoothly on mobile and desktop */}
+  </motion.div>
+  ```
+
+- **Hero section pattern** (mobile/desktop split for initial load):
   ```tsx
   {/* Mobile Layout - NO ANIMATIONS */}
   <div className="block md:hidden">
-    <div className="w-full flex justify-center pt-8 pb-6">
-      {/* Plain content without motion */}
-    </div>
+    {/* Plain content without motion */}
   </div>
 
   {/* Desktop Layout - WITH ANIMATIONS */}
@@ -194,20 +204,6 @@ The project includes comprehensive Figma integration with two approaches:
       {/* Animated content */}
     </motion.div>
   </div>
-  ```
-
-  Or use the MotionDiv wrapper:
-  ```tsx
-  import { MotionDiv } from '@/components/ui/MotionDiv';
-
-  <MotionDiv
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    className="your-classes"
-  >
-    {/* Content - will be static on mobile, animated on desktop */}
-  </MotionDiv>
   ```
 
 **Figma Integration**: Comprehensive integration accessible via footer "Figma MCP ✨" link, opens modal with multiple tabs:
