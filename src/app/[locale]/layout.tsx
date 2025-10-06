@@ -48,15 +48,17 @@ export function generateStaticParams() {
   }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }>) {
+  const { locale } = await params;
+
   return (
-    <html lang={params.locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
         <div
           className={`${playfairDisplay.variable} ${robotoFlex.variable} ${roboto.variable} ${raleway.variable} ${comfortaa.variable}`}
