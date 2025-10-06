@@ -67,7 +67,9 @@ export default function Contact({ locale }: ContactProps) {
     {
       name: 'CV',
       label: t.contact.platforms.cv.label,
-      url: 'https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing',
+      url: locale === 'pt'
+        ? 'https://drive.google.com/file/d/1z0i9SkhLjH1SYk1k_LwFVJDwfzwdPw9b/view?usp=sharing'
+        : 'https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing',
       ariaLabel: t.contact.platforms.cv.ariaLabel
     }
   ];

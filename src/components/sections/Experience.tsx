@@ -74,7 +74,12 @@ export default function Experience({ locale }: ExperienceProps) {
               <Button
                 variant="primary"
                 className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
-                onClick={() => window.open('https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing', '_blank')}
+                onClick={() => window.open(
+                  locale === 'pt'
+                    ? 'https://drive.google.com/file/d/1z0i9SkhLjH1SYk1k_LwFVJDwfzwdPw9b/view?usp=sharing'
+                    : 'https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing',
+                  '_blank'
+                )}
               >
                 {t.experience.cta.cv}
               </Button>

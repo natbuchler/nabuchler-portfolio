@@ -70,7 +70,12 @@ export default function About({ locale }: AboutProps) {
                 <Button
                   variant="primary"
                   className="hover:transform hover:-translate-y-0.5 shadow-md"
-                  onClick={() => window.open('https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing', '_blank')}
+                  onClick={() => window.open(
+                    locale === 'pt'
+                      ? 'https://drive.google.com/file/d/1z0i9SkhLjH1SYk1k_LwFVJDwfzwdPw9b/view?usp=sharing'
+                      : 'https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing',
+                    '_blank'
+                  )}
                 >
                   {t.about.cta.cv}
                 </Button>
