@@ -226,6 +226,11 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
                       )}
                     </button>
                   ))}
+
+                  {/* Language Switcher - Mobile */}
+                  <div className="pt-3 border-t border-[#ad8a6c]/20">
+                    <LanguageSwitcher currentLocale={locale} />
+                  </div>
                 </div>
               </nav>
             )}

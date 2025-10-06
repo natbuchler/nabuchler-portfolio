@@ -285,6 +285,11 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
                     </Link>
                   );
                 })}
+
+                {/* Language Switcher - Mobile */}
+                <div className="pt-3 border-t border-[#ad8a6c]/20">
+                  <LanguageSwitcher currentLocale={locale} />
+                </div>
               </div>
             </nav>
           )}
