@@ -47,14 +47,17 @@ export default function Hero({ onScrollToSection }: HeroProps) {
       <div className="relative z-10 w-full overflow-x-hidden">
         {/* Mobile Layout - Image above text - NO ANIMATIONS */}
         <div className="block md:hidden">
-          {/* Mobile Icon - NO ANIMATION */}
+          {/* Mobile Photo - NO ANIMATION */}
           <div className="w-full flex justify-center pt-8 pb-6">
-            <Image
-              src="/rosto.svg"
-              alt="Ícone rosto"
-              width={120}
-              height={120}
-            />
+            <div className="relative w-[200px] h-[200px] rounded-full overflow-hidden">
+              <Image
+                src="/Foto-Natasha.png"
+                alt="Natasha Buchler"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
 
           {/* Mobile Content - NO ANIMATION */}
