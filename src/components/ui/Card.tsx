@@ -37,6 +37,8 @@ export interface CardCaseProps {
   bgVariant?: "light" | "medium";
   /** Optional click handler */
   onClick?: () => void;
+  /** Button text (translatable) */
+  buttonText?: string;
 }
 
 /**
@@ -51,7 +53,8 @@ export function CardCase({
   description,
   image,
   bgVariant = "light",
-  onClick
+  onClick,
+  buttonText = "Dive Deeper"
 }: CardCaseProps) {
   const isRight = side === "Right";
   const bgColor = bgVariant === "light" ? "bg-[#d9ccc1]" : "bg-white";
@@ -86,7 +89,7 @@ export function CardCase({
           {/* Button - Mobile aligned left, Desktop follows side */}
           <div className={`flex h-[48px] items-center py-4 w-full ${isRight ? 'justify-start md:justify-end md:pl-4' : 'justify-start -ml-4'}`}>
             <ButtonTertiary variant="right" onClick={(e) => { e?.stopPropagation(); onClick?.(); }}>
-              Dive Deeper
+              {buttonText}
             </ButtonTertiary>
           </div>
         </div>

@@ -22,9 +22,22 @@
   },
   "caseStudies": {
     "title": "Case studies",
+    "diveDeeper": "Dive deeper",
     "case3tpm": {
       "title": "3TPM - Global Product Architecture",
-      "description": "Led the design and implementation of a comprehensive product architecture framework across 32 countries, resulting in 150% growth in experimentation."
+      "description": "Led the design and implementation of a comprehensive product architecture framework across 32 countries."
+    },
+    "passwordProtection": {
+      "title": "Protected Case Study",
+      "subtitle": "This case study is password protected",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter password",
+      "showPassword": "Show",
+      "hidePassword": "Hide",
+      "enterButton": "Enter",
+      "verifying": "Verifying...",
+      "backButton": "Back to portfolio",
+      "incorrectPassword": "Incorrect password. Please try again."
     }
   },
   "howILead": {
@@ -155,5 +168,144 @@
   },
   "location": {
     "city": "São Paulo"
+  },
+  "case3tpm": {
+    "navigation": {
+      "about": "About",
+      "cases": "Cases",
+      "leadership": "Leadership",
+      "experience": "Experience",
+      "contact": "Contact"
+    },
+    "hero": {
+      "title": "3TPM - Global Product Architecture",
+      "subtitle": "Leading cross-functional design strategy to solve product variant complexity across +30 countries, enabling major partnerships and delivering measurable business impact in one quarter."
+    },
+    "numbers": [
+      { "number": "+24%", "label": "Conversion Rate" },
+      { "number": "+21%", "label": "Ticket Size (BR)" },
+      { "number": "+30", "label": "Countries" },
+      { "number": "64k+", "label": "SKUs" }
+    ],
+    "problem": {
+      "title": "The problem",
+      "paragraphs": [
+        "Picture this: a customer in Argentina searching for \"Cerveza Patricia 960ml\" sees two products with identical images and names, but different pack sizes. They add the wrong one to cart, complete the purchase, and only realize the mistake when the delivery arrives.",
+        "This wasn't an isolated incident. It was a symptom of a much larger problem."
+      ],
+      "quote": "BEES catalog exploded from 600 to 64,000+ SKUs in just 3 years. Each of 32 markets managed taxonomy independently, same product, different images, inconsistent data, zero standardization.",
+      "additionalParagraphs": [
+        "The chaos wasn't just frustrating users. It was blocking contracts with Nestlé, L'Oréal, and Gloria. These partners needed a governed, scalable platform; and our current architecture couldn't deliver it.",
+        "Search was broken, recommendations were unreliable and every new marketplace integration made things worse."
+      ]
+    },
+    "strategicChallenge": {
+      "title": "The strategic challenge",
+      "intro": "When I took over the main shopping journey at BEES, I inherited more than broken taxonomy. I inherited a structural problem that required alignment across:",
+      "bulletPoints": [
+        "Platform teams building new backend architecture (Catalog Admin, 3TPM structure)",
+        "External partners like Nestlé and L'Oréal demanding specific capabilities to go live",
+        "32 markets with different needs, languages, and business models",
+        "Multiple value streams (pricing, data, inventory) all impacted by the change"
+      ],
+      "tags": ["Cross-functional Leadership", "Stakeholder Management", "Systems Thinking", "Strategic Design"],
+      "conclusion": "The biggest challenge wasn't design, it was alignment. Different teams had conflicting priorities. Platform couldn't prioritize fast enough and commercial pressure was mounting."
+    },
+    "teamsApproach": {
+      "title": "Team's approach",
+      "section1": {
+        "subtitle": "1. Research before solutions",
+        "paragraphs": ["Before defining any solution, I led qualitative field research in Argentina and São Paulo with 15+ POCs across Off Trade, On Trade, and Pharma segments. The goal: understand the real pain, not assume it."],
+        "keyFindingsLabel": "Key findings:",
+        "findings": [
+          "Users relied heavily on visual information, making variant differences critical",
+          "Purchase errors weren't just annoying; they eroded trust in the catalog",
+          "POCs needed clarity fast, most orders happened in high-pressure, time-constrained moments"
+        ]
+      },
+      "section2": {
+        "subtitle": "2. Facilitating cross-functional alignment",
+        "paragraphs": [
+          "I facilitated an inception with Product, Engineering, Data Science, and Nestlé representatives. This wasn't a design review, it was a strategic alignment session.",
+          "We emerged with two clear hypotheses:"
+        ],
+        "hypotheses": [
+          { "title": "App (BEES Customer)", "description": "At the point of sale, clarity drives conversion. If the app doesn't guide the choice well, the order doesn't happen." },
+          { "title": "Platform (BEES One)", "description": "How do you scale a global B2B operation if your catalog still treats every SKU as an isolated unit?" }
+        ],
+        "conclusion": "This alignment was critical. It ensured design work wasn't just guessing, it was grounded in real user needs and tailored to our platform's strategic constraints."
+      },
+      "section3": {
+        "subtitle": "3. Validating with users",
+        "description": "I led 12 usability tests in São Paulo (Off Trade, On Trade, Pharma) using high-fidelity Figma prototypes. We tested two extremes: detailed variant presentation vs. simplified.",
+        "resultsLabel": "Results were clear:",
+        "results": [
+          "25% faster purchase completion",
+          "40% higher satisfaction in navigation",
+          "60% found it easier to compare options"
+        ],
+        "userQuote": {
+          "quote": "I click less and understand better what I'm buying.",
+          "author": "User during testing"
+        }
+      },
+      "section4": {
+        "subtitle": "4. The \"MVP of the MVP\" decision",
+        "paragraphs": [
+          "Here's where leadership mattered most. Platform teams couldn't deliver the full 3TPM architecture in time. Commercial pressure was intense. Nestlé and L'Oréal contracts were on hold.",
+          "I made the call: ship a simplified version directly in the app, without waiting for complete platform support."
+        ],
+        "meantLabel": "This meant:",
+        "meant": [
+          "Trade-offs on what was \"must-have\" vs. \"nice-to-have\"",
+          "Building the variant selector experience in the front-end first",
+          "Accepting technical debt we'd need to refactor later"
+        ],
+        "conclusion": "It wasn't the perfect solution. But it was the right solution for that moment."
+      }
+    },
+    "impact": {
+      "title": "The impact",
+      "intro": "Despite shipping an \"MVP of the MVP\" without full platform support, results were immediate and significant:",
+      "bulletPoints": [
+        "Nestlé and L'Oréal contracts unblocked within 4 weeks",
+        "Product hierarchy now scalable across 32 countries",
+        "3TPM architecture validated in real-world conditions before full backend rollout"
+      ],
+      "impactCards": [
+        { "title": "+24% Conversion", "description": "Across 7 pilot markets vs. markets without the feature" },
+        { "title": "Contract unblocked", "description": "Nestlé & L'Oréal went live 4 weeks after MVP" },
+        { "title": "+21% Ticket Size", "description": "In Brazil, where variant clarity drove larger orders" },
+        { "title": "R$250k+ Orders", "description": "Argentina saw order sizes over R$250,000 with improved variant selection" }
+      ],
+      "conclusion": "Critically, we achieved this in one quarter, working within severe technical and timeline constraints. The variant selector wasn't just a UX improvement. It was a business unlock."
+    },
+    "learned": {
+      "title": "What I learned",
+      "intro": [
+        "This project taught me that great systems aren't born from perfect screens, they're built on clear conversations, smart trade-offs, and team trust.",
+        "The biggest challenge wasn't technical. It was human:"
+      ],
+      "challenges": [
+        "Aligning siloed teams with conflicting priorities",
+        "Navigating political tensions between platform and product",
+        "Making tough calls when perfect wasn't possible",
+        "Holding space for the user's voice when business pressure was intense"
+      ],
+      "growth": "I grew my influence significantly. I earned trust from engineers, PMs, data teams, and senior leadership by showing I could:",
+      "achievements": [
+        "Facilitate difficult conversations",
+        "Prioritize ruthlessly under constraints",
+        "Deliver real business impact, not just polished designs",
+        "Protect the user experience when it mattered most"
+      ],
+      "personalQuote": {
+        "quote": "This is the kind of work I love most: living at the intersection of strategic design, business impact, and cross-functional leadership.",
+        "author": "Myself"
+      }
+    },
+    "nextCase": {
+      "title": "Coming soon"
+    }
   }
 }

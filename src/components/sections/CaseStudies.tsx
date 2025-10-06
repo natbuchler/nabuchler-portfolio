@@ -35,6 +35,7 @@ export default function CaseStudies({ locale }: CaseStudiesProps) {
               description={t.caseStudies.case3tpm.description}
               image={IMG_PHONE}
               bgVariant="light"
+              buttonText={t.caseStudies.diveDeeper}
               onClick={() => window.location.href = `/${locale}/cases/3tpm`}
             />
           </div>
