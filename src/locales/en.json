@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "about": "About",
+    "cases": "Cases",
+    "leadership": "Leadership",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hey, I'm Natasha Buchler,",
+    "description": "a Strategic Designer & Executive Leader with 7+ years leading design teams across B2B platforms, fintech, and global marketplaces. Building high-performing teams and scaling design frameworks that drive measurable business impact across 32 countries.",
+    "cta": {
+      "cases": "View case studies",
+      "leadership": "About my leadership"
+    }
+  },
+  "highlights": {
+    "growth": "150% growth in experimentation",
+    "satisfaction": "100% manager satisfaction",
+    "promotion": "#1 promotion rate",
+    "countries": "32 countries"
+  },
+  "footer": {
+    "crafted": "Crafted hands-on by Natasha — built with",
+    "powered": "powered by Next.js, Tailwind CSS & Framer Motion.",
+    "rights": "© 2025 Natasha Buchler. All rights reserved."
+  },
+  "location": {
+    "city": "São Paulo"
+  }
+}
