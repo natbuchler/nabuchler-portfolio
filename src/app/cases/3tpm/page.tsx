@@ -73,7 +73,12 @@ export default function Case3TPM() {
   if (!isAuthenticated) {
     return (
       <div className="bg-[#e3dcd6] min-h-screen flex items-center justify-center px-6 py-12">
-        <div className="w-full md:w-auto mx-auto">
+        <motion.div
+          className="w-full md:w-auto mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl p-8 md:p-12 md:min-w-[480px] md:max-w-[480px] shadow-xl border border-[#ad8a6c]/20">
             <div className="text-center mb-10">
               <h1 className="font-playfair font-bold text-3xl md:text-[40px] text-[#421d13] mb-3 leading-tight">
@@ -132,7 +137,7 @@ export default function Case3TPM() {
               </div>
             </form>
           </div>
-        </div>
+        </motion.div>
       </div>
     );
   }
@@ -256,43 +261,22 @@ export default function Case3TPM() {
 
         {/* Title Section */}
         <section className="mb-16 md:mb-24">
-          {/* Mobile - NO ANIMATION */}
-          <div className="flex flex-col md:hidden gap-8 items-center">
-            <div className="flex-1 w-full">
-              <h1 className="font-playfair font-bold text-4xl leading-[1.2] text-[#421d13] mb-6">
-                3TPM - Global Product Architecture
-              </h1>
-              <p className="font-roboto-flex font-light text-lg leading-[1.5] text-[#6b6763] tracking-[0.48px]">
-                Leading cross-functional design strategy to solve product variant complexity across +30 countries, enabling major partnerships and delivering measurable business impact in one quarter.
-              </p>
-            </div>
-            <div className="relative w-full h-[300px] rounded-3xl overflow-hidden shrink-0">
-              <Image
-                src="/Befor-after.png"
-                alt="Before and After comparison"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-
-          {/* Desktop - WITH ANIMATION */}
           <motion.div
-            className="hidden md:flex flex-row gap-12 items-center"
+            className="flex flex-col md:flex-row gap-8 md:gap-12 items-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="flex-1 w-full max-w-[655px]">
-              <h1 className="font-playfair font-bold text-[64px] leading-[1.2] text-[#421d13] mb-8">
+            <div className="flex-1 w-full md:max-w-[655px]">
+              <h1 className="font-playfair font-bold text-4xl md:text-[64px] leading-[1.2] text-[#421d13] mb-6 md:mb-8">
                 3TPM - Global Product Architecture
               </h1>
-              <p className="font-roboto-flex font-light text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+              <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
                 Leading cross-functional design strategy to solve product variant complexity across +30 countries, enabling major partnerships and delivering measurable business impact in one quarter.
               </p>
             </div>
-            <div className="relative w-[558px] h-[553.5px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full h-[400px] md:w-[558px] md:h-[553.5px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/Befor-after.png"
                 alt="Before and After comparison"
@@ -305,17 +289,8 @@ export default function Case3TPM() {
 
         {/* Numbers Section */}
         <section className="mb-16 md:mb-24">
-          {/* Mobile - NO ANIMATION */}
-          <div className="flex md:hidden flex-wrap gap-4 justify-center">
-            <CardNumbers number="+24" label="Conversion Rate" />
-            <CardNumbers number="+21%" label="Ticket Size (BR)" />
-            <CardNumbers number="+30" label="Countries" />
-            <CardNumbers number="64k+" label="SKUs" />
-          </div>
-
-          {/* Desktop - WITH ANIMATION */}
           <motion.div
-            className="hidden md:flex flex-wrap gap-7 justify-center"
+            className="flex flex-wrap gap-4 md:gap-7 justify-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -330,7 +305,13 @@ export default function Case3TPM() {
 
         {/* Problem Section */}
         <section className="mb-16 md:mb-24">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
+          <motion.div
+            className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <div className="w-full md:max-w-[637px]">
               <TitleCase title="The problem" />
               <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
@@ -342,7 +323,7 @@ export default function Case3TPM() {
                 </p>
               </div>
             </div>
-            <div className="relative w-full md:w-[518px] h-[300px] md:h-[542.5px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full h-[400px] md:w-[518px] md:h-[542.5px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/Photo arm.png"
                 alt="Product architecture challenge"
@@ -350,64 +331,110 @@ export default function Case3TPM() {
                 className="object-contain"
               />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Highlighted Quote */}
-          <QuoteBlock
-            quote="BEES catalog exploded from 600 to 64,000+ SKUs in just 3 years. Each of 32 markets managed taxonomy independently, same product, different images, inconsistent data, zero standardization."
-            size="large"
-            className="mb-8 bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <QuoteBlock
+              quote="BEES catalog exploded from 600 to 64,000+ SKUs in just 3 years. Each of 32 markets managed taxonomy independently, same product, different images, inconsistent data, zero standardization."
+              size="large"
+              className="mb-8 bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl"
+            />
+          </motion.div>
 
-          <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
-            <p>
-              The chaos wasn&apos;t just frustrating users. It was blocking contracts with Nestlé, L&apos;Oréal, and Gloria. These partners needed a governed, scalable platform; and our current architecture couldn&apos;t deliver it.
-            </p>
-            <p>
-              Search was broken, recommendations were unreliable and every new marketplace integration made things worse.
-            </p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6">
+              <p>
+                The chaos wasn&apos;t just frustrating users. It was blocking contracts with Nestlé, L&apos;Oréal, and Gloria. These partners needed a governed, scalable platform; and our current architecture couldn&apos;t deliver it.
+              </p>
+              <p>
+                Search was broken, recommendations were unreliable and every new marketplace integration made things worse.
+              </p>
+            </div>
+          </motion.div>
         </section>
 
         {/* Strategic Challenge Section */}
         <section className="mb-16 md:mb-24">
           <TitleCase title="The strategic challenge" />
 
-          <div className="relative w-full h-[300px] md:h-[638px] rounded-3xl overflow-hidden mb-8">
-            <Image
-              src="/Fluxogram.png"
-              alt="Strategic challenge flowchart"
-              fill
-              className="object-contain"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative w-full h-[400px] md:h-[638px] rounded-3xl overflow-hidden mb-8">
+              <Image
+                src="/Fluxogram.png"
+                alt="Strategic challenge flowchart"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
+              When I took over the main shopping journey at BEES, I inherited more than broken taxonomy. I inherited a structural problem that required alignment across:
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <BulletList
+              iconType="brown-cy"
+              items={[
+                'Platform teams building new backend architecture (Catalog Admin, 3TPM structure)',
+                'External partners like Nestlé and L\'Oréal demanding specific capabilities to go live',
+                '32 markets with different needs, languages, and business models',
+                'Multiple value streams (pricing, data, inventory) all impacted by the change'
+              ]}
+              className="mb-8"
             />
-          </div>
+          </motion.div>
 
-          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
-            When I took over the main shopping journey at BEES, I inherited more than broken taxonomy. I inherited a structural problem that required alignment across:
-          </p>
-
-          <BulletList
-            iconType="brown-cy"
-            items={[
-              'Platform teams building new backend architecture (Catalog Admin, 3TPM structure)',
-              'External partners like Nestlé and L\'Oréal demanding specific capabilities to go live',
-              '32 markets with different needs, languages, and business models',
-              'Multiple value streams (pricing, data, inventory) all impacted by the change'
-            ]}
-            className="mb-8"
-          />
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-6 mb-8">
+          <motion.div
+            className="flex flex-wrap gap-6 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <Tag label="Cross-functional Leadership" />
             <Tag label="Stakeholder Management" />
             <Tag label="Systems Thinking" />
             <Tag label="Strategic Design" />
-          </div>
+          </motion.div>
 
-          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
-            The biggest challenge wasn&apos;t design, it was alignment. Different teams had conflicting priorities. Platform couldn&apos;t prioritize fast enough and commercial pressure was mounting.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+              The biggest challenge wasn&apos;t design, it was alignment. Different teams had conflicting priorities. Platform couldn&apos;t prioritize fast enough and commercial pressure was mounting.
+            </p>
+          </motion.div>
         </section>
 
         {/* Team's Approach Section */}
@@ -415,7 +442,13 @@ export default function Case3TPM() {
           <TitleCase title="Team's approach" />
 
           {/* 1. Research before solutions */}
-          <div className="flex flex-col md:flex-row gap-8 md:gap-4 mb-12">
+          <motion.div
+            className="flex flex-col md:flex-row gap-8 md:gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <div className="flex-1 w-full md:max-w-[678px] space-y-6">
               <h3 className="font-playfair font-bold text-2xl md:text-[28px] leading-[44px] text-[#c95127]">
                 1. Research before solutions
@@ -435,7 +468,7 @@ export default function Case3TPM() {
                 ]}
               />
             </div>
-            <div className="relative w-full md:w-[507px] h-[300px] md:h-[508.5px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full h-[400px] md:w-[507px] md:h-[508.5px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/Team.png"
                 alt="Team collaboration"
@@ -443,10 +476,16 @@ export default function Case3TPM() {
                 className="object-contain"
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* 2. Facilitating cross-functional alignment */}
-          <div className="mb-12">
+          <motion.div
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <h3 className="font-playfair font-bold text-2xl md:text-[28px] leading-[44px] text-[#c95127] mb-6">
               2. Facilitating cross-functional alignment
             </h3>
@@ -479,11 +518,17 @@ export default function Case3TPM() {
             <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
               This alignment was critical. It ensured design work wasn&apos;t just guessing, it was grounded in real user needs and tailored to our platform&apos;s strategic constraints.
             </p>
-          </div>
+          </motion.div>
 
           {/* 3. Validating with users */}
-          <div className="flex flex-col md:flex-row gap-8 md:gap-14 mb-12">
-            <div className="relative w-full md:w-[636.5px] h-[300px] md:h-[643px] rounded-3xl overflow-hidden shrink-0 order-2 md:order-1">
+          <motion.div
+            className="flex flex-col md:flex-row gap-8 md:gap-14 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative w-full h-[400px] md:w-[636.5px] md:h-[643px] rounded-3xl overflow-hidden shrink-0 md:order-1">
               <Image
                 src="/simplified-detailed.png"
                 alt="Simplified vs Detailed view"
@@ -491,7 +536,7 @@ export default function Case3TPM() {
                 className="object-contain"
               />
             </div>
-            <div className="flex-1 w-full md:max-w-[510px] space-y-6 order-1 md:order-2">
+            <div className="flex-1 w-full md:max-w-[510px] space-y-6 md:order-2">
               <h3 className="font-playfair font-bold text-2xl md:text-[28px] leading-[44px] text-[#c95127]">
                 3. Validating with users
               </h3>
@@ -510,18 +555,30 @@ export default function Case3TPM() {
                 ]}
               />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Quote */}
-          <QuoteBlock
-            quote="I click less and understand better what I'm buying."
-            author="User during testing"
-            size="large"
-            className="mb-12"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <QuoteBlock
+              quote="I click less and understand better what I'm buying."
+              author="User during testing"
+              size="large"
+              className="mb-12"
+            />
+          </motion.div>
 
           {/* 4. The "MVP of the MVP" decision */}
-          <div className="flex flex-col md:flex-row gap-8 md:gap-14">
+          <motion.div
+            className="flex flex-col md:flex-row gap-8 md:gap-14"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             <div className="flex-1 w-full md:max-w-[760px] space-y-6">
               <h3 className="font-playfair font-bold text-2xl md:text-[28px] leading-[44px] text-[#c95127]">
                 4. The &quot;MVP of the MVP&quot; decision
@@ -549,7 +606,7 @@ export default function Case3TPM() {
                 It wasn&apos;t the perfect solution. But it was the right solution for that moment.
               </p>
             </div>
-            <div className="relative w-full md:w-[326px] h-[300px] md:h-[643px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full h-[500px] md:w-[326px] md:h-[643px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/mvp=mvp.png"
                 alt="MVP of MVP"
@@ -557,26 +614,40 @@ export default function Case3TPM() {
                 className="object-contain"
               />
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Impact Section */}
         <section className="mb-16 md:mb-24">
           <TitleCase title="The impact" />
 
-          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
-            Despite shipping an &quot;MVP of the MVP&quot; without full platform support, results were immediate and significant:
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
+              Despite shipping an &quot;MVP of the MVP&quot; without full platform support, results were immediate and significant:
+            </p>
+          </motion.div>
 
-          <BulletList
-            iconType="orange-point"
-            items={[
-              'Nestlé and L\'Oréal contracts unblocked within 4 weeks',
-              'Product hierarchy now scalable across 32 countries',
-              '3TPM architecture validated in real-world conditions before full backend rollout'
-            ]}
-            className="mb-10"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <BulletList
+              iconType="orange-point"
+              items={[
+                'Nestlé and L\'Oréal contracts unblocked within 4 weeks',
+                'Product hierarchy now scalable across 32 countries',
+                '3TPM architecture validated in real-world conditions before full backend rollout'
+              ]}
+              className="mb-10"
+            />
+          </motion.div>
 
           <div className="flex flex-wrap gap-4 md:gap-7 justify-center mb-10">
             {[
@@ -585,74 +656,131 @@ export default function Case3TPM() {
               { title: '+21% Ticket Size', desc: 'In Brazil, where variant clarity drove larger orders' },
               { title: 'R$250k+ Orders', desc: 'Argentina saw order sizes over R$250,000 with improved variant selection' }
             ].map((item, i) => (
-              <div key={i} className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl p-6 w-full md:w-[281px]">
+              <motion.div
+                key={i}
+                className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl p-6 w-full md:w-[281px]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 + (i * 0.1) }}
+                viewport={{ once: true }}
+              >
                 <h3 className="font-playfair font-semibold text-2xl md:text-[28px] text-[#421d13] tracking-[0.56px] mb-4">
                   {item.title}
                 </h3>
                 <p className="font-roboto-flex text-base md:text-[18px] leading-[1.5] text-[#6b6763] tracking-[0.36px]">
                   {item.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
-            Critically, we achieved this in one quarter, working within severe technical and timeline constraints. The variant selector wasn&apos;t just a UX improvement. It was a business unlock.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px]">
+              Critically, we achieved this in one quarter, working within severe technical and timeline constraints. The variant selector wasn&apos;t just a UX improvement. It was a business unlock.
+            </p>
+          </motion.div>
         </section>
 
         {/* What I Learned Section */}
         <section className="mb-16 md:mb-24">
           <TitleCase title="What I learned" />
 
-          <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6 mb-6">
-            <p>
-              This project taught me that great systems aren&apos;t born from perfect screens—they&apos;re built on clear conversations, smart trade-offs, and team trust.
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] space-y-6 mb-6">
+              <p>
+                This project taught me that great systems aren&apos;t born from perfect screens—they&apos;re built on clear conversations, smart trade-offs, and team trust.
+              </p>
+              <p>The biggest challenge wasn&apos;t technical. It was human:</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <BulletList
+              iconType="orange-point"
+              items={[
+                'Aligning siloed teams with conflicting priorities',
+                'Navigating political tensions between platform and product',
+                'Making tough calls when perfect wasn\'t possible',
+                'Holding space for the user\'s voice when business pressure was intense'
+              ]}
+              className="mb-10"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
+              I grew my influence significantly. I earned trust from engineers, PMs, data teams, and senior leadership by showing I could:
             </p>
-            <p>The biggest challenge wasn&apos;t technical. It was human:</p>
-          </div>
+          </motion.div>
 
-          <BulletList
-            iconType="orange-point"
-            items={[
-              'Aligning siloed teams with conflicting priorities',
-              'Navigating political tensions between platform and product',
-              'Making tough calls when perfect wasn\'t possible',
-              'Holding space for the user\'s voice when business pressure was intense'
-            ]}
-            className="mb-10"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <BulletList
+              iconType="brown-cy"
+              items={[
+                'Facilitate difficult conversations',
+                'Prioritize ruthlessly under constraints',
+                'Deliver real business impact, not just polished designs',
+                'Protect the user experience when it mattered most'
+              ]}
+              className="mb-10"
+            />
+          </motion.div>
 
-          <p className="font-roboto-flex font-light text-lg md:text-[24px] leading-[1.5] text-[#6b6763] tracking-[0.48px] mb-6">
-            I grew my influence significantly. I earned trust from engineers, PMs, data teams, and senior leadership by showing I could:
-          </p>
-
-          <BulletList
-            iconType="brown-cy"
-            items={[
-              'Facilitate difficult conversations',
-              'Prioritize ruthlessly under constraints',
-              'Deliver real business impact, not just polished designs',
-              'Protect the user experience when it mattered most'
-            ]}
-            className="mb-10"
-          />
-
-          <QuoteBlock
-            quote="This is the kind of work I love most: living at the intersection of strategic design, business impact, and cross-functional leadership."
-            author="Myself"
-            size="large"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <QuoteBlock
+              quote="This is the kind of work I love most: living at the intersection of strategic design, business impact, and cross-functional leadership."
+              author="Myself"
+              size="large"
+            />
+          </motion.div>
         </section>
 
         {/* Next Case Section */}
-        <section className="mb-16 md:mb-24 flex justify-center md:justify-end">
-          <CardCaseS
-            title="Coming soon"
-            image=""
-            variant="next"
-            disabled={true}
-          />
+        <section className="mb-16 md:mb-24">
+          <motion.div
+            className="flex justify-center md:justify-end"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <CardCaseS
+              title="Coming soon"
+              image=""
+              variant="next"
+              disabled={true}
+            />
+          </motion.div>
         </section>
 
       </main>
