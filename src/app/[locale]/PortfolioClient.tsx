@@ -127,8 +127,7 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
     { name: t.nav.about, id: 'about' },
     { name: t.nav.cases, id: 'cases' },
     { name: t.nav.leadership, id: 'leadership' },
-    { name: t.nav.experience, id: 'experience' },
-    { name: t.nav.contact, id: 'contact' }
+    { name: t.nav.experience, id: 'experience' }
   ];
 
   return (
@@ -155,7 +154,7 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
                     <button
                       key={item.name}
                       onClick={() => scrollToSection(item.id)}
-                      className={`font-raleway font-medium transition-all duration-200 relative ${
+                      className={`font-raleway font-medium text-[18px] leading-[28px] transition-all duration-200 relative ${
                         activeSection === item.id
                           ? 'text-[#ad8a6c] font-semibold'
                           : 'text-[#421d13] hover:text-[#ad8a6c]'
@@ -167,6 +166,13 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
                       )}
                     </button>
                   ))}
+                  {/* Contact Button - Separate from navigation items */}
+                  <button
+                    onClick={() => scrollToSection('contact')}
+                    className="bg-[#421d13] text-[#e3dcd6] font-roboto font-medium text-[18px] leading-[1.5] px-6 py-2 rounded-lg hover:bg-[#5a2718] transition-colors duration-200"
+                  >
+                    {t.nav.contact}
+                  </button>
                 </nav>
               </div>
 
