@@ -123,6 +123,28 @@
           "Defined Claro & Nextel payment solution",
           "Conducted discovery and research workshops"
         ]
+      },
+      "nttdata": {
+        "role": "UX Lead",
+        "company": "NTT Data",
+        "period": "Oct 2018 – Mar 2019",
+        "description": "Led UX/UI teams on financial services products, delivering comprehensive design solutions.",
+        "achievements": [
+          "Delivered personas and wireframes",
+          "Created prototypes and flows",
+          "Facilitated stakeholder workshops"
+        ]
+      },
+      "previous": {
+        "role": "Previous Experience",
+        "company": "Consultant & UX Designer",
+        "period": "2009 – 2018",
+        "description": "Worked on UX and Service Design projects for brands such as Sanofi, Bradesco, Nestlé, Heineken, and Predicta, focusing on research, user journeys, and digital innovation.",
+        "achievements": [
+          "Mapped and redesigned user journeys",
+          "Facilitated co-creation and discovery workshops",
+          "Defined research frameworks and service design processes"
+        ]
       }
     },
     "cta": {

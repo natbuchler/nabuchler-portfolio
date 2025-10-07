@@ -123,6 +123,28 @@
           "Defini solução de pagamento Claro & Nextel",
           "Conduzi workshops de discovery e pesquisa"
         ]
+      },
+      "nttdata": {
+        "role": "Líder de UX",
+        "company": "NTT Data",
+        "period": "Out 2018 – Mar 2019",
+        "description": "Liderei times de UX/UI em produtos de serviços financeiros, entregando soluções de design abrangentes.",
+        "achievements": [
+          "Entreguei personas e wireframes",
+          "Criei protótipos e fluxos",
+          "Facilitei workshops com stakeholders"
+        ]
+      },
+      "previous": {
+        "role": "Experiências Anteriores (2009–2018)",
+        "company": "Consultora & Designer de UX",
+        "period": "2009 – 2018",
+        "description": "Trabalhei em projetos de UX e Service Design para marcas como Sanofi, Bradesco, Nestlé, Heineken e Predicta, com foco em pesquisa, jornadas de usuário e inovação digital.",
+        "achievements": [
+          "Mapeei e redesenhei jornadas de usuário",
+          "Facilitei workshops de cocriação e discovery",
+          "Defini frameworks de pesquisa e processos de service design"
+        ]
       }
     },
     "cta": {

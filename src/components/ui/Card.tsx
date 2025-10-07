@@ -242,3 +242,108 @@ export function CardExperience({
     </div>
   );
 }
+
+/* ============================================================================
+ * CardExperienceAccordion - Experience Card with Accordion
+ * ========================================================================= */
+
+export interface CardExperienceAccordionProps extends CardExperienceProps {
+  /** Whether the accordion is open by default */
+  defaultOpen?: boolean;
+}
+
+/**
+ * Experience card with accordion functionality
+ * Shows role, company, period by default
+ * Expands to show description and achievements on click
+ */
+export function CardExperienceAccordion({
+  role,
+  company,
+  period,
+  description,
+  achievements,
+  defaultOpen = false
+}: CardExperienceAccordionProps) {
+  const [isOpen, setIsOpen] = React.useState(defaultOpen);
+
+  return (
+    <div className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-[24px] flex-1 max-w-[807px] overflow-hidden">
+      {/* Header - Always visible, clickable */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full p-6 text-left hover:bg-white/10 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ad8a6c] focus-visible:ring-inset"
+        aria-expanded={isOpen}
+      >
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+          <div className="flex-1">
+            <h3 className="font-playfair font-semibold text-[28px] md:text-[32px] text-[#421d13] tracking-[0.64px] leading-tight">
+              {role}
+            </h3>
+            <p className="font-roboto-flex text-[18px] md:text-[20px] text-[#ad8a6c] tracking-[0.4px] mt-1">
+              {company}
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <p className="font-roboto-flex font-light text-[20px] md:text-[24px] text-[#421d13] tracking-[0.48px] leading-[1.5]">
+              {period}
+            </p>
+            {/* Chevron icon */}
+            <motion.svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ad8a6c"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="flex-shrink-0"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </motion.svg>
+          </div>
+        </div>
+      </button>
+
+      {/* Expandable content */}
+      <motion.div
+        initial={false}
+        animate={{
+          maxHeight: isOpen ? 1000 : 0,
+          opacity: isOpen ? 1 : 0
+        }}
+        transition={{
+          maxHeight: {
+            duration: 0.4,
+            ease: [0.04, 0.62, 0.23, 0.98]
+          },
+          opacity: {
+            duration: isOpen ? 0.25 : 0.4,
+            delay: isOpen ? 0.1 : 0,
+            ease: isOpen ? 'easeIn' : 'easeOut'
+          }
+        }}
+        className="overflow-hidden"
+      >
+        <div className="px-6 pb-6 pt-2 flex flex-col gap-4 border-t border-[#ad8a6c]/20 mt-2">
+          <p className="font-roboto-flex font-light text-[18px] md:text-[20px] text-[#6b6763] tracking-[0.4px] leading-[1.5]">
+            {description}
+          </p>
+
+          <div className="font-roboto-flex font-light text-[18px] md:text-[20px] text-[#6b6763]">
+            <ul className="list-disc space-y-2 ml-[30px]">
+              {achievements.map((achievement, index) => (
+                <li key={index}>
+                  <span className="tracking-[0.4px]">{achievement}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}

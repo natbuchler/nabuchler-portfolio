@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { TitleSubTitle } from '@/components/ui/Typography';
-import { CardExperience } from '@/components/ui/Card';
+import { CardExperienceAccordion } from '@/components/ui/Card';
 import Timeline, { TimelineItem } from '@/components/ui/Timeline';
 import Button, { ButtonGroup } from '@/components/Button';
 import { Locale, getTranslations } from '@/lib/i18n';
@@ -27,19 +27,21 @@ export default function Experience({ locale }: ExperienceProps) {
             subtitle={t.experience.subtitle}
           />
 
-          <Timeline lineImage="/Line-timeline.svg">
+          <div className="flex justify-center">
+            <Timeline lineImage="/Line-timeline.svg">
             <TimelineItem icon="ponto" iconColor="#421d13" index={0}>
-              <CardExperience
+              <CardExperienceAccordion
                 role={t.experience.jobs.stealth.role}
                 company={t.experience.jobs.stealth.company}
                 period={t.experience.jobs.stealth.period}
                 description={t.experience.jobs.stealth.description}
                 achievements={t.experience.jobs.stealth.achievements}
+                defaultOpen={true}
               />
             </TimelineItem>
 
             <TimelineItem icon="cy" iconColor="#c95127" index={1}>
-              <CardExperience
+              <CardExperienceAccordion
                 role={t.experience.jobs.abinbev.role}
                 company={t.experience.jobs.abinbev.company}
                 period={t.experience.jobs.abinbev.period}
@@ -49,7 +51,7 @@ export default function Experience({ locale }: ExperienceProps) {
             </TimelineItem>
 
             <TimelineItem icon="ponto" iconColor="#421d13" index={2}>
-              <CardExperience
+              <CardExperienceAccordion
                 role={t.experience.jobs.vindi.role}
                 company={t.experience.jobs.vindi.company}
                 period={t.experience.jobs.vindi.period}
@@ -59,7 +61,7 @@ export default function Experience({ locale }: ExperienceProps) {
             </TimelineItem>
 
             <TimelineItem icon="cy" iconColor="#c95127" index={3}>
-              <CardExperience
+              <CardExperienceAccordion
                 role={t.experience.jobs.zup.role}
                 company={t.experience.jobs.zup.company}
                 period={t.experience.jobs.zup.period}
@@ -67,30 +69,53 @@ export default function Experience({ locale }: ExperienceProps) {
                 achievements={t.experience.jobs.zup.achievements}
               />
             </TimelineItem>
-          </Timeline>
 
-          <div className="flex justify-center">
-            <ButtonGroup>
-              <Button
-                variant="primary"
-                className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
-                onClick={() => window.open(
-                  locale === 'pt'
-                    ? 'https://drive.google.com/file/d/1z0i9SkhLjH1SYk1k_LwFVJDwfzwdPw9b/view?usp=sharing'
-                    : 'https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing',
-                  '_blank'
-                )}
-              >
-                {t.experience.cta.cv}
-              </Button>
-              <Button
-                variant="secondary"
-                className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
-                onClick={() => window.open('https://medium.com/@nabuchler', '_blank')}
-              >
-                {t.experience.cta.articles}
-              </Button>
-            </ButtonGroup>
+            <TimelineItem icon="ponto" iconColor="#421d13" index={4}>
+              <CardExperienceAccordion
+                role={t.experience.jobs.nttdata.role}
+                company={t.experience.jobs.nttdata.company}
+                period={t.experience.jobs.nttdata.period}
+                description={t.experience.jobs.nttdata.description}
+                achievements={t.experience.jobs.nttdata.achievements}
+              />
+            </TimelineItem>
+
+            <TimelineItem icon="cy" iconColor="#c95127" index={5}>
+              <CardExperienceAccordion
+                role={t.experience.jobs.previous.role}
+                company={t.experience.jobs.previous.company}
+                period={t.experience.jobs.previous.period}
+                description={t.experience.jobs.previous.description}
+                achievements={t.experience.jobs.previous.achievements}
+              />
+            </TimelineItem>
+          </Timeline>
+          </div>
+
+          <div className="flex justify-center w-full">
+            <div className="flex justify-center">
+              <ButtonGroup>
+                <Button
+                  variant="primary"
+                  className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
+                  onClick={() => window.open(
+                    locale === 'pt'
+                      ? 'https://drive.google.com/file/d/1z0i9SkhLjH1SYk1k_LwFVJDwfzwdPw9b/view?usp=sharing'
+                      : 'https://drive.google.com/file/d/1pgFkxrCPIAbWeVNLXP76RQqghEkD0VxU/view?usp=sharing',
+                    '_blank'
+                  )}
+                >
+                  {t.experience.cta.cv}
+                </Button>
+                <Button
+                  variant="secondary"
+                  className="hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#421d13] focus:ring-opacity-50"
+                  onClick={() => window.open('https://medium.com/@nabuchler', '_blank')}
+                >
+                  {t.experience.cta.articles}
+                </Button>
+              </ButtonGroup>
+            </div>
           </div>
         </div>
       </div>
