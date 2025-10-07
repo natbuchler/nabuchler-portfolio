@@ -32,21 +32,49 @@ export interface TitleSubTitleProps {
 export function TitleSubTitle({ title, subtitle, className = "" }: TitleSubTitleProps) {
   return (
     <motion.div
-      className={`flex flex-col gap-4 items-center text-center ${className}`}
+      className={`flex flex-col gap-2 items-center text-center ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
     >
-      <h2 className="font-playfair font-bold text-3xl md:text-5xl text-[#421d13] leading-tight">
+      <h2 className="font-playfair font-bold text-[48px] text-[#421d13] leading-[72px]">
         {title}
       </h2>
-      <div className="bg-[#ad8a6c] h-1 rounded-full w-24" />
+      <div className="bg-[#ad8a6c] h-[4px] rounded-[2px] w-[100px]" />
       {subtitle && (
-        <p className="font-roboto-flex font-light text-lg md:text-2xl text-[#6b6763] max-w-4xl leading-relaxed">
+        <p className="font-roboto-flex font-light text-[24px] text-[#6b6763] leading-[1.5] tracking-[0.48px]">
           {subtitle}
         </p>
       )}
+    </motion.div>
+  );
+}
+
+export interface TitleCaseProps {
+  /** Main title text */
+  title: string;
+  /** Custom CSS classes */
+  className?: string;
+}
+
+/**
+ * Case study title component - left-aligned title with decorative underline
+ * Source: Figma node 3358:1078
+ */
+export function TitleCase({ title, className = "" }: TitleCaseProps) {
+  return (
+    <motion.div
+      className={`flex flex-col gap-2 items-start ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      <h2 className="font-playfair font-bold text-[48px] text-[#421d13] leading-[72px]">
+        {title}
+      </h2>
+      <div className="bg-[#ad8a6c] h-[4px] rounded-[2px] w-[100px]" />
     </motion.div>
   );
 }
