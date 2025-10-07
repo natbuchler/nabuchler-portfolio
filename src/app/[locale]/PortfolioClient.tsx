@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ClientOnly from '@/components/ClientOnly';
 import Icon from '@/components/ui/Icon';
+import Button from '@/components/Button';
 import { Locale, getTranslations } from '@/lib/i18n';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
@@ -167,12 +168,13 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
                     </button>
                   ))}
                   {/* Contact Button - Separate from navigation items */}
-                  <button
+                  <Button
+                    variant="primary"
+                    size="small"
                     onClick={() => scrollToSection('contact')}
-                    className="bg-[#421d13] text-[#e3dcd6] font-roboto font-medium text-[18px] leading-[1.5] px-6 py-2 rounded-lg hover:bg-[#5a2718] transition-colors duration-200"
                   >
                     {t.nav.contact}
-                  </button>
+                  </Button>
                 </nav>
               </div>
 

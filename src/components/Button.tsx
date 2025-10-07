@@ -5,6 +5,7 @@ import { colors, getTypographyStyle } from '@/lib/design-tokens';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'default' | 'small';
   children: ReactNode;
   className?: string;
   disabled?: boolean;
@@ -12,14 +13,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button({
   variant = 'primary',
+  size = 'default',
   children,
   className = '',
   disabled = false,
   ...props
 }: ButtonProps) {
+  const sizeClasses = size === 'small'
+    ? 'px-6 py-2 h-[32px] text-[18px] leading-[1.5]'
+    : 'px-6 py-3 text-lg leading-6';
+
   const baseClasses = `
-    px-6 py-3 rounded-lg font-medium transition-all duration-200
-    font-roboto text-lg font-medium leading-6
+    ${sizeClasses} rounded-lg font-medium transition-all duration-200
+    font-roboto flex items-center justify-center
     focus:outline-none focus-visible:outline-none
   `;
 
