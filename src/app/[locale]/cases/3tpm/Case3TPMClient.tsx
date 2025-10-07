@@ -180,8 +180,7 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
     { name: t.case3tpm.navigation.about, id: 'about' },
     { name: t.case3tpm.navigation.cases, id: 'cases' },
     { name: t.case3tpm.navigation.leadership, id: 'leadership' },
-    { name: t.case3tpm.navigation.experience, id: 'experience' },
-    { name: t.case3tpm.navigation.contact, id: 'contact' }
+    { name: t.case3tpm.navigation.experience, id: 'experience' }
   ];
 
   return (
@@ -209,7 +208,7 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
                     <Link
                       key={item.name}
                       href={`/#${item.id}`}
-                      className={`font-raleway font-medium transition-all duration-200 relative ${
+                      className={`font-raleway font-medium text-[18px] leading-[28px] transition-all duration-200 relative ${
                         isActive
                           ? 'text-[#ad8a6c] font-semibold'
                           : 'text-[#421d13] hover:text-[#ad8a6c]'
@@ -222,6 +221,15 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
                     </Link>
                   );
                 })}
+                {/* Contact Button - Separate from navigation items */}
+                <Link href="/#contact">
+                  <Button
+                    variant="primary"
+                    size="small"
+                  >
+                    {t.case3tpm.navigation.contact}
+                  </Button>
+                </Link>
               </nav>
             </div>
 
