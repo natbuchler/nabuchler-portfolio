@@ -56,7 +56,7 @@ export function ButtonTertiary({
           alt=""
           width={16}
           height={16}
-          className="shrink-0"
+          className="shrink-0 self-center"
         />
       )}
     </button>
