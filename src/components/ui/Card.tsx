@@ -62,11 +62,12 @@ export function CardCase({
 
   return (
     <motion.div
-      className={`flex flex-col md:flex-row ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'} ${bgColor} rounded-2xl md:rounded-[24px] overflow-hidden max-w-[997px] w-full h-auto md:h-[364px]`}
+      className={`flex flex-col md:flex-row ${isRight ? 'md:flex-row' : 'md:flex-row-reverse'} ${bgColor} rounded-2xl md:rounded-[24px] overflow-hidden max-w-[997px] w-full h-auto md:h-[364px] cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-[#421d13]/5`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
+      onClick={onClick}
     >
       {/* Content Section */}
       <div className={`w-full md:w-[573px] p-6 md:p-8 ${contentBg} flex flex-col justify-center items-start`}>
