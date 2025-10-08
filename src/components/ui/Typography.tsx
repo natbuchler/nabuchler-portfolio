@@ -43,7 +43,7 @@ export function TitleSubTitle({ title, subtitle, className = "" }: TitleSubTitle
       </h2>
       <div className="bg-[#ad8a6c] h-[4px] rounded-[2px] w-[100px]" />
       {subtitle && (
-        <p className="font-roboto-flex font-light text-[24px] text-[#6b6763] leading-[1.5] tracking-[0.48px]">
+        <p className="font-roboto-flex font-light text-[24px] text-[#6b6763] leading-[1.5] tracking-[0.48px] whitespace-nowrap">
           {subtitle}
         </p>
       )}

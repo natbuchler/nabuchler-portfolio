@@ -25,6 +25,8 @@ export interface ArticleCardProps {
   language?: 'BR' | 'ENG';
   /** Additional CSS classes */
   className?: string;
+  /** Button text (translatable) */
+  buttonText?: string;
 }
 
 /**
@@ -37,13 +39,13 @@ export default function ArticleCard({
   image,
   url,
   language = 'BR',
-  className = ''
+  className = '',
+  buttonText = 'Show article'
 }: ArticleCardProps) {
   return (
     <div
-      className={`bg-[#d0bfb0] rounded-2xl overflow-hidden flex flex-col w-full max-w-[287px] h-full min-h-[320px] shrink-0 transition-all duration-300 hover:shadow-xl hover:shadow-[#421d13]/10 hover:-translate-y-1 cursor-pointer ${className}`}
+      className={`bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl overflow-hidden flex flex-col w-full max-w-[287px] h-full min-h-[320px] shrink-0 transition-shadow duration-300 hover:shadow-lg hover:shadow-[#421d13]/5 ${className}`}
       data-node-id="3341:285"
-      onClick={() => window.open(url, '_blank')}
     >
       {/* Article Image - 287x125px */}
       <div className="relative w-full h-[125px] shrink-0 overflow-hidden bg-[#d0bfb0]" data-node-id="3341:280">
@@ -64,55 +66,42 @@ export default function ArticleCard({
       >
         {/* Text Content */}
         <div className="flex flex-col gap-[8px]" data-node-id="3341:275">
-          <div className="flex flex-col" data-node-id="3341:282">
-            {/* Title - H4: 28px semibold */}
+          <div className="flex flex-col gap-2" data-node-id="3341:282">
+            {/* Title - H4: 24px semibold (reduced from 28px) */}
             <h4
-              className="font-playfair font-semibold text-[28px] leading-[1.2] text-[#421d13] tracking-[0.56px]"
+              className="font-playfair font-semibold text-[24px] leading-[1.3] text-[#421d13] tracking-[0.48px]"
               data-node-id="3341:277"
             >
               {title}
             </h4>
 
-            {/* Date - Roboto Flex Light 18px */}
+            {/* Date - Roboto Flex Light 16px with reduced opacity */}
             <p
-              className="font-roboto-flex font-light text-[18px] leading-[28px] text-[#421d13]"
+              className="font-roboto-flex font-light text-[16px] leading-[1.5] text-[#421d13] opacity-70"
               data-node-id="3341:283"
             >
               {date}
             </p>
-
-            {/* Language Flag Icon - 16px */}
-            <div className="w-[16px] h-[16px] relative overflow-hidden shrink-0">
-              <Image
-                src={language === 'BR' ? '/Br.svg' : '/Eng.svg'}
-                alt={language === 'BR' ? 'Portuguese' : 'English'}
-                width={16}
-                height={16}
-              />
-            </div>
           </div>
         </div>
 
         {/* CTA Button - 48px height, no left padding */}
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            window.open(url, '_blank');
-          }}
+          onClick={() => window.open(url, '_blank')}
           className="flex items-center h-[48px] pl-0 pr-0 py-[16px] rounded-[8px] transition-all duration-200 hover:opacity-70"
           data-node-id="3341:279"
           aria-label={`Read article: ${title}`}
         >
           <div className="flex gap-[4px] h-[27px] items-center">
             <span className="font-roboto font-medium text-[18px] leading-[1.5] text-[#421d13]">
-              Show article
+              {buttonText}
             </span>
             <Image
               src="/Chevron_min_r.svg"
               alt=""
               width={16}
               height={16}
-              className="shrink-0"
+              className="shrink-0 self-center"
             />
           </div>
         </button>

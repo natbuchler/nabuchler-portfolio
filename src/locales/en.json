@@ -154,7 +154,8 @@
   },
   "articles": {
     "title": "Latest articles",
-    "loading": "Loading articles..."
+    "loading": "Loading articles...",
+    "showArticle": "Show article"
   },
   "contact": {
     "title": "Get in touch",

@@ -154,7 +154,8 @@
   },
   "articles": {
     "title": "Últimos artigos",
-    "loading": "Carregando artigos..."
+    "loading": "Carregando artigos...",
+    "showArticle": "Ver artigo"
   },
   "contact": {
     "title": "Entre em contato",

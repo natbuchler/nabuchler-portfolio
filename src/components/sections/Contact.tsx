@@ -78,18 +78,10 @@ export default function Contact({ locale }: ContactProps) {
     <section id="contact" className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-8">
         <div className="space-y-8 max-w-4xl mx-auto text-center">
-          <TitleSubTitle title={t.contact.title} />
-
-          {/* Value Proposition */}
-          <motion.p
-            className="font-roboto-flex font-light text-lg md:text-2xl text-[#6b6763] max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            {t.contact.subtitle}
-          </motion.p>
+          <TitleSubTitle
+            title={t.contact.title}
+            subtitle={t.contact.subtitle}
+          />
 
           {/* Contact Icons with Labels */}
           <motion.div
