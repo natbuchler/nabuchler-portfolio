@@ -36,7 +36,7 @@ export function ButtonTertiary({
   return (
     <button
       onClick={onClick}
-      className={`inline-flex h-[48px] items-center justify-center gap-[4px] px-[16px] rounded-[8px] border-0 bg-transparent hover:opacity-80 focus:outline-none focus-visible:outline-none transition-opacity ${className}`}
+      className={`inline-flex h-[48px] items-center justify-center gap-[4px] px-[16px] rounded-[8px] border-0 bg-transparent hover:opacity-80 focus:outline-none focus-visible:outline-none transition-opacity cursor-pointer ${className}`}
     >
       {variant === 'left' && (
         <Image

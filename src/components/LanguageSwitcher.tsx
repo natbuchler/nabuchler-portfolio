@@ -39,7 +39,7 @@ export function LanguageSwitcher({ currentLocale, className = '' }: LanguageSwit
     <div className={`flex items-center gap-2 ${className}`}>
       <button
         onClick={() => switchLocale('pt')}
-        className={`flex items-center gap-1 px-2 py-1 rounded transition-all duration-200 ${
+        className={`flex items-center gap-1 px-2 py-1 rounded transition-all duration-200 cursor-pointer ${
           currentLocale === 'pt'
             ? 'bg-[#ad8a6c]/20 text-[#421d13] font-semibold'
             : 'text-[#6b6763] hover:text-[#421d13] opacity-60 hover:opacity-100'
@@ -55,7 +55,7 @@ export function LanguageSwitcher({ currentLocale, className = '' }: LanguageSwit
 
       <button
         onClick={() => switchLocale('en')}
-        className={`flex items-center gap-1 px-2 py-1 rounded transition-all duration-200 ${
+        className={`flex items-center gap-1 px-2 py-1 rounded transition-all duration-200 cursor-pointer ${
           currentLocale === 'en'
             ? 'bg-[#ad8a6c]/20 text-[#421d13] font-semibold'
             : 'text-[#6b6763] hover:text-[#421d13] opacity-60 hover:opacity-100'

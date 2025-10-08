@@ -44,7 +44,7 @@ export default function ArticleCard({
 }: ArticleCardProps) {
   return (
     <div
-      className={`bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl overflow-hidden flex flex-col w-full max-w-[287px] h-full min-h-[320px] shrink-0 transition-shadow duration-300 hover:shadow-lg hover:shadow-[#421d13]/5 ${className}`}
+      className={`bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-2xl overflow-hidden flex flex-col w-full max-w-[287px] h-full min-h-[320px] shrink-0 transition-shadow duration-300 hover:shadow-lg hover:shadow-[#421d13]/5 cursor-pointer ${className}`}
       data-node-id="3341:285"
     >
       {/* Article Image - 287x125px */}

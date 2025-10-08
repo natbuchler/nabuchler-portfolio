@@ -19,7 +19,7 @@ export default function About({ locale }: AboutProps) {
   const t = getTranslations(locale);
 
   return (
-    <section id="about" className="py-12 md:py-20">
+    <section id="about" className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
       <div className="container mx-auto px-4 md:px-8">
         <div className="space-y-12 max-w-6xl mx-auto">
           <TitleSubTitle title={t.about.title} />

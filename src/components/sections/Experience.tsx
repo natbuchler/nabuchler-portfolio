@@ -19,7 +19,7 @@ export default function Experience({ locale }: ExperienceProps) {
   const t = getTranslations(locale);
 
   return (
-    <section id="experience" className="py-12 md:py-20">
+    <section id="experience" className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
       <div className="container mx-auto px-4 md:px-8">
         <div className="space-y-12 max-w-6xl mx-auto">
           <TitleSubTitle
@@ -36,7 +36,6 @@ export default function Experience({ locale }: ExperienceProps) {
                 period={t.experience.jobs.stealth.period}
                 description={t.experience.jobs.stealth.description}
                 achievements={t.experience.jobs.stealth.achievements}
-                defaultOpen={true}
               />
             </TimelineItem>
 
@@ -47,6 +46,7 @@ export default function Experience({ locale }: ExperienceProps) {
                 period={t.experience.jobs.abinbev.period}
                 description={t.experience.jobs.abinbev.description}
                 achievements={t.experience.jobs.abinbev.achievements}
+                defaultOpen={true}
               />
             </TimelineItem>
 

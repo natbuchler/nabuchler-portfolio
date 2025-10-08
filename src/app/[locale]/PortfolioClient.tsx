@@ -21,6 +21,7 @@ import CaseStudies from '@/components/sections/CaseStudies';
 import HowILead from '@/components/sections/HowILead';
 import About from '@/components/sections/About';
 import Experience from '@/components/sections/Experience';
+import Recommendations from '@/components/sections/Recommendations';
 import LatestArticles from '@/components/sections/LatestArticles';
 import Contact from '@/components/sections/Contact';
 
@@ -155,7 +156,7 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
                     <button
                       key={item.name}
                       onClick={() => scrollToSection(item.id)}
-                      className={`font-raleway font-medium text-[18px] leading-[28px] transition-all duration-200 relative ${
+                      className={`font-raleway font-medium text-[18px] leading-[28px] transition-all duration-200 relative cursor-pointer ${
                         activeSection === item.id
                           ? 'text-[#ad8a6c] font-semibold'
                           : 'text-[#421d13] hover:text-[#ad8a6c]'
@@ -201,7 +202,7 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
 
                 {/* Mobile Menu Button */}
                 <button
-                  className="md:hidden p-2"
+                  className="md:hidden p-2 cursor-pointer"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   aria-label="Toggle menu"
                 >
@@ -222,7 +223,7 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
                     <button
                       key={item.name}
                       onClick={() => scrollToSection(item.id)}
-                      className={`font-raleway font-medium text-left relative ${
+                      className={`font-raleway font-medium text-left relative cursor-pointer ${
                         activeSection === item.id
                           ? 'text-[#ad8a6c] font-semibold'
                           : 'text-[#421d13] hover:text-[#ad8a6c]'
@@ -302,6 +303,9 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
 
         {/* Experience Section */}
         <Experience locale={locale} />
+
+        {/* Recommendations Section */}
+        <Recommendations locale={locale} />
 
         {/* Latest Articles Section */}
         <LatestArticles locale={locale} />

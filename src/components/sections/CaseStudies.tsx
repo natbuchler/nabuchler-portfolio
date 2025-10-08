@@ -23,7 +23,7 @@ export default function CaseStudies({ locale }: CaseStudiesProps) {
   const t = getTranslations(locale);
 
   return (
-    <section id="cases" className="py-12 md:py-20" data-node-id="3211:1219">
+    <section id="cases" className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]" data-node-id="3211:1219">
       <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
         <div className="space-y-12">
           <TitleSubTitle title={t.caseStudies.title} />

@@ -133,7 +133,7 @@ export default function LatestArticles({ locale }: LatestArticlesProps) {
   return (
     <section
       id="articles"
-      className="py-12 md:py-20 overflow-hidden"
+      className="py-20 md:py-24 overflow-hidden border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]"
       data-node-id="3371:1132"
     >
       <div className="container mx-auto px-4 md:px-8">
@@ -153,7 +153,7 @@ export default function LatestArticles({ locale }: LatestArticlesProps) {
             {/* Previous Button */}
             <button
               onClick={handlePrevious}
-              className="hidden md:flex w-10 h-10 items-center justify-center text-[#421d13] hover:text-[#ad8a6c] disabled:text-[#5F5F60] transition-colors duration-200 flex-shrink-0"
+              className="hidden md:flex w-10 h-10 items-center justify-center text-[#421d13] hover:text-[#ad8a6c] disabled:text-[#5F5F60] transition-colors duration-200 flex-shrink-0 cursor-pointer"
               aria-label="Previous articles"
             >
               <Image src="/Chevron_Left.svg" alt="" width={32} height={32} />
@@ -163,7 +163,7 @@ export default function LatestArticles({ locale }: LatestArticlesProps) {
             <div className="flex-1 overflow-hidden">
               <div
                 ref={scrollContainerRef}
-                className="flex gap-8 md:gap-11 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2"
+                className="flex gap-8 md:gap-11 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 <style jsx>{`
@@ -199,7 +199,7 @@ export default function LatestArticles({ locale }: LatestArticlesProps) {
                       setCurrentIndex(index);
                       scrollToCard(index);
                     }}
-                    className="group"
+                    className="group cursor-pointer"
                     aria-label={`Go to article ${index + 1}`}
                   >
                     <div
@@ -217,7 +217,7 @@ export default function LatestArticles({ locale }: LatestArticlesProps) {
             {/* Next Button */}
             <button
               onClick={handleNext}
-              className="hidden md:flex w-10 h-10 items-center justify-center text-[#421d13] hover:text-[#ad8a6c] disabled:text-[#5F5F60] transition-colors duration-200 flex-shrink-0"
+              className="hidden md:flex w-10 h-10 items-center justify-center text-[#421d13] hover:text-[#ad8a6c] disabled:text-[#5F5F60] transition-colors duration-200 flex-shrink-0 cursor-pointer"
               aria-label="Next articles"
             >
               <Image src="/Chevron_Right.svg" alt="" width={32} height={32} />

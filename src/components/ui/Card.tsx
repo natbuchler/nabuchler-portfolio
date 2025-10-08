@@ -267,7 +267,7 @@ export function CardExperienceAccordion({
       {/* Header - Always visible, clickable */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-6 text-left hover:bg-white/10 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ad8a6c] focus-visible:ring-inset"
+        className="w-full p-6 text-left hover:bg-white/10 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ad8a6c] focus-visible:ring-inset cursor-pointer"
         aria-expanded={isOpen}
       >
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">

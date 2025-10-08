@@ -25,7 +25,7 @@ export default function Button({
 
   const baseClasses = `
     ${sizeClasses} rounded-lg font-medium transition-all duration-200
-    font-roboto flex items-center justify-center
+    font-roboto flex items-center justify-center cursor-pointer
     focus:outline-none focus-visible:outline-none
   `;
 

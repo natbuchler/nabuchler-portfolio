@@ -333,10 +333,11 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
       </header>
 
       {/* Main Content */}
-      <main className="mx-auto px-4 md:px-8 py-16 max-w-[1280px]">
+      <main className="py-16">
 
         {/* Title Section */}
-        <section className="mb-16 md:mb-24">
+        <section className="py-20 md:py-24">
+          <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
           <motion.div
             className="flex flex-col md:flex-row gap-8 md:gap-12 items-center"
             initial={{ opacity: 0, y: 20 }}
@@ -361,10 +362,12 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
               />
             </div>
           </motion.div>
+          </div>
         </section>
 
         {/* Numbers Section */}
-        <section className="mb-16 md:mb-24">
+        <section className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
+          <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
           <motion.div
             className="flex flex-wrap gap-4 md:gap-7 justify-center"
             initial={{ opacity: 0, y: 20 }}
@@ -377,10 +380,12 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
             <CardNumbers number={t.case3tpm.numbers[2].number} label={t.case3tpm.numbers[2].label} />
             <CardNumbers number={t.case3tpm.numbers[3].number} label={t.case3tpm.numbers[3].label} />
           </motion.div>
+          </div>
         </section>
 
         {/* Problem Section */}
-        <section className="mb-16 md:mb-24">
+        <section className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
+          <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
           <motion.div
             className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -437,10 +442,12 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
               </p>
             </div>
           </motion.div>
+          </div>
         </section>
 
         {/* Strategic Challenge Section */}
-        <section className="mb-16 md:mb-24">
+        <section className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
+          <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
           <TitleCase title={t.case3tpm.strategicChallenge.title} />
 
           <motion.div
@@ -505,10 +512,12 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
               {t.case3tpm.strategicChallenge.conclusion}
             </p>
           </motion.div>
+          </div>
         </section>
 
         {/* Team's Approach Section */}
-        <section className="mb-16 md:mb-24">
+        <section className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
+          <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
           <TitleCase title={t.case3tpm.teamsApproach.title} />
 
           {/* 1. Research before solutions */}
@@ -629,7 +638,7 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
 
           {/* 4. The "MVP of the MVP" decision */}
           <motion.div
-            className="flex flex-col md:flex-row gap-8 md:gap-14"
+            className="flex flex-col md:flex-row gap-8 md:gap-14 items-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -658,7 +667,7 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
                 {t.case3tpm.teamsApproach.section4.conclusion}
               </p>
             </div>
-            <div className="relative w-full h-[500px] md:w-[326px] md:h-[643px] rounded-3xl overflow-hidden shrink-0">
+            <div className="relative w-full h-[750px] md:w-[489px] md:h-[965px] rounded-3xl overflow-hidden shrink-0">
               <Image
                 src="/mvp=mvp.png"
                 alt="MVP of MVP"
@@ -667,10 +676,12 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
               />
             </div>
           </motion.div>
+          </div>
         </section>
 
         {/* Impact Section */}
-        <section className="mb-16 md:mb-24">
+        <section className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
+          <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
           <TitleCase title={t.case3tpm.impact.title} />
 
           <motion.div
@@ -727,10 +738,12 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
               {t.case3tpm.impact.conclusion}
             </p>
           </motion.div>
+          </div>
         </section>
 
         {/* What I Learned Section */}
-        <section className="mb-16 md:mb-24">
+        <section className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
+          <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
           <TitleCase title={t.case3tpm.learned.title} />
 
           <motion.div
@@ -796,10 +809,12 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
               size="large"
             />
           </motion.div>
+          </div>
         </section>
 
         {/* Next Case Section */}
-        <section className="mb-16 md:mb-24">
+        <section className="py-20 md:py-24 border-t border-[#ad8a6c]/10 shadow-[inset_0_8px_16px_-8px_rgba(66,29,19,0.03)]">
+          <div className="mx-auto px-4 md:px-8 max-w-[1280px]">
           <motion.div
             className="flex justify-center md:justify-end"
             initial={{ opacity: 0, y: 20 }}
@@ -814,6 +829,7 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
               disabled={true}
             />
           </motion.div>
+          </div>
         </section>
 
       </main>
