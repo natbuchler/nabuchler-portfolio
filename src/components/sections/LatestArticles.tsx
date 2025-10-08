@@ -192,7 +192,11 @@ export default function LatestArticles({ locale }: LatestArticlesProps) {
 
               {/* Pagination Dots */}
               <div className="flex gap-3 items-center justify-center mt-6">
-                {articles.slice(0, articles.length - 2).map((article, index) => (
+                {/* Mobile: show all 5 dots | Desktop: show 3 dots (remove last 2 duplicates) */}
+                {(typeof window !== 'undefined' && window.innerWidth < 768
+                  ? articles.slice(0, 5)
+                  : articles.slice(0, articles.length - 2)
+                ).map((article, index) => (
                   <button
                     key={`dot-${article.id}`}
                     onClick={() => {
