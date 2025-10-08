@@ -37,7 +37,10 @@
       "enterButton": "Enter",
       "verifying": "Verifying...",
       "backButton": "Back to portfolio",
-      "incorrectPassword": "Incorrect password. Please try again."
+      "incorrectPassword": "Incorrect password. Please try again.",
+      "requestMessage": "Don't have the password? Reach out to me on",
+      "requestMessageEnd": "and I'll send it via message.",
+      "casualMessage": "Just browsing around? Then come read my articles on"
     }
   },
   "howILead": {

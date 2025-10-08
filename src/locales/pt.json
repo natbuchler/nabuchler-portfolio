@@ -37,7 +37,10 @@
       "enterButton": "Entrar",
       "verifying": "Verificando...",
       "backButton": "Voltar ao portfólio",
-      "incorrectPassword": "Senha incorreta. Tente novamente."
+      "incorrectPassword": "Senha incorreta. Tente novamente.",
+      "requestMessage": "Não tem a senha? Entre em contato comigo no",
+      "requestMessageEnd": "que eu envio por mensagem.",
+      "casualMessage": "Só fuçando de boa? Então vem ler meus artigos no"
     }
   },
   "howILead": {

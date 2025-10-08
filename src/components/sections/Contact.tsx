@@ -75,7 +75,7 @@ export default function Contact({ locale }: ContactProps) {
   ];
 
   return (
-    <section id="contact" className="py-12 md:py-20">
+    <section id="contact" className="py-12 md:py-20 bg-[rgba(173,138,108,0.08)]">
       <div className="container mx-auto px-4 md:px-8">
         <div className="space-y-8 max-w-4xl mx-auto text-center">
           <TitleSubTitle

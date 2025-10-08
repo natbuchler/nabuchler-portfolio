@@ -104,7 +104,7 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl p-8 md:p-12 md:min-w-[480px] md:max-w-[480px] shadow-xl border border-[#ad8a6c]/20">
+          <div className="bg-[rgba(255,255,255,0.35)] backdrop-blur-sm rounded-3xl p-8 md:p-12 md:min-w-[560px] md:max-w-[560px] shadow-xl border border-[#ad8a6c]/20">
             <div className="text-center mb-10">
               <h1 className="font-playfair font-bold text-3xl md:text-[40px] text-[#421d13] mb-3 leading-tight">
                 {t.caseStudies.passwordProtection.title}
@@ -166,6 +166,34 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
                 </Link>
               </div>
             </form>
+
+            {/* Request Password Section */}
+            <div className="mt-8 pt-8 border-t border-[#ad8a6c]/20 space-y-3">
+              <p className="text-center font-roboto-flex text-[#6b6763] leading-relaxed">
+                {t.caseStudies.passwordProtection.requestMessage}{' '}
+                <a
+                  href="https://www.linkedin.com/in/nbuchler/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#421d13] hover:text-[#ad8a6c] transition-colors duration-200 underline decoration-[#ad8a6c]/30 hover:decoration-[#ad8a6c]"
+                >
+                  LinkedIn
+                </a>
+                {' '}{t.caseStudies.passwordProtection.requestMessageEnd}
+              </p>
+              <p className="text-center font-roboto-flex text-[#6b6763] leading-relaxed">
+                {t.caseStudies.passwordProtection.casualMessage}{' '}
+                <a
+                  href="https://medium.com/@nabuchler"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#421d13] hover:text-[#ad8a6c] transition-colors duration-200 underline decoration-[#ad8a6c]/30 hover:decoration-[#ad8a6c]"
+                >
+                  Medium
+                </a>
+                .
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -794,7 +822,7 @@ export default function Case3TPMClient({ locale }: Case3TPMClientProps) {
       <Contact locale={locale} />
 
       {/* Footer */}
-      <footer className="py-12 border-t border-[#ad8a6c]/20">
+      <footer className="py-12 bg-[rgba(173,138,108,0.08)] border-t border-[#ad8a6c]/30">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center space-y-6">
             <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] space-y-4">

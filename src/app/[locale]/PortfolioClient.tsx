@@ -310,7 +310,7 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
         <Contact locale={locale} />
 
         {/* Footer */}
-        <footer className="py-12 border-t border-[#ad8a6c]/20">
+        <footer className="py-12 bg-[rgba(173,138,108,0.08)] border-t border-[#ad8a6c]/30">
           <div className="container mx-auto px-4 md:px-8">
             <div className="text-center space-y-6">
               <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] space-y-4">
