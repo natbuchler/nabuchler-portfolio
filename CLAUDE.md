@@ -167,6 +167,25 @@ The project includes comprehensive Figma integration with two approaches:
 
 **Responsive Design**: Mobile-first approach with `md:` breakpoints for desktop layouts, especially in navigation and card layouts.
 
+**Cursor Pointer Best Practices**:
+- ✅ **Add `cursor-pointer` ONLY to desktop-visible interactive elements** (buttons, links, clickable cards)
+- ❌ **DO NOT add `cursor-pointer` to mobile-only elements** (e.g., `md:hidden` buttons)
+- 🎯 **Rationale**: Mobile devices use touch interaction without cursor/mouse, making `cursor-pointer` semantically incorrect and technically useless on mobile-only elements
+- **Examples**:
+  ```tsx
+  // ✅ CORRECT - Desktop button (visible on all breakpoints)
+  <button className="... cursor-pointer">Click me</button>
+
+  // ✅ CORRECT - Desktop-only button
+  <button className="hidden md:block ... cursor-pointer">Desktop only</button>
+
+  // ❌ INCORRECT - Mobile-only button (no cursor on mobile)
+  <button className="md:hidden ... cursor-pointer">Mobile menu</button>
+
+  // ✅ CORRECT - Mobile-only button (no cursor-pointer needed)
+  <button className="md:hidden ...">Mobile menu</button>
+  ```
+
 **Animation Best Practices**:
 - ✅ **Use `whileInView` with `viewport={{ once: true }}`** for scroll-triggered animations
 - ✅ Animations work well on **all breakpoints** (mobile and desktop) when properly optimized
