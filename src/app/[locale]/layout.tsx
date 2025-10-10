@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Roboto_Flex, Roboto, Raleway, Comfortaa } from "next/font/google";
 import { Locale, locales } from "@/lib/i18n";
+import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -66,6 +67,7 @@ export default async function RootLayout({
         >
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   );
