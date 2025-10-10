@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Roboto_Flex, Roboto, Raleway, Comfortaa } from "next/font/google";
 import { Locale, locales } from "@/lib/i18n";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import "../globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -60,6 +61,17 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <Script id="clarity-script" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "to4ss77n2s");
+          `}
+        </Script>
+      </head>
       <body className="antialiased" suppressHydrationWarning>
         <div
           className={`${playfairDisplay.variable} ${robotoFlex.variable} ${roboto.variable} ${raleway.variable} ${comfortaa.variable}`}
