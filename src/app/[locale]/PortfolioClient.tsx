@@ -250,7 +250,7 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
         <Hero onScrollToSection={scrollToSection} locale={locale} />
 
         {/* Highlights Section */}
-        <section className="py-8 md:py-12 -mt-8 md:-mt-12 overflow-hidden">
+        <section className="py-8 md:py-12 mt-12 md:mt-8 overflow-hidden">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

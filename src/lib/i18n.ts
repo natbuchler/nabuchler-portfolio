@@ -15,13 +15,14 @@
 
 import en from '@/locales/en.json';
 import pt from '@/locales/pt.json';
+import es from '@/locales/es.json';
 
-export type Locale = 'en' | 'pt';
+export type Locale = 'en' | 'pt' | 'es';
 
-export const locales: Locale[] = ['en', 'pt'];
+export const locales: Locale[] = ['en', 'pt', 'es'];
 export const defaultLocale: Locale = 'en';
 
-const translations = { en, pt } as const;
+const translations = { en, pt, es } as const;
 
 /**
  * Get all translations for a specific locale

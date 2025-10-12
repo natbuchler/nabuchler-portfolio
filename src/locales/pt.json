@@ -40,7 +40,7 @@
       "incorrectPassword": "Senha incorreta. Tente novamente.",
       "requestMessage": "Não tem a senha? Entre em contato comigo no",
       "requestMessageEnd": "que eu envio por mensagem.",
-      "casualMessage": "Só fuçando de boa? Então vem ler meus artigos no"
+      "casualMessage": "Apenas navegando? Então venha ler meus artigos no"
     }
   },
   "howILead": {
@@ -89,7 +89,7 @@
         "period": "Junho 2025 - Presente",
         "description": "Defini visão de UX e narrativa de produto para soluções de IA em setor regulado, equilibrando inovação, governança e clareza para o usuário.",
         "achievements": [
-          "Construí sistemas de service design escaláveis",
+          "Construí sistemas de design de serviços escaláveis",
           "Facilitei alinhamento de stakeholders",
           "Garanti consistência e replicabilidade do produto"
         ]
@@ -234,7 +234,7 @@
         "32 mercados com necessidades, idiomas e modelos de negócio diferentes",
         "Múltiplos fluxos de valor (precificação, dados, inventário) todos impactados pela mudança"
       ],
-      "tags": ["Liderança Cross-funcional", "Gestão de Stakeholders", "Pensamento Sistêmico", "Design Estratégico"],
+      "tags": ["Liderança Interfuncional", "Gestão de Stakeholders", "Pensamento Sistêmico", "Design Estratégico"],
       "conclusion": "O maior desafio não era o design, era o alinhamento. Diferentes times tinham prioridades conflitantes. A plataforma não conseguia priorizar rápido o suficiente e a pressão comercial estava aumentando."
     },
     "teamsApproach": {
@@ -250,7 +250,7 @@
         ]
       },
       "section2": {
-        "subtitle": "2. Facilitando alinhamento cross-funcional",
+        "subtitle": "2. Facilitando alinhamento interfuncional",
         "paragraphs": [
           "Facilitei uma inception com representantes de Produto, Engenharia, Data Science e Nestlé. Isso não foi uma revisão de design, foi uma sessão de alinhamento estratégico.",
           "Saímos com duas hipóteses claras:"
@@ -326,7 +326,7 @@
         "Proteger a experiência do usuário quando mais importava"
       ],
       "personalQuote": {
-        "quote": "Este é o tipo de trabalho que mais amo: viver na interseção entre design estratégico, impacto de negócio e liderança cross-funcional.",
+        "quote": "Este é o tipo de trabalho que mais amo: viver na interseção entre design estratégico, impacto de negócio e liderança interfuncional.",
         "author": "Eu mesma"
       }
     },

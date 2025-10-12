@@ -1,0 +1,337 @@
+{
+  "nav": {
+    "about": "Acerca",
+    "cases": "Casos",
+    "leadership": "Liderazgo",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy Natasha Buchler,",
+    "description": "Diseñadora Estratégica y Líder Ejecutiva con más de 7 años liderando equipos de diseño en plataformas B2B, fintech y marketplaces globales. Construyendo equipos de alto rendimiento y escalando frameworks de diseño que generan impacto empresarial medible en 32 países.",
+    "cta": {
+      "cases": "Ver casos de estudio",
+      "leadership": "Sobre mi liderazgo"
+    }
+  },
+  "highlights": {
+    "growth": "150% de crecimiento en experimentación",
+    "satisfaction": "100% de satisfacción de gerentes",
+    "promotion": "Nº1 en tasa de promoción",
+    "countries": "32 países"
+  },
+  "caseStudies": {
+    "title": "Casos de estudio",
+    "diveDeeper": "Ver más",
+    "case3tpm": {
+      "title": "3TPM - Arquitectura Global de Producto",
+      "description": "Lideré el diseño e implementación de un framework integral de arquitectura de producto en 32 países."
+    },
+    "passwordProtection": {
+      "title": "Caso de Estudio Protegido",
+      "subtitle": "Este caso de estudio está protegido con contraseña",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Ingrese la contraseña",
+      "showPassword": "Mostrar",
+      "hidePassword": "Ocultar",
+      "enterButton": "Entrar",
+      "verifying": "Verificando...",
+      "backButton": "Volver al portafolio",
+      "incorrectPassword": "Contraseña incorrecta. Inténtelo de nuevo.",
+      "requestMessage": "¿No tienes la contraseña? Contáctame en",
+      "requestMessageEnd": "y te la envío por mensaje.",
+      "casualMessage": "¿Solo navegando? Entonces ven a leer mis artículos en"
+    }
+  },
+  "howILead": {
+    "title": "Cómo lidero",
+    "subtitle": "Mi enfoque para construir equipos de diseño que entregan resultados.",
+    "insights": {
+      "crossFunctional": {
+        "title": "Influencia interfuncional",
+        "description": "Construyendo puentes entre equipos de diseño, ingeniería, producto y negocio para crear soluciones alineadas y de alto impacto."
+      },
+      "balanced": {
+        "title": "Estrategia equilibrada",
+        "description": "Combinando pensamiento de diseño centrado en el usuario con objetivos empresariales para entregar soluciones significativas y medibles."
+      },
+      "inclusive": {
+        "title": "Liderazgo inclusivo",
+        "description": "Fomentando entornos diversos e inclusivos donde cada voz es escuchada y cada perspectiva agrega valor al proceso creativo."
+      },
+      "problemFraming": {
+        "title": "Definición de problemas",
+        "description": "Abordando desafíos complejos con pensamiento sistemático, definición clara de problemas y toma de decisiones basada en datos."
+      }
+    },
+    "quote": "Un buen liderazgo en diseño no se trata de tener todas las respuestas, sino de hacer las preguntas correctas, crear el entorno adecuado y empoderar a los equipos para descubrir soluciones juntos."
+  },
+  "about": {
+    "title": "Acerca de mí",
+    "tags": {
+      "globalLeader": "líder global",
+      "experience": "+15 años"
+    },
+    "paragraph1": "Con más de 15 años en diseño y más de 7 en liderazgo, he escalado el impacto del diseño en 32 países, construyendo equipos distribuidos que entregan resultados empresariales medibles. Me especializo en crear organizaciones de diseño inclusivas y de alto rendimiento que conectan las necesidades de los usuarios con los objetivos empresariales.",
+    "paragraph2": "Mi enfoque combina pensamiento estratégico con liderazgo práctico, desarrollando frameworks y procesos que permiten a los equipos trabajar eficazmente a través de culturas y zonas horarias. Esto incluye frameworks de carrera, procesos de aseguramiento de calidad y metodologías de experimentación que escalan globalmente.",
+    "cta": {
+      "cv": "Descargar CV",
+      "articles": "Leer mis artículos"
+    }
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Un viaje construyendo organizaciones de diseño, escalando impacto y liderando equipos en mercados globales.",
+    "jobs": {
+      "stealth": {
+        "role": "Consultora de Diseño de Servicios",
+        "company": "Startup de IA Confidencial",
+        "period": "Junio 2025 - Presente",
+        "description": "Definí la visión de UX y la narrativa del producto para soluciones de IA en un sector regulado, equilibrando innovación, gobernanza y claridad para el usuario.",
+        "achievements": [
+          "Construí sistemas de diseño de servicios escalables",
+          "Facilité la alineación de stakeholders",
+          "Aseguré la consistencia y replicabilidad del producto"
+        ]
+      },
+      "abinbev": {
+        "role": "Gerente Global de Diseño de Producto",
+        "company": "AB InBev",
+        "period": "Mayo 2022 - Sep 2025",
+        "description": "Responsable de la estrategia de UX para BEES, una plataforma global de comercio B2B que opera en más de 30 países.",
+        "achievements": [
+          "Lideré equipos centrales de jornadas de producto",
+          "Gestioné equipo de diseño distribuido",
+          "Co-creé framework global de carrera en diseño"
+        ]
+      },
+      "vindi": {
+        "role": "Coordinadora de Diseño",
+        "company": "Vindi",
+        "period": "Ago 2020 – Jun 2021",
+        "description": "Gestioné DesignOps, Product Designers y UX Research para plataforma fintech.",
+        "achievements": [
+          "Creé plan de carrera de diseño",
+          "Expandí capacidad de entrega del equipo",
+          "Promoví diseño orientado a métricas"
+        ]
+      },
+      "zup": {
+        "role": "Líder de Estrategia de Pagos y UX",
+        "company": "Zup Innovation",
+        "period": "Mar 2019 – Jul 2020",
+        "description": "Lideré estrategia de UX para productos de telecomunicaciones y finanzas, dirigiendo rediseños y visiones unificadas.",
+        "achievements": [
+          "Rediseñé la app del Banco Safra",
+          "Definí solución de pago Claro & Nextel",
+          "Conduje talleres de descubrimiento e investigación"
+        ]
+      },
+      "nttdata": {
+        "role": "Líder de UX",
+        "company": "NTT Data",
+        "period": "Oct 2018 – Mar 2019",
+        "description": "Lideré equipos de UX/UI en productos de servicios financieros, entregando soluciones de diseño integrales.",
+        "achievements": [
+          "Entregué personas y wireframes",
+          "Creé prototipos y flujos",
+          "Facilité talleres con stakeholders"
+        ]
+      },
+      "previous": {
+        "role": "Experiencia Anterior",
+        "company": "Consultora y Diseñadora de UX",
+        "period": "2009 – 2018",
+        "description": "Trabajé en proyectos de UX y Diseño de Servicios para marcas como Sanofi, Bradesco, Nestlé, Heineken y Predicta, enfocándome en investigación, recorridos de usuario e innovación digital.",
+        "achievements": [
+          "Mapeé y rediseñé recorridos de usuario",
+          "Facilité talleres de co-creación y descubrimiento",
+          "Definí frameworks de investigación y procesos de diseño de servicios"
+        ]
+      }
+    },
+    "cta": {
+      "cv": "Descargar CV",
+      "articles": "Leer mis artículos"
+    }
+  },
+  "articles": {
+    "title": "Últimos artículos",
+    "loading": "Cargando artículos...",
+    "showArticle": "Ver artículo"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "subtitle": "Construyamos algo increíble juntos. Siempre estoy abierta a discutir nuevas oportunidades y colaboraciones.",
+    "platforms": {
+      "linkedin": {
+        "label": "LinkedIn",
+        "ariaLabel": "Visita mi perfil de LinkedIn"
+      },
+      "medium": {
+        "label": "Medium",
+        "ariaLabel": "Lee mis artículos en Medium"
+      },
+      "email": {
+        "label": "Email",
+        "tooltip": "Clic para copiar",
+        "ariaLabel": "Copiar dirección de email"
+      },
+      "cv": {
+        "label": "Currículum",
+        "ariaLabel": "Descargar mi currículum"
+      }
+    },
+    "emailCopied": {
+      "title": "¡Email copiado!",
+      "email": "nabuchler@gmail.com"
+    }
+  },
+  "footer": {
+    "crafted": "Creado por Natasha — desarrollado con",
+    "powered": "usando Next.js, Tailwind CSS y Framer Motion.",
+    "rights": "© 2025 Natasha Buchler. Todos los derechos reservados."
+  },
+  "location": {
+    "city": "São Paulo"
+  },
+  "case3tpm": {
+    "navigation": {
+      "about": "Acerca",
+      "cases": "Casos",
+      "leadership": "Liderazgo",
+      "experience": "Experiencia",
+      "contact": "Contacto"
+    },
+    "hero": {
+      "title": "3TPM - Arquitectura Global de Producto",
+      "subtitle": "Liderando estrategia de diseño interfuncional para resolver la complejidad de variantes de producto en más de 30 países, habilitando grandes asociaciones y entregando impacto empresarial medible en un trimestre."
+    },
+    "numbers": [
+      { "number": "+24%", "label": "Tasa de Conversión" },
+      { "number": "+21%", "label": "Tamaño del Ticket (BR)" },
+      { "number": "+30", "label": "Países" },
+      { "number": "64k+", "label": "SKUs" }
+    ],
+    "problem": {
+      "title": "El problema",
+      "paragraphs": [
+        "Imagina esto: un cliente en Argentina buscando \"Cerveza Patricia 960ml\" ve dos productos con imágenes y nombres idénticos, pero tamaños de paquete diferentes. Agrega el incorrecto al carrito, completa la compra y solo se da cuenta del error cuando llega la entrega.",
+        "Esto no fue un incidente aislado. Fue un síntoma de un problema mucho mayor."
+      ],
+      "quote": "El catálogo de BEES explotó de 600 a más de 64,000 SKUs en solo 3 años. Cada uno de los 32 mercados gestionaba la taxonomía de forma independiente: mismo producto, imágenes diferentes, datos inconsistentes, cero estandarización.",
+      "additionalParagraphs": [
+        "El caos no solo estaba frustrando a los usuarios. Estaba bloqueando contratos con Nestlé, L'Oréal y Gloria. Estos socios necesitaban una plataforma gobernada y escalable; y nuestra arquitectura actual no podía entregarla.",
+        "La búsqueda estaba rota, las recomendaciones no eran confiables y cada nueva integración de marketplace empeoraba las cosas."
+      ]
+    },
+    "strategicChallenge": {
+      "title": "El desafío estratégico",
+      "intro": "Cuando asumí el recorrido principal de compras de BEES, heredé más que una taxonomía rota. Heredé un problema estructural que requería alineación entre:",
+      "bulletPoints": [
+        "Equipos de plataforma construyendo nueva arquitectura de backend (Catalog Admin, estructura 3TPM)",
+        "Socios externos como Nestlé y L'Oréal exigiendo capacidades específicas para lanzarse",
+        "32 mercados con diferentes necesidades, idiomas y modelos de negocio",
+        "Múltiples flujos de valor (precios, datos, inventario) todos impactados por el cambio"
+      ],
+      "tags": ["Liderazgo Interfuncional", "Gestión de Stakeholders", "Pensamiento Sistémico", "Diseño Estratégico"],
+      "conclusion": "El mayor desafío no era el diseño, era la alineación. Diferentes equipos tenían prioridades conflictivas. La plataforma no podía priorizar lo suficientemente rápido y la presión comercial estaba aumentando."
+    },
+    "teamsApproach": {
+      "title": "Enfoque del equipo",
+      "section1": {
+        "subtitle": "1. Investigación antes de soluciones",
+        "paragraphs": ["Antes de definir cualquier solución, lideré investigación cualitativa de campo en Argentina y São Paulo con más de 15 POCs en los segmentos Off Trade, On Trade y Farmacia. El objetivo: entender el dolor real, no asumirlo."],
+        "keyFindingsLabel": "Hallazgos clave:",
+        "findings": [
+          "Los usuarios dependían en gran medida de la información visual, haciendo críticas las diferencias de variantes",
+          "Los errores de compra no solo eran molestos; erosionaban la confianza en el catálogo",
+          "Los POCs necesitaban claridad rápida, la mayoría de los pedidos ocurrían en momentos de alta presión y tiempo limitado"
+        ]
+      },
+      "section2": {
+        "subtitle": "2. Facilitando alineación interfuncional",
+        "paragraphs": [
+          "Facilité una inception con representantes de Producto, Ingeniería, Ciencia de Datos y Nestlé. Esto no fue una revisión de diseño, fue una sesión de alineación estratégica.",
+          "Surgimos con dos hipótesis claras:"
+        ],
+        "hypotheses": [
+          { "title": "App (BEES Customer)", "description": "En el punto de venta, la claridad impulsa la conversión. Si la app no guía bien la elección, el pedido no ocurre." },
+          { "title": "Plataforma (BEES One)", "description": "¿Cómo escalas una operación B2B global si tu catálogo sigue tratando cada SKU como una unidad aislada?" }
+        ],
+        "conclusion": "Esta alineación fue crítica. Aseguró que el trabajo de diseño no fuera solo suposiciones, estaba fundamentado en necesidades reales de usuarios y adaptado a las restricciones estratégicas de nuestra plataforma."
+      },
+      "section3": {
+        "subtitle": "3. Validando con usuarios",
+        "description": "Lideré 12 pruebas de usabilidad en São Paulo (Off Trade, On Trade, Farmacia) usando prototipos de alta fidelidad en Figma. Probamos dos extremos: presentación detallada de variantes vs. simplificada.",
+        "resultsLabel": "Los resultados fueron claros:",
+        "results": [
+          "25% más rápido en completar la compra",
+          "40% mayor satisfacción en la navegación",
+          "60% encontró más fácil comparar opciones"
+        ],
+        "userQuote": {
+          "quote": "Hago menos clics y entiendo mejor lo que estoy comprando.",
+          "author": "Usuario durante las pruebas"
+        }
+      },
+      "section4": {
+        "subtitle": "4. La decisión del \"MVP del MVP\"",
+        "paragraphs": [
+          "Aquí es donde el liderazgo importó más. Los equipos de plataforma no podían entregar la arquitectura 3TPM completa a tiempo. La presión comercial era intensa. Los contratos de Nestlé y L'Oréal estaban en espera.",
+          "Tomé la decisión: lanzar una versión simplificada directamente en la app, sin esperar el soporte completo de la plataforma."
+        ],
+        "meantLabel": "Esto significó:",
+        "meant": [
+          "Compromisos sobre qué era \"imprescindible\" vs. \"bueno tener\"",
+          "Construir la experiencia del selector de variantes en el front-end primero",
+          "Aceptar deuda técnica que necesitaríamos refactorizar después"
+        ],
+        "conclusion": "No fue la solución perfecta. Pero fue la solución correcta para ese momento."
+      }
+    },
+    "impact": {
+      "title": "El impacto",
+      "intro": "A pesar de lanzar un \"MVP del MVP\" sin soporte completo de plataforma, los resultados fueron inmediatos y significativos:",
+      "bulletPoints": [
+        "Contratos de Nestlé y L'Oréal desbloqueados en 4 semanas",
+        "Jerarquía de productos ahora escalable en 32 países",
+        "Arquitectura 3TPM validada en condiciones reales antes del lanzamiento completo del backend"
+      ],
+      "impactCards": [
+        { "title": "+24% Conversión", "description": "En 7 mercados piloto vs. mercados sin la funcionalidad" },
+        { "title": "Contratos desbloqueados", "description": "Nestlé y L'Oréal se lanzaron 4 semanas después del MVP" },
+        { "title": "+21% Tamaño del Ticket", "description": "En Brasil, donde la claridad de variantes generó pedidos más grandes" },
+        { "title": "Pedidos R$250k+", "description": "Argentina vio tamaños de pedidos superiores a R$250,000 con la mejora en la selección de variantes" }
+      ],
+      "conclusion": "Críticamente, logramos esto en un trimestre, trabajando dentro de severas restricciones técnicas y de tiempo. El selector de variantes no fue solo una mejora de UX. Fue un desbloqueo de negocio."
+    },
+    "learned": {
+      "title": "Lo que aprendí",
+      "intro": [
+        "Este proyecto me enseñó que los grandes sistemas no nacen de pantallas perfectas, se construyen sobre conversaciones claras, compromisos inteligentes y confianza del equipo.",
+        "El mayor desafío no fue técnico. Fue humano:"
+      ],
+      "challenges": [
+        "Alinear equipos aislados con prioridades conflictivas",
+        "Navegar tensiones políticas entre plataforma y producto",
+        "Tomar decisiones difíciles cuando lo perfecto no era posible",
+        "Mantener espacio para la voz del usuario cuando la presión empresarial era intensa"
+      ],
+      "growth": "Crecí significativamente mi influencia. Gané la confianza de ingenieros, PMs, equipos de datos y liderazgo senior mostrando que podía:",
+      "achievements": [
+        "Facilitar conversaciones difíciles",
+        "Priorizar despiadadamente bajo restricciones",
+        "Entregar impacto empresarial real, no solo diseños pulidos",
+        "Proteger la experiencia del usuario cuando más importaba"
+      ],
+      "personalQuote": {
+        "quote": "Este es el tipo de trabajo que más amo: vivir en la intersección entre diseño estratégico, impacto empresarial y liderazgo interfuncional.",
+        "author": "Yo misma"
+      }
+    },
+    "nextCase": {
+      "title": "Próximamente"
+    }
+  }
+}

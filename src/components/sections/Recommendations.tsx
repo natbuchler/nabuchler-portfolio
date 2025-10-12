@@ -11,7 +11,9 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { TitleSubTitle } from '@/components/ui/Typography';
-import recommendationsData from '@/data/recommendations.json';
+import recommendationsEN from '@/data/recommendations-en.json';
+import recommendationsPT from '@/data/recommendations-pt.json';
+import recommendationsES from '@/data/recommendations-es.json';
 
 interface Recommendation {
   id: string;
@@ -26,7 +28,7 @@ interface Recommendation {
 }
 
 interface RecommendationsProps {
-  locale?: 'en' | 'pt';
+  locale?: 'en' | 'pt' | 'es';
 }
 
 export default function Recommendations({ locale = 'en' }: RecommendationsProps) {
@@ -34,7 +36,13 @@ export default function Recommendations({ locale = 'en' }: RecommendationsProps)
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const recommendations: Recommendation[] = recommendationsData;
+  const recommendationsMap = {
+    en: recommendationsEN,
+    pt: recommendationsPT,
+    es: recommendationsES
+  };
+
+  const recommendations: Recommendation[] = recommendationsMap[locale] || recommendationsEN;
 
   const handlePrevious = () => {
     const newIndex = currentIndex === 0 ? recommendations.length - 1 : currentIndex - 1;
@@ -89,7 +97,8 @@ export default function Recommendations({ locale = 'en' }: RecommendationsProps)
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString(locale === 'pt' ? 'pt-BR' : 'en-US', {
+    const localeMap = { pt: 'pt-BR', es: 'es-ES', en: 'en-US' };
+    return date.toLocaleDateString(localeMap[locale] || 'en-US', {
       month: 'short',
       year: 'numeric'
     });
@@ -107,8 +116,8 @@ export default function Recommendations({ locale = 'en' }: RecommendationsProps)
             viewport={{ once: true }}
           >
             <TitleSubTitle
-              title={locale === 'pt' ? 'Recomendações' : 'Recommendations'}
-              subtitle={locale === 'pt' ? 'O que as pessoas dizem sobre trabalhar comigo' : 'What people say about working with me'}
+              title={locale === 'pt' ? 'Recomendações' : locale === 'es' ? 'Recomendaciones' : 'Recommendations'}
+              subtitle={locale === 'pt' ? 'O que as pessoas dizem sobre trabalhar comigo' : locale === 'es' ? 'Lo que la gente dice sobre trabajar conmigo' : 'What people say about working with me'}
             />
           </motion.div>
 
@@ -174,8 +183,8 @@ export default function Recommendations({ locale = 'en' }: RecommendationsProps)
                                 className="mt-3 text-[#ad8a6c] hover:text-[#421d13] font-roboto-flex font-medium text-sm transition-colors duration-200 cursor-pointer"
                               >
                                 {isExpanded
-                                  ? locale === 'pt' ? 'Ver menos' : 'Read less'
-                                  : locale === 'pt' ? 'Ver mais' : 'Read more'}
+                                  ? locale === 'pt' ? 'Ver menos' : locale === 'es' ? 'Ver menos' : 'Read less'
+                                  : locale === 'pt' ? 'Ver mais' : locale === 'es' ? 'Ver más' : 'Read more'}
                               </button>
                             )}
                           </div>
