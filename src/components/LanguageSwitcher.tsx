@@ -27,7 +27,7 @@ export interface LanguageSwitcherProps {
 const localeConfig = {
   pt: { flag: '/Br.svg', label: 'PT', title: 'Português' },
   en: { flag: '/Eng.svg', label: 'EN', title: 'English' },
-  es: { flag: '/ES.svg', label: 'ES', title: 'Español' }
+  es: { flag: '/Es.svg', label: 'ES', title: 'Español' }
 };
 
 export function LanguageSwitcher({ currentLocale, className = '' }: LanguageSwitcherProps) {
