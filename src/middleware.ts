@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Check if pathname is missing a locale
-  const pathnameHasLocale = /^\/(en|pt)(\/|$)/.test(pathname);
+  const pathnameHasLocale = /^\/(en|pt|es)(\/|$)/.test(pathname);
 
   if (!pathnameHasLocale) {
     // Redirect to English by default
