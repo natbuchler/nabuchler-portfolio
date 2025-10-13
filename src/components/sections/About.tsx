@@ -64,6 +64,7 @@ export default function About({ locale }: AboutProps) {
               <div className="space-y-6 font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] leading-relaxed">
                 <p>{t.about.paragraph1}</p>
                 <p>{t.about.paragraph2}</p>
+                {t.about.paragraph3 && <p>{t.about.paragraph3}</p>}
               </div>
 
               <ButtonGroup>

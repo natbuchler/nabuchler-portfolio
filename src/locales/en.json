@@ -7,8 +7,8 @@
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hey, I'm Natasha Buchler,",
-    "description": "a Strategic Designer & Executive Leader with 7+ years leading design teams across B2B platforms, fintech, and global marketplaces. Building high-performing teams and scaling design frameworks that drive measurable business impact across 32 countries.",
+    "greeting": "Hey, I'm Natasha Buchler.",
+    "description": "Head of Product Design with 15+ years transforming complexity into clarity through UX strategy, service design, and human-centered leadership. I build high-performing teams and scale design frameworks for B2B platforms, fintech, and global marketplaces, driving measurable impact across +30 countries.",
     "cta": {
       "cases": "View case studies",
       "leadership": "About my leadership"
@@ -48,20 +48,20 @@
     "subtitle": "My approach to building design teams that deliver.",
     "insights": {
       "crossFunctional": {
-        "title": "Cross-functional influence",
-        "description": "Building bridges between design, engineering, product and business teams to create aligned, high-impact solutions."
+        "title": "Create functional coherence",
+        "description": "I build bridges between design, product, engineering, and business, creating shared language and understanding."
       },
       "balanced": {
-        "title": "Balanced strategy",
-        "description": "Combining user-centered design thinking with business objectives to deliver solutions that are both meaningful and measurable"
+        "title": "Balanced strategic thinking",
+        "description": "Great design balances user needs, business viability, and technical feasibility. I help teams navigate trade-offs without losing sight of what truly matters."
       },
       "inclusive": {
-        "title": "Inclusive leadership",
-        "description": "Fostering diverse, inclusive environments where every voice is heard and every perspective adds value to the creative process."
+        "title": "Big-bets within reality",
+        "description": "I push teams to think big while staying grounded in what's achievable. Start with MVPs, run pilots, scale what works. Don't bet everything on untested ideas."
       },
       "problemFraming": {
-        "title": "Problem framing",
-        "description": "Approaching complex challenges with systematic thinking, clear problem definition, and data-driven decision making."
+        "title": "Enable fast & fail safely",
+        "description": "I build frameworks and processes that let teams move fast while protecting UX and key metrics. Processes, data, and clear criteria help us learn without chaos."
       }
     },
     "quote": "Great design leadership isn't about having all the answers, it's about asking the right questions, creating the right environment, and empowering teams to discover solutions together."
@@ -72,8 +72,9 @@
       "globalLeader": "global leader",
       "experience": "+15 years"
     },
-    "paragraph1": "With 15+ years in design and 7+ in leadership, I've scaled design impact across 32 countries, building distributed teams that deliver measurable business outcomes. I specialize in creating inclusive, high-performing design organizations that bridge user needs with business objectives.",
-    "paragraph2": "My approach combines strategic thinking with hands-on leadership, developing frameworks and processes that enable teams to work effectively across cultures and time zones. This includes career frameworks, quality assurance processes, and experimentation methodologies that scale globally.",
+    "paragraph1": "Design leader focused on systems, strategy, and measurable impact.\n\n15+ years across LATAM, US, Europe, Africa, and Asia, leading distributed teams and building products for millions of users in B2B platforms, fintech, AI, and regulated environments.\n\nI love complex problems at the intersection of design, product, and business. I believe design is strategic. It translates complexity into clarity.",
+    "paragraph2": "My leadership is guided by empathy and people development. At AB InBev, I achieved the highest promotion rate among managers and 100% satisfaction in managerial effectiveness through intentional coaching.\n\nI'm passionate about teaching. I've taught at Gama Academy and mentored dozens of designers throughout my career.",
+    "paragraph3": "Based in Brazil | Remote globally + open to relocation | Portuguese (native), English (advanced)",
     "cta": {
       "cv": "Download CV",
       "articles": "Read my articles"
@@ -84,70 +85,86 @@
     "subtitle": "A journey of building design organizations, scaling impact, and leading teams across global markets.",
     "jobs": {
       "stealth": {
-        "role": "Service Design Consultant",
+        "role": "Senior Service Design Consultant",
         "company": "Stealth AI Startup",
-        "period": "June 2025 - Present",
-        "description": "Defined UX vision and product narrative for AI solutions in a regulated sector, balancing innovation, governance, and user clarity.",
+        "period": "Jun 2025 - Present",
+        "description": "Leading UX and service design for AI startup in security (regulated environment). Translating technical innovation into business value.",
         "achievements": [
-          "Built scalable service design systems",
-          "Facilitated stakeholder alignment",
-          "Ensured product consistency and replicability"
+          "Business plan with AI governance differentiators",
+          "Strategic roadmap balancing operations and premium innovation",
+          "Scalable service design system across markets"
         ]
       },
       "abinbev": {
         "role": "Global Product Design Manager",
         "company": "AB InBev",
         "period": "May 2022 - Sep 2025",
-        "description": "Own the strategic UX for BEES, a global B2B commerce platform operating in 30+ countries.",
+        "description": "Led UX for B2B platform across 30+ countries. Owned catalog, search, cart, checkout, post-purchase.",
         "achievements": [
-          "Lead core product journey teams",
-          "Manage distributed design team",
-          "Co-created global design career framework"
+          "+24% conversion, +21% avg ticket (7 markets)",
+          "+150% experimentation projects in 9 months",
+          "-15% bugs via Design QA (223 subtasks/7 months)",
+          "Highest promotion rate among managers",
+          "100% satisfaction in Manager Effectiveness",
+          "Created global career framework adopted company-wide"
+        ]
+      },
+      "mc1casasbahia": {
+        "role": "Senior UX Consultant / Design Manager",
+        "company": "MC1 & Grupo Casas Bahia (VIA)",
+        "period": "Jun 2021 - May 2022",
+        "description": "Design leadership for digital transformation. Led UX for LATAM's largest distribution center automation.",
+        "achievements": [
+          "Scaled team 100% (4 hires in 1 month)",
+          "Implemented user research for data-driven decisions",
+          "Fostered Product-Engineering-Design collaboration"
         ]
       },
       "vindi": {
         "role": "Design Coordinator",
         "company": "Vindi",
-        "period": "Aug 2020 – June 2021",
-        "description": "Managed DesignOps, Product Designers, and UX Research for fintech platform.",
+        "period": "Aug 2020 - Jun 2021",
+        "description": "Led DesignOps, Product Designers, UX Research for fintech SaaS.",
         "achievements": [
-          "Created design career path",
-          "Expanded team delivery capacity",
-          "Promoted metric-driven design"
+          "Built design career framework",
+          "Metric-driven solutions aligned with OKRs",
+          "Improved onboarding flows via discovery"
         ]
       },
       "zup": {
-        "role": "Payment Strategy & UX Lead",
+        "role": "UX Strategy Lead - Finance & Telecom",
         "company": "Zup Innovation",
-        "period": "Mar 2019 – Jul 2020",
-        "description": "Led UX strategy for telecom and finance products, directing redesigns and unified visions.",
+        "period": "Mar 2019 - Jul 2020",
+        "description": "UX strategy for Safra Bank and Claro/Nextel.",
         "achievements": [
-          "Redesigned Safra Bank app",
-          "Defined Claro & Nextel payment solution",
-          "Conducted discovery and research workshops"
+          "Managed 5 designers for Safra app redesign",
+          "Contributed to Claro design system",
+          "Payment strategy for Claro/Nextel integration"
         ]
       },
       "nttdata": {
-        "role": "UX Lead",
-        "company": "NTT Data",
-        "period": "Oct 2018 – Mar 2019",
-        "description": "Led UX/UI teams on financial services products, delivering comprehensive design solutions.",
+        "role": "UX Lead - Brasilseg & MAPFRE",
+        "company": "NTT DATA",
+        "period": "Oct 2018 - Mar 2019",
+        "description": "Led UX/UI for insurance (Brasilseg, MAPFRE).",
         "achievements": [
-          "Delivered personas and wireframes",
-          "Created prototypes and flows",
-          "Facilitated stakeholder workshops"
+          "End-to-end research and prototyping",
+          "Stakeholder workshops and co-creation"
         ]
       },
       "previous": {
-        "role": "Previous Experience",
-        "company": "Consultant & UX Designer",
-        "period": "2009 – 2018",
-        "description": "Worked on UX and Service Design projects for brands such as Sanofi, Bradesco, Nestlé, Heineken, and Predicta, focusing on research, user journeys, and digital innovation.",
-        "achievements": [
-          "Mapped and redesigned user journeys",
-          "Facilitated co-creation and discovery workshops",
-          "Defined research frameworks and service design processes"
-        ]
+        "role": "Senior UI/UX Designer & Service Designer",
+        "company": "Multiple Companies & Agencies",
+        "period": "Jan 2009 - Oct 2018",
+        "description": "User-centered design for Sanofi, Bradesco, Heineken, Nestlé, Predicta across finance, retail, healthcare, telecom.",
+        "achievements": []
+      },
+      "gamaacademy": {
+        "role": "UX Design Professor",
+        "company": "Gama Academy",
+        "period": "Apr 2021 - Aug 2023",
+        "description": "Taught UX courses: User Journeys, Jobs to Be Done, MVP, cognitive biases, data storytelling.",
+        "achievements": []
       }
     },
     "cta": {

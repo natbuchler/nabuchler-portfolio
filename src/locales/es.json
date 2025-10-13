@@ -7,8 +7,8 @@
     "contact": "Contacto"
   },
   "hero": {
-    "greeting": "Hola, soy Natasha Buchler,",
-    "description": "Diseñadora Estratégica y Líder Ejecutiva con más de 7 años liderando equipos de diseño en plataformas B2B, fintech y marketplaces globales. Construyendo equipos de alto rendimiento y escalando frameworks de diseño que generan impacto empresarial medible en 32 países.",
+    "greeting": "Hola, soy Natasha Buchler.",
+    "description": "Head of Product Design con más de 15 años transformando complejidad en claridad a través de estrategia de UX, service design y liderazgo centrado en las personas. Construyo equipos de alto rendimiento y escalo frameworks de diseño para plataformas B2B, fintech y marketplaces globales, generando impacto medible en más de 30 países.",
     "cta": {
       "cases": "Ver casos de estudio",
       "leadership": "Sobre mi liderazgo"
@@ -48,20 +48,20 @@
     "subtitle": "Mi enfoque para construir equipos de diseño que entregan resultados.",
     "insights": {
       "crossFunctional": {
-        "title": "Influencia interfuncional",
-        "description": "Construyendo puentes entre equipos de diseño, ingeniería, producto y negocio para crear soluciones alineadas y de alto impacto."
+        "title": "Crear coherencia funcional",
+        "description": "Construyo puentes entre diseño, producto, ingeniería y negocio, creando lenguaje y entendimiento compartidos."
       },
       "balanced": {
-        "title": "Estrategia equilibrada",
-        "description": "Combinando pensamiento de diseño centrado en el usuario con objetivos empresariales para entregar soluciones significativas y medibles."
+        "title": "Pensamiento estratégico equilibrado",
+        "description": "Un buen diseño equilibra necesidades del usuario, viabilidad empresarial y factibilidad técnica. Ayudo a los equipos a navegar compromisos sin perder de vista lo que realmente importa."
       },
       "inclusive": {
-        "title": "Liderazgo inclusivo",
-        "description": "Fomentando entornos diversos e inclusivos donde cada voz es escuchada y cada perspectiva agrega valor al proceso creativo."
+        "title": "Grandes apuestas dentro de la realidad",
+        "description": "Impulso a los equipos a pensar en grande mientras mantienen los pies en la tierra sobre lo que es posible. Comenzar con MVPs, ejecutar pilotos, escalar lo que funciona. No apostar todo en ideas no probadas."
       },
       "problemFraming": {
-        "title": "Definición de problemas",
-        "description": "Abordando desafíos complejos con pensamiento sistemático, definición clara de problemas y toma de decisiones basada en datos."
+        "title": "Habilitar rapidez y fallar con seguridad",
+        "description": "Construyo frameworks y procesos que permiten a los equipos moverse rápido mientras protegen UX y métricas clave. Procesos, datos y criterios claros nos ayudan a aprender sin crear caos."
       }
     },
     "quote": "Un buen liderazgo en diseño no se trata de tener todas las respuestas, sino de hacer las preguntas correctas, crear el entorno adecuado y empoderar a los equipos para descubrir soluciones juntos."
@@ -72,8 +72,9 @@
       "globalLeader": "líder global",
       "experience": "+15 años"
     },
-    "paragraph1": "Con más de 15 años en diseño y más de 7 en liderazgo, he escalado el impacto del diseño en 32 países, construyendo equipos distribuidos que entregan resultados empresariales medibles. Me especializo en crear organizaciones de diseño inclusivas y de alto rendimiento que conectan las necesidades de los usuarios con los objetivos empresariales.",
-    "paragraph2": "Mi enfoque combina pensamiento estratégico con liderazgo práctico, desarrollando frameworks y procesos que permiten a los equipos trabajar eficazmente a través de culturas y zonas horarias. Esto incluye frameworks de carrera, procesos de aseguramiento de calidad y metodologías de experimentación que escalan globalmente.",
+    "paragraph1": "Líder de diseño enfocada en sistemas, estrategia e impacto medible.\n\nMás de 15 años trabajando entre LATAM, EE.UU., Europa, África y Asia, liderando equipos distribuidos y construyendo productos para millones de usuarios en plataformas B2B, fintech, IA y entornos altamente regulados.\n\nAmo los problemas complejos en la intersección entre diseño, producto y negocio. Creo que el diseño es estratégico. Traduce complejidad en claridad.",
+    "paragraph2": "Mi liderazgo está guiado por empatía y desarrollo de personas. En AB InBev, logré la mayor tasa de promoción entre gerentes y 100% de satisfacción en efectividad gerencial a través de coaching intencional.\n\nMe apasiona enseñar. He enseñado en Gama Academy y mentorado decenas de diseñadores a lo largo de mi carrera.",
+    "paragraph3": "Brasil | Remoto globalmente + abierta a reubicación | Portugués (nativo), Inglés (avanzado)",
     "cta": {
       "cv": "Descargar CV",
       "articles": "Leer mis artículos"
@@ -84,70 +85,86 @@
     "subtitle": "Un viaje construyendo organizaciones de diseño, escalando impacto y liderando equipos en mercados globales.",
     "jobs": {
       "stealth": {
-        "role": "Consultora de Diseño de Servicios",
+        "role": "Consultora Sénior de Service Design",
         "company": "Startup de IA Confidencial",
-        "period": "Junio 2025 - Presente",
-        "description": "Definí la visión de UX y la narrativa del producto para soluciones de IA en un sector regulado, equilibrando innovación, gobernanza y claridad para el usuario.",
+        "period": "Jun 2025 - Presente",
+        "description": "Liderando UX y service design para startup de IA en el sector de seguridad (entorno altamente regulado). Traduciendo innovación técnica en valor empresarial.",
         "achievements": [
-          "Construí sistemas de diseño de servicios escalables",
-          "Facilité la alineación de stakeholders",
-          "Aseguré la consistencia y replicabilidad del producto"
+          "Plan de negocios con diferenciadores de gobernanza y compliance de IA",
+          "Roadmap estratégico equilibrando operaciones e innovación premium",
+          "Sistema de service design escalable entre mercados"
         ]
       },
       "abinbev": {
         "role": "Gerente Global de Diseño de Producto",
         "company": "AB InBev",
-        "period": "Mayo 2022 - Sep 2025",
-        "description": "Responsable de la estrategia de UX para BEES, una plataforma global de comercio B2B que opera en más de 30 países.",
+        "period": "May 2022 - Sep 2025",
+        "description": "Lideré UX para plataforma B2B en más de 30 países. Responsable de catálogo, búsqueda, carrito, checkout, post-compra.",
         "achievements": [
-          "Lideré equipos centrales de jornadas de producto",
-          "Gestioné equipo de diseño distribuido",
-          "Co-creé framework global de carrera en diseño"
+          "+24% conversión, +21% ticket promedio (7 mercados)",
+          "+150% proyectos de experimentación en 9 meses",
+          "-15% bugs vía Design QA (223 subtasks/7 meses)",
+          "Mayor tasa de promoción entre gerentes",
+          "100% satisfacción en Efectividad Gerencial",
+          "Framework global de carrera creado y adoptado en toda la empresa"
         ]
+      },
+      "mc1casasbahia": {
+        "role": "Consultora Sénior de UX / Gerente de Diseño",
+        "company": "MC1 & Grupo Casas Bahia (VIA)",
+        "period": "Jun 2021 - May 2022",
+        "description": "Liderazgo de diseño para transformación digital. Lideré UX para el centro de distribución automatizado más grande de LATAM.",
+        "achievements": [
+          "Escalé el equipo 100% (4 contrataciones en 1 mes)",
+          "Implementé investigación de usuarios para decisiones data-driven",
+          "Fomenté colaboración Producto-Ingeniería-Diseño"
+        ]
+      },
+      "gamaacademy": {
+        "role": "Profesora de Diseño UX",
+        "company": "Gama Academy",
+        "period": "Abr 2021 - Ago 2023",
+        "description": "Enseñé cursos de UX: User Journeys, Jobs to Be Done, MVP, sesgos cognitivos, data storytelling.",
+        "achievements": []
       },
       "vindi": {
         "role": "Coordinadora de Diseño",
         "company": "Vindi",
-        "period": "Ago 2020 – Jun 2021",
-        "description": "Gestioné DesignOps, Product Designers y UX Research para plataforma fintech.",
+        "period": "Ago 2020 - Jun 2021",
+        "description": "Lideré DesignOps, Product Designers, UX Research para SaaS fintech.",
         "achievements": [
-          "Creé plan de carrera de diseño",
-          "Expandí capacidad de entrega del equipo",
-          "Promoví diseño orientado a métricas"
+          "Construí framework de carrera de diseño",
+          "Soluciones orientadas a métricas alineadas con OKRs",
+          "Mejoré flujos de onboarding vía discovery"
         ]
       },
       "zup": {
-        "role": "Líder de Estrategia de Pagos y UX",
+        "role": "Líder de Estrategia de UX - Finanzas y Telecom",
         "company": "Zup Innovation",
-        "period": "Mar 2019 – Jul 2020",
-        "description": "Lideré estrategia de UX para productos de telecomunicaciones y finanzas, dirigiendo rediseños y visiones unificadas.",
+        "period": "Mar 2019 - Jul 2020",
+        "description": "Estrategia de UX para Banco Safra y Claro/Nextel.",
         "achievements": [
-          "Rediseñé la app del Banco Safra",
-          "Definí solución de pago Claro & Nextel",
-          "Conduje talleres de descubrimiento e investigación"
+          "Gestioné 5 diseñadores para rediseño de app Safra",
+          "Contribuí al design system de Claro",
+          "Estrategia de pago para integración Claro/Nextel"
         ]
       },
       "nttdata": {
-        "role": "Líder de UX",
-        "company": "NTT Data",
-        "period": "Oct 2018 – Mar 2019",
-        "description": "Lideré equipos de UX/UI en productos de servicios financieros, entregando soluciones de diseño integrales.",
+        "role": "Líder de UX - Brasilseg & MAPFRE",
+        "company": "NTT DATA",
+        "period": "Oct 2018 - Mar 2019",
+        "description": "Lideré UX/UI para seguros (Brasilseg, MAPFRE).",
         "achievements": [
-          "Entregué personas y wireframes",
-          "Creé prototipos y flujos",
-          "Facilité talleres con stakeholders"
+          "Investigación y prototipado de extremo a extremo",
+          "Talleres con stakeholders y co-creación"
         ]
       },
       "previous": {
-        "role": "Experiencia Anterior",
-        "company": "Consultora y Diseñadora de UX",
-        "period": "2009 – 2018",
-        "description": "Trabajé en proyectos de UX y Diseño de Servicios para marcas como Sanofi, Bradesco, Nestlé, Heineken y Predicta, enfocándome en investigación, recorridos de usuario e innovación digital.",
-        "achievements": [
-          "Mapeé y rediseñé recorridos de usuario",
-          "Facilité talleres de co-creación y descubrimiento",
-          "Definí frameworks de investigación y procesos de diseño de servicios"
-        ]
+        "role": "Diseñadora Sénior de UI/UX & Service Designer",
+        "company": "Múltiples Empresas y Agencias",
+        "period": "Ene 2009 - Oct 2018",
+        "description": "Diseño centrado en el usuario para Sanofi, Bradesco, Heineken, Nestlé, Predicta en finanzas, retail, salud, telecom.",
+        "achievements": []
       }
     },
     "cta": {

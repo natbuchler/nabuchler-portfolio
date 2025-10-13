@@ -52,6 +52,26 @@ export default function Experience({ locale }: ExperienceProps) {
 
             <TimelineItem icon="ponto" iconColor="#421d13" index={2}>
               <CardExperienceAccordion
+                role={t.experience.jobs.mc1casasbahia.role}
+                company={t.experience.jobs.mc1casasbahia.company}
+                period={t.experience.jobs.mc1casasbahia.period}
+                description={t.experience.jobs.mc1casasbahia.description}
+                achievements={t.experience.jobs.mc1casasbahia.achievements}
+              />
+            </TimelineItem>
+
+            <TimelineItem icon="cy" iconColor="#c95127" index={3}>
+              <CardExperienceAccordion
+                role={t.experience.jobs.gamaacademy.role}
+                company={t.experience.jobs.gamaacademy.company}
+                period={t.experience.jobs.gamaacademy.period}
+                description={t.experience.jobs.gamaacademy.description}
+                achievements={t.experience.jobs.gamaacademy.achievements}
+              />
+            </TimelineItem>
+
+            <TimelineItem icon="ponto" iconColor="#421d13" index={4}>
+              <CardExperienceAccordion
                 role={t.experience.jobs.vindi.role}
                 company={t.experience.jobs.vindi.company}
                 period={t.experience.jobs.vindi.period}
@@ -60,7 +80,7 @@ export default function Experience({ locale }: ExperienceProps) {
               />
             </TimelineItem>
 
-            <TimelineItem icon="cy" iconColor="#c95127" index={3}>
+            <TimelineItem icon="cy" iconColor="#c95127" index={5}>
               <CardExperienceAccordion
                 role={t.experience.jobs.zup.role}
                 company={t.experience.jobs.zup.company}
@@ -70,7 +90,7 @@ export default function Experience({ locale }: ExperienceProps) {
               />
             </TimelineItem>
 
-            <TimelineItem icon="ponto" iconColor="#421d13" index={4}>
+            <TimelineItem icon="ponto" iconColor="#421d13" index={6}>
               <CardExperienceAccordion
                 role={t.experience.jobs.nttdata.role}
                 company={t.experience.jobs.nttdata.company}
@@ -80,7 +100,7 @@ export default function Experience({ locale }: ExperienceProps) {
               />
             </TimelineItem>
 
-            <TimelineItem icon="cy" iconColor="#c95127" index={5}>
+            <TimelineItem icon="cy" iconColor="#c95127" index={7}>
               <CardExperienceAccordion
                 role={t.experience.jobs.previous.role}
                 company={t.experience.jobs.previous.company}
