@@ -205,6 +205,11 @@
     }
   },
   "footer": {
+    "uxWonderland": {
+      "title": "UX Wonderland",
+      "description": "Curated collection of UX resources, frameworks, and insights for the design community.",
+      "cta": "Explore collection"
+    },
     "crafted": "Crafted hands-on by Natasha — built with",
     "powered": "powered by Next.js, Tailwind CSS & Framer Motion.",
     "rights": "© 2025 Natasha Buchler. All rights reserved."

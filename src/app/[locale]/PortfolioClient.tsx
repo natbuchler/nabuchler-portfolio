@@ -314,49 +314,71 @@ export default function PortfolioClient({ locale }: PortfolioClientProps) {
         <Contact locale={locale} />
 
         {/* Footer */}
-        <footer className="py-12 bg-[rgba(173,138,108,0.08)] border-t border-[#ad8a6c]/30">
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="text-center space-y-6">
-              <div className="font-roboto-flex font-light text-lg md:text-xl text-[#6b6763] space-y-4">
-                <div className="flex flex-col items-center gap-4">
-                  <p className="text-center leading-relaxed">
-                    {t.footer.crafted}{' '}
-                    <span className="inline-flex items-center gap-1">
-                      Cursor
-                      <Image
-                        src="/Cursor Logo SVG.svg"
-                        alt="Cursor"
-                        width={16}
-                        height={16}
-                        className="opacity-60 hover:opacity-100 transition-opacity"
-                      />
-                    </span>
-                    ,{' '}
-                    <span className="inline-flex items-center gap-1">
-                      Claude
-                      <Image
-                        src="/Logo Claude AI.svg"
-                        alt="Claude AI"
-                        width={16}
-                        height={16}
-                        className="opacity-60 hover:opacity-100 transition-opacity"
-                      />
-                    </span>
-                    {' '}&{' '}
-                    <span className="inline-flex items-center gap-1">
-                      Figma
-                      <Image
-                        src="/Figma Logo SVG.svg"
-                        alt="Figma"
-                        width={16}
-                        height={16}
-                        className="opacity-60 hover:opacity-100 transition-opacity"
-                      />
-                    </span>
-                    , {t.footer.powered}
-                  </p>
+        <footer className="py-12 md:py-16 bg-[rgba(173,138,108,0.08)] border-t border-[#ad8a6c]/30">
+          <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              {/* Left Column: UX Wonderland */}
+              <div className="space-y-4">
+                <h3 className="font-playfair font-semibold text-2xl md:text-3xl text-[#421d13]">
+                  {t.footer.uxWonderland.title}
+                </h3>
+                <p className="font-roboto-flex font-light text-lg text-[#6b6763] leading-relaxed">
+                  {t.footer.uxWonderland.description}
+                </p>
+                <div className="pt-2">
+                  <Button
+                    variant="primary"
+                    onClick={() => window.open('https://natybuchler.notion.site/UX-Wonderland-Where-Learning-Sets-Sail-a04a53b04eec426480ad9dd506651657', '_blank', 'noopener,noreferrer')}
+                    className="cursor-pointer"
+                  >
+                    {t.footer.uxWonderland.cta}
+                  </Button>
                 </div>
-                <p>{t.footer.rights}</p>
+              </div>
+
+              {/* Right Column: Built with + Copyright */}
+              <div className="space-y-6 lg:border-l lg:border-[#ad8a6c]/20 lg:pl-12">
+                <div className="font-roboto-flex font-light text-lg text-[#6b6763] space-y-4">
+                  <div className="flex flex-col gap-4">
+                    <p className="leading-relaxed">
+                      {t.footer.crafted}{' '}
+                      <span className="inline-flex items-center gap-1">
+                        Cursor
+                        <Image
+                          src="/Cursor Logo SVG.svg"
+                          alt="Cursor"
+                          width={16}
+                          height={16}
+                          className="opacity-60 hover:opacity-100 transition-opacity"
+                        />
+                      </span>
+                      ,{' '}
+                      <span className="inline-flex items-center gap-1">
+                        Claude
+                        <Image
+                          src="/Logo Claude AI.svg"
+                          alt="Claude AI"
+                          width={16}
+                          height={16}
+                          className="opacity-60 hover:opacity-100 transition-opacity"
+                        />
+                      </span>
+                      {' '}&{' '}
+                      <span className="inline-flex items-center gap-1">
+                        Figma
+                        <Image
+                          src="/Figma Logo SVG.svg"
+                          alt="Figma"
+                          width={16}
+                          height={16}
+                          className="opacity-60 hover:opacity-100 transition-opacity"
+                        />
+                      </span>
+                      , {t.footer.powered}
+                    </p>
+                  </div>
+                  <p className="text-base">{t.footer.rights}</p>
+                </div>
               </div>
             </div>
           </div>
